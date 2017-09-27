@@ -1,9 +1,8 @@
 package edu.cosc4353.group3.AcornsEmulator;
 
-// First Implementation of a Customer object
-// TODO Remove user variable and create hash instead
-// TODO Method to compare passwords after matching with obj in hashtable
-public class Customer{
+import java.util.Scanner;
+
+public class Customer {
 	private String user;
 	private String passwd;
 	private int card;
@@ -16,5 +15,42 @@ public class Customer{
 	
 	public int getCardNumber() {
 		return card;
+	}
+	
+	public int hashUsername(String username) {
+		int nameLength = username.length();
+		int user[] = new int[nameLength];
+		int total = 0;
+		
+		for(int i = 0; i < nameLength; i++) {
+			user[i] = username.charAt(i);
+		}
+		for(int i = 0; i < nameLength; i++) {
+			System.out.println(user[i] + " ");
+		}
+		for(int i = 0; i < nameLength; i++) {
+			total += user[i];
+		}
+		System.out.println("Total is: " + total);
+		return((total)%5);
+	}
+	// Username hash to store and identify object
+	public void storeUser() {
+		
+	}
+	// TODO Pull user object if pass match
+	public static void createUser() {
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Enter User: ");
+		String username = input.next();
+		
+		System.out.println("Enter Password: ");
+		String password = input.next();
+		
+		System.out.println("Enter Credit Card Number");
+		int cardNumber = input.nextInt();
+		
+		Customer customer = new Customer(username, password, cardNumber);
 	}
 }
