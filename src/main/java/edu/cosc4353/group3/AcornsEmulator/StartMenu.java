@@ -33,17 +33,16 @@ public class StartMenu {
         Temp = UserScan.nextInt();
         setSelect(Temp);
         
-    
-    {
         //FUNTION TO ACCESS USER SELECTED OPTION
-        switch(getSelect())
-        {
+        //switch(getSelect())
+        //{
         // Will add functions to access login/create/exit later
             //case 1: {}
             //case 2: {}
             //case 3: {}
-        }
+        //}
     }
+    
     public int getSelect()
     {
         return Select;
@@ -58,12 +57,4 @@ public class StartMenu {
     {
         setSelect(0);
     }
-    
-    public static void main(String[] args) {
-        
-        //will add other functions later
-        DisplayMenu();
-    }
-    
-    
 }
