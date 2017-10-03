@@ -2,15 +2,8 @@ package edu.cosc4353.group3.AcornsEmulator;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Detrich
- */
 public class StartMenu {
 
-    /**
-     * @param args the command line arguments
-     */
     private int Select = 0;
     
     public static void DisplayMenu()
