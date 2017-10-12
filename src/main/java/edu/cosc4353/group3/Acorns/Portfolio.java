@@ -8,7 +8,10 @@ public class Portfolio {
 		growth = growthRate;
 		sect = sector;
 	}
-	public static Portfolio returnPortfolio(Portfolio portfolio) {
-		return portfolio;
+	public String returnPortfolioSector() {
+		return sect;
+	}
+	public double returnPortfolioGrowth() {
+		return growth;
 	}
 }
