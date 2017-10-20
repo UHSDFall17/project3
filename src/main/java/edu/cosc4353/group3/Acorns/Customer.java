@@ -53,30 +53,18 @@ public class Customer {
             int temp= c.card;
             return temp;
 	}
-        
-        public String getUser_Name()
-        {
+        public String getUser_Name(){
             return user;
         }
-        
-        public String getUser_Pass()
-        {
+        public String getUser_Pass(){
             return passwd;
         }
-        
-        public int getUser_CardNumb()
-        {
+        public int getUser_CardNumb(){
             return card;
         }
-        
-        public static void setCardNumber(Customer c ,int number)
-        {
+        public static void setCardNumber(Customer c ,int number){
             c.card = number;
         }
-	
-
-        
-        
         //Create New User Account
         public static boolean CreateAccount()
         {
@@ -95,7 +83,6 @@ public class Customer {
             if (isNotUnique(username)){   System.out.println("Username Taken, Try Again...." + "\n"); }
             else { CreateError = false; System.out.println("Username Accepted!" + "\n"); }
             }
-            
             CreateError = true;
             while (CreateError)
             {
@@ -104,10 +91,7 @@ public class Customer {
                 
                 if (password.length() != PASS_LENGTH){ CreateError = true; System.out.println("Password Length Error, Try Again...." + "\n");}
                 else {  CreateError = false; System.out.println("Password Accepted, Account Created!" + "\n");}
-                    
-                
             }
-            
             CreateError = true;
             while(CreateError)
             {
@@ -117,14 +101,10 @@ public class Customer {
                 if (cardId.length() < 16) { CreateError = true; System.out.println("Card Number Error.....");   }
                 else {  CreateError = false;    }
             }
-            
             //Enter Card Info Here
-            
                 StoreUserData(username, password,cardId); //Add card Argument
-            
             return true;
         }
-        
         //Store Accepted User Login Data in .txt
         public static void StoreUserData(String user, String pass, String cardNumb)
         {
@@ -141,13 +121,11 @@ public class Customer {
                 outP.append(Storage);
                 outP.close();
             }
-            
             catch(IOException ioe)
             {
                 System.err.println("IOException: " + ioe.getMessage());
             }
         }
-        
         //Check Originality of Username
         public static boolean isNotUnique(String UserInput)
         {
@@ -161,7 +139,6 @@ public class Customer {
                 //System.out.println(TempScan);
                 if (UserInput.equals(TempScan))// write first word from line
                 {
-                    
                     return true;
                 }
                 //System.out.println("next");
@@ -172,7 +149,6 @@ public class Customer {
             
         return false;
     }
-        
         //User Login Function
         public static void Login()
         {
@@ -186,23 +162,16 @@ public class Customer {
 		
             System.out.println("Enter Password: ");
             String password = input.next();
-            
-            
-           
                 if(CheckLogin(username, password))
                 {
                     InvalidCheck = true; //User Sucessful login
-                    
                     Customer CurrentCustomer = new Customer(username, password, 9999);
                     tempCard = getCardNumberI(CurrentCustomer);
                     CurrentCustomer.card = tempCard;
-                    
                     Interface intfc = new Interface();
                     intfc.UserInput(CurrentCustomer);
-                    
                 }
             }
-  
         }
         
         //Check User Existance in .txt
@@ -228,16 +197,12 @@ public class Customer {
                     System.out.println("Password Error..." + "\n");
                     return false;
                 }
-                
             }
-            
             System.out.println("User Does Not Exist.....");
             return false;
         } 
         catch (IOException e) { e.printStackTrace();    }
-            
-            
             return false;
         }
-	
+
 }
