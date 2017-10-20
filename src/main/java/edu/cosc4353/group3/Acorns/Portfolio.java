@@ -23,7 +23,9 @@ import java.util.Scanner;
 public class Portfolio {
 	
 	
-	         System.out.println(";Select an Investment Porfolio Type");
+	
+	 public static void main(String[] args){
+		 System.out.println("Select an Investment Porfolio Type");
 		 System.out.println("1. Health");
 		 System.out.println("2. Technology");
 		 System.out.println("3. Sports");
@@ -76,6 +78,5 @@ public class Portfolio {
 
 
 
-	  
+	  }
 }
-
