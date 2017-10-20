@@ -1,6 +1,10 @@
 package edu.cosc4353.group3.Acorns;
 
 import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Customer {
 	private String user;
@@ -168,8 +172,8 @@ public class Customer {
                     Customer CurrentCustomer = new Customer(username, password, 9999);
                     tempCard = getCardNumberI(CurrentCustomer);
                     CurrentCustomer.card = tempCard;
-                    Interface intfc = new Interface();
-                    intfc.UserInput(CurrentCustomer);
+                    //Interface intfc = new Interface();
+                    //intfc.UserInput(CurrentCustomer);
                 }
             }
         }
