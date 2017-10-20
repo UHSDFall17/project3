@@ -1,6 +1,6 @@
 
 package edu.cosc4353.group3.Acorns;
-/*
+
 public class Portfolio {
 	private double growth = 0.0;
 	private String sect = "";
@@ -16,8 +16,7 @@ public class Portfolio {
 		return growth;
 	}
 }
-*/
-
+/*
 import java.util.Scanner;
 
 
@@ -81,3 +80,4 @@ public class Portfolio {
 
 	  }
 }
+*/
