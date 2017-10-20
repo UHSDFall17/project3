@@ -45,6 +45,9 @@ public class Customer {
 	
 	//New Code for user create/store
 	
+        
+        File file = new File("");
+        public static final int PASS_LENGTH = 6;
 	
 	public static int getCardNumberI(Customer c) {
             int temp= c.card;
