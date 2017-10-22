@@ -56,7 +56,7 @@ public class Interface {
         
     
     {
-        //FUNTION TO ACCESS USER SELECTED OPTION
+        //ACCESS USER SELECTED OPTION
         Customer custom = new Customer();
         Portfolio port = new Portfolio();
 
