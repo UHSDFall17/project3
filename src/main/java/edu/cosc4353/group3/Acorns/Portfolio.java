@@ -1,6 +1,8 @@
 
 package edu.cosc4353.group3.Acorns;
 
+import java.util.Scanner;
+
 public class Portfolio {
 	private double growth = 0.0;
 	private String sect = "";
@@ -15,18 +17,8 @@ public class Portfolio {
 	public double returnPortfolioGrowth() {
 		return growth;
 	}
-}
-
-/*
-
-import java.util.Scanner;
-
-
-public class Portfolio {
 	
-	
-	
-	 public static void main(String[] args){
+	public void test(){
 		 System.out.println("Select an Investment Porfolio Type");
 		 System.out.println("1. Health");
 		 System.out.println("2. Technology");
@@ -50,7 +42,7 @@ public class Portfolio {
 		 case 2:
 		 System.out.println("Technology portfolio added!");
 	     break;
- 
+
 		 case 3:
 		 System.out.println("Sports portfolio added!");
 
@@ -74,12 +66,7 @@ public class Portfolio {
 
 		 
 		 }
-		 
+	}
+} 
 
 
-
-
-
-	  }
-}
-*/
