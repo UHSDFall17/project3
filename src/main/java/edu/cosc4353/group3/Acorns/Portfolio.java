@@ -34,24 +34,24 @@ public class Portfolio {
 		 
 		 case 1:
 		 System.out.println("Conservative portfolio added!");
-	         return 1;
-		 break;
+		 inputOptionPortfolio.close();		 
+	     return 1;
 		 case 2:
 		 System.out.println("Moderately Conservative portfolio added!");
-	         return 2;
-	         break;
+		 inputOptionPortfolio.close();	 
+	     return 2;
 		 case 3:
 		 System.out.println("Moderate portfolio added!");
-                 return 3;
-	         break;
+		 inputOptionPortfolio.close();	 
+         return 3;
 		 case 4:
 		 System.out.println("Moderately Aggressive portfolio added!");
-	         return 4;
-	         break;
-		 case 5:
+		 inputOptionPortfolio.close();	 
+	     return 4;
+		 default:
 		 System.out.println("Aggressive portfolio added!");
+		 inputOptionPortfolio.close();	 
 		 return 5;
-		 break;
 
 		 
 		 }
