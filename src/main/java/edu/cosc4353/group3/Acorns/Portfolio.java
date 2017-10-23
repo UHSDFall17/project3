@@ -48,12 +48,14 @@ public class Portfolio {
 		 System.out.println("Moderately Aggressive portfolio added!");
 		 inputOptionPortfolio.close();	 
 	     return 4;
-		 default:
+		 case 5:
 		 System.out.println("Aggressive portfolio added!");
 		 inputOptionPortfolio.close();	 
 		 return 5;
-
-		 
+		 default:
+	     System.out.println("Your Selection was not valid");
+	     inputOptionPortfolio.close();	 
+	     return -1;
 		 }
 	}
 } 
