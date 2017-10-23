@@ -18,16 +18,13 @@ public class Portfolio {
 		return growth;
 	}
 	
-	public void test(){
+	public int selectPortfolioType(){
 		 System.out.println("Select an Investment Porfolio Type");
-		 System.out.println("1. Health");
-		 System.out.println("2. Technology");
-		 System.out.println("3. Sports");
-		 System.out.println("4. Energy");
-		 System.out.println("5. Business");
-		 System.out.println("6. Music");
-		 System.out.println("7. Art");
-
+		 System.out.println("1. Conservative");
+		 System.out.println("2.Moderately Conservative");
+		 System.out.println("3. Moderate");
+		 System.out.println("4. Moderately Aggressive");
+		 System.out.println("5. Aggressive");
 
 		 Scanner inputOptionPortfolio = new Scanner(System.in);
 		 int portfolioNumber;
@@ -36,33 +33,25 @@ public class Portfolio {
 		 switch (portfolioNumber){
 		 
 		 case 1:
-		 System.out.println("Health portfolio added!");
+		 System.out.println("Conservative portfolio added!");
+	         return 1;
 		 break;
-		 
 		 case 2:
-		 System.out.println("Technology portfolio added!");
-	     break;
-
+		 System.out.println("Moderately Conservative portfolio added!");
+	         return 2;
+	         break;
 		 case 3:
-		 System.out.println("Sports portfolio added!");
-
-	     break;
-	     
+		 System.out.println("Moderate portfolio added!");
+                 return 3;
+	         break;
 		 case 4:
-		 System.out.println("Energy portfolio added!");
-	     break;
-
+		 System.out.println("Moderately Aggressive portfolio added!");
+	         return 4;
+	         break;
 		 case 5:
-			 System.out.println("Business portfolio added!");
-		     break;
-
-		 case 6:
-			 System.out.println("Music portfolio added!");
-		     break;
-
-		 case 7:
-			 System.out.println("Art portfolio added!");
-		     break;
+		 System.out.println("Aggressive portfolio added!");
+		 return 5;
+		 break;
 
 		 
 		 }
