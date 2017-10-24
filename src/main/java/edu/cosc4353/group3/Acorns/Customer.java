@@ -41,15 +41,7 @@ public class Customer {
 		return((total)%5);
 	}
 	// Username hash to store and identify object
-	public void storeUser() {
-		
-	}
-	// TODO Pull user object if pass match
-	
-	
-	//New Code for user create/store
-	
-        
+	public void storeUser() {      
         File file = new File("");
         public static final int PASS_LENGTH = 6;
 	
@@ -208,5 +200,4 @@ public class Customer {
         catch (IOException e) { e.printStackTrace();    }
             return false;
         }
-
 }

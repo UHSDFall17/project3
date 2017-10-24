@@ -57,11 +57,11 @@ public class AppTest
 		int number = (userHash)%5;
 		Assert.assertEquals(number, someHash);
 	}
-	@Test
-	public void testUsercreation() {
-		Customer newUser = new Customer();
-		newUser = StartMenu.createUser();
-		Assert.assertEquals("12345", newUser.returnUsername());
-		Assert.assertEquals(12345, newUser.returnCardNumber());
-	}
+//	@Test
+//	public void testUsercreation() {
+//		Customer newUser = new Customer();
+//		newUser = StartMenu.createUser();
+//		Assert.assertEquals("12345", newUser.returnUsername());
+//		Assert.assertEquals(12345, newUser.returnCardNumber());
+//	}
 }
