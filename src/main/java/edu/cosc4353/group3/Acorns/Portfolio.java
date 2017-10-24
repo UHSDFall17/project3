@@ -1,4 +1,7 @@
+
 package edu.cosc4353.group3.Acorns;
+
+import java.util.Scanner;
 
 public class Portfolio {
 	private double growth = 0.0;
@@ -14,4 +17,47 @@ public class Portfolio {
 	public double returnPortfolioGrowth() {
 		return growth;
 	}
-}
+	
+	public int selectPortfolioType(){
+		 System.out.println("Select an Investment Porfolio Type");
+		 System.out.println("1. Conservative");
+		 System.out.println("2.Moderately Conservative");
+		 System.out.println("3. Moderate");
+		 System.out.println("4. Moderately Aggressive");
+		 System.out.println("5. Aggressive");
+
+		 Scanner inputOptionPortfolio = new Scanner(System.in);
+		 int portfolioNumber;
+		 portfolioNumber = inputOptionPortfolio.nextInt();
+		 
+		 switch (portfolioNumber){
+		 
+		 case 1:
+		 System.out.println("Conservative portfolio added!");
+		 inputOptionPortfolio.close();		 
+	     return 1;
+		 case 2:
+		 System.out.println("Moderately Conservative portfolio added!");
+		 inputOptionPortfolio.close();	 
+	     return 2;
+		 case 3:
+		 System.out.println("Moderate portfolio added!");
+		 inputOptionPortfolio.close();	 
+         return 3;
+		 case 4:
+		 System.out.println("Moderately Aggressive portfolio added!");
+		 inputOptionPortfolio.close();	 
+	     return 4;
+		 case 5:
+		 System.out.println("Aggressive portfolio added!");
+		 inputOptionPortfolio.close();	 
+		 return 5;
+		 default:
+	     System.out.println("Your Selection was not valid");
+	     inputOptionPortfolio.close();	 
+	     return -1;
+		 }
+	}
+} 
+
+
