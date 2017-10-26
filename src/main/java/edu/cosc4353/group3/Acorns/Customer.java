@@ -6,11 +6,18 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ *
+ * @author Detrich
+ */
 public class Customer {
-	private String user;
+    private String user;
 	private String passwd;
 	private int card;
 	private char[] ports;
+        
+        File file = new File("");
+        public static final int PASS_LENGTH = 6;
 
 	public Customer(String username, String password, int cardNumber) {
 		user = username;
@@ -24,20 +31,50 @@ public class Customer {
 		card = 0;
 		ports = new char[4];
 	}
+        
 
-	public String returnUsername() {
-		return user;
+
+	public static int getCardNumberI(Customer c) {
+            int temp= c.card;
+            return temp;
 	}
-	public int returnCardNumber() {
-		return card;
-	}
+        
+        public String getUser_Name()
+        {
+            return user;
+        }
+        
+        public String getUser_Pass()
+        {
+            return passwd;
+        }
+        
+        public int getUser_CardNumb()
+        {
+            return card;
+        }
+        
+        public static void setCardNumber(Customer c ,int number)
+        {
+            c.card = number;
+        }
 	
 	public static int hashUsername(String username) {
+		int nameLength = username.length();
+		int user[] = new int[nameLength];
 		int total = 0;
 		
-		for(int i = 0; i < username.length(); i++) {
-			total += (int)username.charAt(i);
+		for(int i = 0; i < nameLength; i++) {
+			user[i] = username.charAt(i);
 		}
+//		For unit testing
+//		for(int i = 0; i < nameLength; i++) {
+//			System.out.println(user[i] + " ");
+//		}
+		for(int i = 0; i < nameLength; i++) {
+			total += user[i];
+		}
+//		System.out.println("Total is: " + total);
 		return((total)%5);
 	}
 	// Username hash to store and identify object
@@ -45,30 +82,24 @@ public class Customer {
 		
 	}
 	// TODO Pull user object if pass match
-	
-	
-	//New Code for user create/store
-	
-        
-        File file = new File("");
-        public static final int PASS_LENGTH = 6;
-	
-	public static int getCardNumberI(Customer c) {
-            int temp= c.card;
-            return temp;
+	public static Customer createUser() {
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Enter User: ");
+		String username = input.next();
+		
+		System.out.println("Enter Password: ");
+		String password = input.next();
+		
+		System.out.println("Enter Credit Card Number");
+		int cardNumber = input.nextInt();
+		
+		Customer customer = new Customer(username, password, cardNumber);
+		input.close();
+		return customer;
 	}
-        public String getUser_Name(){
-            return user;
-        }
-        public String getUser_Pass(){
-            return passwd;
-        }
-        public int getUser_CardNumb(){
-            return card;
-        }
-        public static void setCardNumber(Customer c ,int number){
-            c.card = number;
-        }
+        
+        
         //Create New User Account
         public static boolean CreateAccount()
         {
@@ -87,6 +118,7 @@ public class Customer {
             if (isNotUnique(username)){   System.out.println("Username Taken, Try Again...." + "\n"); }
             else { CreateError = false; System.out.println("Username Accepted!" + "\n"); }
             }
+            
             CreateError = true;
             while (CreateError)
             {
@@ -95,7 +127,10 @@ public class Customer {
                 
                 if (password.length() != PASS_LENGTH){ CreateError = true; System.out.println("Password Length Error, Try Again...." + "\n");}
                 else {  CreateError = false; System.out.println("Password Accepted, Account Created!" + "\n");}
+                    
+                
             }
+            
             CreateError = true;
             while(CreateError)
             {
@@ -105,10 +140,14 @@ public class Customer {
                 if (cardId.length() < 16) { CreateError = true; System.out.println("Card Number Error.....");   }
                 else {  CreateError = false;    }
             }
+            
             //Enter Card Info Here
+            
                 StoreUserData(username, password,cardId); //Add card Argument
+            
             return true;
         }
+        
         //Store Accepted User Login Data in .txt
         public static void StoreUserData(String user, String pass, String cardNumb)
         {
@@ -125,11 +164,13 @@ public class Customer {
                 outP.append(Storage);
                 outP.close();
             }
+            
             catch(IOException ioe)
             {
                 System.err.println("IOException: " + ioe.getMessage());
             }
         }
+        
         //Check Originality of Username
         public static boolean isNotUnique(String UserInput)
         {
@@ -143,6 +184,7 @@ public class Customer {
                 //System.out.println(TempScan);
                 if (UserInput.equals(TempScan))// write first word from line
                 {
+                    //System.out.println("MAATCH...");
                     return true;
                 }
                 //System.out.println("next");
@@ -153,6 +195,7 @@ public class Customer {
             
         return false;
     }
+        
         //User Login Function
         public static void Login()
         {
@@ -166,16 +209,23 @@ public class Customer {
 		
             System.out.println("Enter Password: ");
             String password = input.next();
+            
+            
+           
                 if(CheckLogin(username, password))
                 {
                     InvalidCheck = true; //User Sucessful login
+                    
                     Customer CurrentCustomer = new Customer(username, password, 9999);
                     tempCard = getCardNumberI(CurrentCustomer);
                     CurrentCustomer.card = tempCard;
+                    
                     //Interface intfc = new Interface();
                     //intfc.UserInput(CurrentCustomer);
+                    
                 }
             }
+  
         }
         
         //Check User Existance in .txt
@@ -189,7 +239,7 @@ public class Customer {
             {
                 String TempScan = sc.nextLine();
                 String[] passString = TempScan.split(" ");
-               
+                //System.out.println(passString[0] + " " + passString[1]);
 
                 if (user.equals( passString[0]) &&  pass.equals(passString[1]))
                 {
@@ -201,12 +251,16 @@ public class Customer {
                     System.out.println("Password Error..." + "\n");
                     return false;
                 }
+                
             }
+            
             System.out.println("User Does Not Exist.....");
             return false;
         } 
         catch (IOException e) { e.printStackTrace();    }
+            
+            
             return false;
         }
-
 }
+

@@ -31,6 +31,7 @@ public class Portfolio {
 
 		 Scanner inputOptionPortfolio = new Scanner(System.in);
 		 int portfolioNumber;
+		 
 		 portfolioNumber = inputOptionPortfolio.nextInt();
 		 
 		 switch (portfolioNumber){
