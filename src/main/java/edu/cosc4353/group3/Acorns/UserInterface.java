@@ -3,23 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package acorn;
-
-import static acorn.StartMenu.DisplayMenu;
-import static acorn.StartMenu.TheExit;
-import static acorn.StartMenu.UserInput;
-import static acorn.StartMenu.getSelect;
-import static acorn.StartMenu.setSelect;
+package edu.cosc4353.group3.Acorns;
 import java.util.Scanner;
+
 
 /**
  *
  * @author Detrich
  */
-public class Interface {
+public class UserInterface {
     
     //Displayed After User Completes Login
-    
+    private static int Select = 0;
+
         public static void UserInterface(String loginUser)
     {
         
@@ -58,7 +54,7 @@ public class Interface {
     {
         //ACCESS USER SELECTED OPTION
         Customer custom = new Customer();
-        Portfolio port = new Portfolio();
+        //Portfolio port = new Portfolio();
 
         switch(getSelect())
         {
@@ -87,5 +83,24 @@ public class Interface {
     {
         System.exit(0);
     }
+    
+    public static int getSelect()
+    {
+        return Select;
+    }
+    
+    public static void setSelect(int newNumb)
+    {
+        Select = newNumb;
+    }
+    
+    public static void ResetSelect()
+    {
+        setSelect(0);
+    }
+    
+
+    
+
     
 }
