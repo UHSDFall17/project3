@@ -79,4 +79,5 @@ public class StartMenu {
     {
         System.exit(0);
     }
+    //lol
 }
