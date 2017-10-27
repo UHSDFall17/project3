@@ -131,19 +131,19 @@ public class Customer {
                 
             }
             
-            CreateError = true;
-            while(CreateError)
-            {
-                System.out.println("Enter a 16 digit Debit Card number: ");
-                cardId = input.next();
+           // CreateError = true; //Smeets Code Here
+           // while(CreateError)
+           // {
+            //    System.out.println("Enter a 16 digit Debit Card number: ");
+            //    cardId = input.next();
                 
-                if (cardId.length() < 16) { CreateError = true; System.out.println("Card Number Error.....");   }
-                else {  CreateError = false;    }
-            }
+             //   if (cardId.length() < 16) { CreateError = true; System.out.println("Card Number Error.....");   }
+             //   else {  CreateError = false;    }
+            //}
             
             //Enter Card Info Here
-            
-                StoreUserData(username, password,cardId); //Add card Argument
+            	cardId = "1111111111111111";
+                StoreUserData(username, password, cardId); //Add card Argument
             
             return true;
         }
@@ -151,7 +151,7 @@ public class Customer {
         //Store Accepted User Login Data in .txt
         public static void StoreUserData(String user, String pass, String cardNumb)
         {
-            String Storage = user + " " + pass + " " + cardNumb + " " + "unlocked";
+            String Storage = user + " " + pass + " " + cardNumb + " " + "x" + " "+ "unlocked"; //user0 pass1 cardNo2 portfolio3 accountStatus4
             System.out.println(Storage);
             
             try
@@ -220,8 +220,7 @@ public class Customer {
                     tempCard = getCardNumberI(CurrentCustomer);
                     CurrentCustomer.card = tempCard;
                     
-                    //Interface intfc = new Interface();
-                    //intfc.UserInput(CurrentCustomer);
+                    UserInterface.UserInput(CurrentCustomer);
                     
                 }
             }
