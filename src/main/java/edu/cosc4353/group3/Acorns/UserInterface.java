@@ -39,6 +39,51 @@ public class UserInterface {
         
 
     }
+    public static void AcctSetMenu(Customer c)
+    {
+        
+        System.out.println("     Account Settings"     );
+        System.out.println("");
+        System.out.println("-------------------------");
+        System.out.println("    1: Update Credit/Debit Card          ");
+        
+        System.out.println("    2:      "); //Dosent really matter
+        System.out.println("    3:      ");     //Dosent really matter
+        System.out.println("    4: Back to Main Menu       ");
+        System.out.println("-------------------------");
+        int Temp = 9999;
+        Scanner UserScan =  new Scanner(System.in);
+        Temp = UserScan.nextInt();
+        setSelect(Temp);
+        
+    
+    
+        //ACCESS USER SELECTED OPTION
+        Customer custom = new Customer();
+
+        switch(getSelect())
+        {
+            
+            case 1: 
+            {
+            	String cardNo = CreditCardValidation.CardWizard(c);
+            	System.out.println("Carnd No.: " + cardNo);
+                break;
+            }
+            case 2: 
+            {     
+
+                break;
+            }
+            case 3: 
+            {
+            
+            	UserInput(c);
+            }
+        }
+        
+
+    }
         
         
         
@@ -58,7 +103,7 @@ public class UserInterface {
         setSelect(Temp);
         
     
-    {
+    
         //ACCESS USER SELECTED OPTION
         Customer custom = new Customer();
 
@@ -74,7 +119,7 @@ public class UserInterface {
             }
             case 2: 
             {     
-
+            	AcctSetMenu(c);
                 break;
             }
             case 3: 
@@ -83,7 +128,7 @@ public class UserInterface {
                 TheExit();
             }
         }
-    }
+    
     
     }
     
