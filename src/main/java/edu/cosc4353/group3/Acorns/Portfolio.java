@@ -112,27 +112,27 @@ public class Portfolio {
 		 
 		 case 1:
 		 System.out.println("Conservative portfolio added!");
-		 inputOptionPortfolio.close();		 
+		 //inputOptionPortfolio.close();		 
 	     return 1;
 		 case 2:
 		 System.out.println("Moderately Conservative portfolio added!");
-		 inputOptionPortfolio.close();	 
+		 //inputOptionPortfolio.close();	 
 	     return 2;
 		 case 3:
 		 System.out.println("Moderate portfolio added!");
-		 inputOptionPortfolio.close();	 
+		 //inputOptionPortfolio.close();	 
          return 3;
 		 case 4:
 		 System.out.println("Moderately Aggressive portfolio added!");
-		 inputOptionPortfolio.close();	 
+		 //inputOptionPortfolio.close();	 
 	     return 4;
 		 case 5:
 		 System.out.println("Aggressive portfolio added!");
-		 inputOptionPortfolio.close();	 
+		 //inputOptionPortfolio.close();	 
 		 return 5;
 		 default:
 	     System.out.println("Your Selection was not valid");
-	     inputOptionPortfolio.close();	 
+	     //inputOptionPortfolio.close();	 
 	     return -1;
 		 }
 	}

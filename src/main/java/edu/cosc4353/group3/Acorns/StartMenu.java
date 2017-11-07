@@ -22,9 +22,12 @@ public class StartMenu {
     public static void UserInput()
     {
         //FUNCTION TO GET USER INPUT
-        int Temp = 9999;
+        int Temp = 	9999;
         Scanner UserScan =  new Scanner(System.in);
+
         Temp = UserScan.nextInt();
+
+       // UserScan.close();
         setSelect(Temp);
         
     
@@ -43,6 +46,7 @@ public class StartMenu {
                 boolean accountCheck = false;   
                 accountCheck = Customer.CreateAccount();
                 System.out.println("\n" + "Account Created! Please Login.");
+                //UserScan.nextLine();
                 DisplayMenu();
                 break;
             }
@@ -52,6 +56,8 @@ public class StartMenu {
             }
         }
     }
+    
+    //UserScan.close();
     
     }
     

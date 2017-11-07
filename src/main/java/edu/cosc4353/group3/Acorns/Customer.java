@@ -14,19 +14,22 @@ public class Customer {
     private String user;
 	private String passwd;
 	private int card;
+	private double accountBalance;
 	private char[] ports;
         
         File file = new File("");
         public static final int PASS_LENGTH = 6;
 
-	public Customer(String username, String password, int cardNumber) {
+	public Customer(String username, String password, int cardNumber, double balance) {
 		user = username;
 		passwd = password;
 		card = cardNumber;
+		accountBalance = balance;
 		ports = new char[4];
 	}
 	
 	public Customer() {
+		user = "";
 		passwd = "";
 		card = 0;
 		ports = new char[4];
@@ -52,6 +55,15 @@ public class Customer {
         public int getUser_CardNumb()
         {
             return card;
+        }
+        public double getUser_balance()
+        {
+            return accountBalance;
+        }
+        
+        public void setUser_balance(double change)
+        {
+            accountBalance += change;
         }
         
         public static void setCardNumber(Customer c ,int number)
@@ -82,22 +94,22 @@ public class Customer {
 		
 	}
 	// TODO Pull user object if pass match
-	public static Customer createUser() {
-		Scanner input = new Scanner(System.in);
+	//public static Customer createUser() {
+		//Scanner input = new Scanner(System.in);
 		
-		System.out.println("Enter User: ");
-		String username = input.next();
+		//System.out.println("Enter User: ");
+		//String username = input.next();
 		
-		System.out.println("Enter Password: ");
-		String password = input.next();
+		//System.out.println("Enter Password: ");
+		//String password = input.next();
 		
-		System.out.println("Enter Credit Card Number");
-		int cardNumber = input.nextInt();
+		//System.out.println("Enter Credit Card Number");
+		//int cardNumber = input.nextInt();
 		
-		Customer customer = new Customer(username, password, cardNumber);
-		input.close();
-		return customer;
-	}
+		//Customer customer = new Customer(username, password, cardNumber);
+		//input.close();
+	//	return customer;
+//	}
         
         
         //Create New User Account
@@ -131,6 +143,12 @@ public class Customer {
                 
             }
             
+            System.out.println("Card Registration");
+            System.out.println("------------------");
+
+            cardId = CreditCardValidation.initializeCard();
+            System.out.println("------------------");
+
            // CreateError = true; //Smeets Code Here
            // while(CreateError)
            // {
@@ -142,9 +160,10 @@ public class Customer {
             //}
             
             //Enter Card Info Here
-            	cardId = "1111111111111111";
+            	System.out.println("Card id: " + cardId); 
                 StoreUserData(username, password, cardId); //Add card Argument
-            
+                System.out.println("------------------");
+
             return true;
         }
         
@@ -162,7 +181,7 @@ public class Customer {
                 
                 outP.newLine(); 
                 outP.append(Storage);
-                outP.close();
+                //outP.close();
             }
             
             catch(IOException ioe)
@@ -216,7 +235,7 @@ public class Customer {
                 {
                     InvalidCheck = true; //User Sucessful login
                     
-                    Customer CurrentCustomer = new Customer(username, password, 9999);
+                    Customer CurrentCustomer = new Customer(username, password, 9999, 0);
                     tempCard = getCardNumberI(CurrentCustomer);
                     CurrentCustomer.card = tempCard;
                     

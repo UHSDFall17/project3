@@ -29,7 +29,36 @@ public class CreditCardValidation
 		  CardWizard(c);
 	  }
 	  String cardNo = Long.toString(number);
-	  Number.close();
+	  //Number.close();
+	  
+	  return cardNo;
+	}
+	
+	public static String initializeCard()
+	{
+	  Scanner input = new Scanner(System.in);
+	  Scanner Number = new Scanner(System.in);
+
+	  System.out.println("Enter First Name");
+	  String Fname = input.next();
+	
+	  System.out.println("Enter Last Name");
+	  String Lname = input.next();
+
+	  System.out.println("Enter your credit card number");
+
+	  Long number = Number.nextLong();
+	  if(isValid(number))
+	  {
+		  System.out.println("Credit Card Number is Valid");
+	  }
+	  else
+	  {
+		  System.out.println("Credit Card Number is Invalid");
+		  initializeCard();
+	  }
+	  String cardNo = Long.toString(number);
+	  //Number.close();
 	  
 	  return cardNo;
 	}

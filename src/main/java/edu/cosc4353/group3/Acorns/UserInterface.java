@@ -18,7 +18,7 @@ import org.omg.CORBA.Environment;
  *
  * @author Detrich
  */
-public class UserInterface {
+public class UserInterface {   //MENU 1
     
     //Displayed After User Completes Login
     private static int Select = 0;
@@ -33,13 +33,14 @@ public class UserInterface {
         
         System.out.println("    2: Account Settings    "); //Dosent really matter
         System.out.println("    3: Account Info    ");     //Dosent really matter
-        System.out.println("    4: Logout       ");
+        System.out.println("    4: Make A Purchase       ");
+        System.out.println("    5: Logout       ");
         System.out.println("===================");
         
         
 
     }
-    public static void AcctSetMenu(Customer c)
+    public static void AcctSetMenu(Customer c)  //MENU 2
     {
         
         System.out.println("     Account Settings"     );
@@ -67,7 +68,12 @@ public class UserInterface {
             case 1: 
             {
             	String cardNo = CreditCardValidation.CardWizard(c);
-            	System.out.println("Carnd No.: " + cardNo);
+            	System.out.println("Updating Card No. To: " + cardNo);
+            	
+            	UpdateData( c, -1, cardNo, 2);
+            	System.out.println("Account Updated!");
+
+            	UserInput(c);
                 break;
             }
             case 2: 
@@ -87,7 +93,7 @@ public class UserInterface {
         
         
         
-    public static void UserInput(Customer c) //need to get user account
+    public static void UserInput(Customer c) //need to get user account MENU 1
     {
              System.out.println("In User Interface....");
              //System.out.println("Customer: " + c.getUser_Name());
@@ -114,7 +120,9 @@ public class UserInterface {
             {
             	int PortiId = Portfolio.UserInput(c); //Links to Portfolio Function
             	System.out.println(PortiId);
-            	UpdateData( c,  PortiId);
+            	UpdateData( c,  PortiId, "", 1);
+            	System.out.println("Portfolio Updated!");
+            	UserInput(c);
                 break;
             }
             case 2: 
@@ -125,18 +133,33 @@ public class UserInterface {
             case 3: 
             {
             
+            }
+            case 4:
+            {
+            	//Purchase and add change
+            	PurcahseHandler.makePurchase(c);
+            	
+            	
+            	
+            }
+            case 5:
+            {
                 TheExit();
+            	
             }
         }
+        
+        //UserScan.close();
     
     
     }
     
-    public static void UpdateData(Customer c, int poriId)
+    public static void UpdateData(Customer c, int poriId, String cardId, int UpdateType)
     {
         try {
             // Open the file that is the first
             // command line parameter
+        	int updateType = UpdateType;
             FileInputStream fstream = new FileInputStream("LoginInfo.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
             String strLine;
@@ -148,17 +171,23 @@ public class UserInterface {
                 
                 String tokens[] = strLine.split(" ");
             	System.out.println(tokens[0]);
-            	System.out.println(c);
+            	//System.out.println(c);
 
                 if (tokens.length > 0) {
-                	System.out.println("check ");
+                	//System.out.println("check ");
 
                     // Here tokens[0] will have value of ID
                     if (tokens[0].equals(c.getUser_Name())) 
                     {
                     	System.out.println("Found " + tokens[0]);
+                    	
+                    	if (updateType == 1){  //PORTFOLIO UPDATE
                     	String Convert = Integer.toString(poriId);
                         tokens[3] = Convert;
+                    	}
+                    	if (updateType == 2){ //CARD UPDATE
+                        tokens[2] = cardId;
+                    	}
                         
                         String newData = tokens[0] + " " + tokens[1] + " " + 
                         				 tokens[2] + " " + tokens[3] + " " +
