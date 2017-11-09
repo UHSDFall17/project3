@@ -32,8 +32,10 @@ public class UserInterface {   //MENU 1
         System.out.println("    1: Porfolios          ");
         
         System.out.println("    2: Account Settings    "); //Dosent really matter
-        System.out.println("    3: Account Info    ");     //Dosent really matter
+        System.out.println("    3: Account Summary    ");     //Dosent really matter
         System.out.println("    4: Make A Purchase       ");
+        System.out.println("    4: Make A Deposit       ");
+
         System.out.println("    5: Logout       ");
         System.out.println("===================");
         
@@ -41,7 +43,7 @@ public class UserInterface {   //MENU 1
 
     }
     public static void AcctSetMenu(Customer c)  //MENU 2
-    {
+    {v
         
         System.out.println("     Account Settings"     );
         System.out.println("");
@@ -95,7 +97,7 @@ public class UserInterface {   //MENU 1
         
     public static void UserInput(Customer c) //need to get user account MENU 1
     {
-             System.out.println("In User Interface....");
+             //System.out.println("In User Interface....");
              //System.out.println("Customer: " + c.getUser_Name());
              //System.out.println("Customer: " + c.getUser_Pass());
              //System.out.println("Customer: " + c.getUser_CardNumb());
@@ -132,21 +134,37 @@ public class UserInterface {   //MENU 1
             }
             case 3: 
             {
-            
+            	
+                System.out.println( c.getUser_Name() + " Account Summary"     );
+                System.out.println("");
+                System.out.println("-------------------------");
+                System.out.println("Account Balance: " + c.getUser_balance());
+                System.out.println("Account Portfolio: ");
+                
             }
             case 4:
-            {
+            { 
             	//Purchase and add change
-            	PurcahseHandler.makePurchase(c);
-            	
-            	
-            	
+            	FundsHandler.makePurchase(c);
+            	UpdateData( c,  -1, "", 3);
+            	UserInput(c);
+
             }
             case 5:
+            {
+            	FundsHandler.depositFunds(c);
+            	UpdateData( c,  -1, "", 3);
+            	UserInput(c);
+
+            }
+            
+            case 6:
             {
                 TheExit();
             	
             }
+            
+            
         }
         
         //UserScan.close();
@@ -154,6 +172,16 @@ public class UserInterface {   //MENU 1
     
     }
     
+    public static String portfoliFind(Customer c)
+    {
+    	switch ()
+    	
+    	
+    	
+    	
+    	
+    	
+    }
     public static void UpdateData(Customer c, int poriId, String cardId, int UpdateType)
     {
         try {
@@ -171,10 +199,10 @@ public class UserInterface {   //MENU 1
                 
                 String tokens[] = strLine.split(" ");
             	System.out.println(tokens[0]);
-            	//System.out.println(c);
+            	System.out.println("Current balance -> " + c.getUser_balance());
 
                 if (tokens.length > 0) {
-                	//System.out.println("check ");
+                	System.out.println("check ");
 
                     // Here tokens[0] will have value of ID
                     if (tokens[0].equals(c.getUser_Name())) 
@@ -188,10 +216,14 @@ public class UserInterface {   //MENU 1
                     	if (updateType == 2){ //CARD UPDATE
                         tokens[2] = cardId;
                     	}
+                    	if (updateType == 3){ //Balance UPDATE
+                    		String Convert = Double.toString(c.getUser_balance());
+                    		tokens[4] = Convert;
+                        	}
                         
                         String newData = tokens[0] + " " + tokens[1] + " " + 
                         				 tokens[2] + " " + tokens[3] + " " +
-                        				 tokens[4];
+                        				 tokens[4] + " " + tokens[5] + " ";
                         fileContent.append(newData + System.getProperty("line.separator"));
                     } 
                     

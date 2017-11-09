@@ -63,7 +63,7 @@ public class Customer {
         
         public void setUser_balance(double change)
         {
-            accountBalance += change;
+            accountBalance =  accountBalance + change;
         }
         
         public static void setCardNumber(Customer c ,int number)
@@ -170,7 +170,7 @@ public class Customer {
         //Store Accepted User Login Data in .txt
         public static void StoreUserData(String user, String pass, String cardNumb)
         {
-            String Storage = user + " " + pass + " " + cardNumb + " " + "x" + " "+ "unlocked"; //user0 pass1 cardNo2 portfolio3 accountStatus4
+            String Storage = user + " " + pass + " " + cardNumb + " " + "x" + " "+ "0" + " " + "unlocked"; //user0 pass1 cardNo2 portfolio3 accountStatus4
             System.out.println(Storage);
             
             try
@@ -181,7 +181,7 @@ public class Customer {
                 
                 outP.newLine(); 
                 outP.append(Storage);
-                //outP.close();
+                outP.close();
             }
             
             catch(IOException ioe)
