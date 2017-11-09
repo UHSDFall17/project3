@@ -43,7 +43,7 @@ public class UserInterface {   //MENU 1
 
     }
     public static void AcctSetMenu(Customer c)  //MENU 2
-    {v
+    {
         
         System.out.println("     Account Settings"     );
         System.out.println("");
@@ -172,9 +172,9 @@ public class UserInterface {   //MENU 1
     
     }
     
-    public static String portfoliFind(Customer c)
+    public static void portfoliFind(Customer c)
     {
-    	switch ()
+    	//switch ()
     	
     	
     	

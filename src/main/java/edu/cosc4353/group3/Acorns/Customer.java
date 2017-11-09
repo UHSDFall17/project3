@@ -13,32 +13,35 @@ import java.io.IOException;
 public class Customer {
     private String user;
 	private String passwd;
-	private int card;
+	private String card;
 	private double accountBalance;
+	private int portIdent;
 	private char[] ports;
         
         File file = new File("");
         public static final int PASS_LENGTH = 6;
 
-	public Customer(String username, String password, int cardNumber, double balance) {
+	public Customer(String username, String password, String cardNumber,int portIndent, double balance) {
 		user = username;
 		passwd = password;
 		card = cardNumber;
 		accountBalance = balance;
+		portIdent = portIndent;
 		ports = new char[4];
 	}
 	
 	public Customer() {
 		user = "";
 		passwd = "";
-		card = 0;
+		card = "";
 		ports = new char[4];
 	}
-        
+       
 
+	
 
-	public static int getCardNumberI(Customer c) {
-            int temp= c.card;
+	public static String getCardNumberI(Customer c) {
+            String temp= c.card;
             return temp;
 	}
         
@@ -52,7 +55,7 @@ public class Customer {
             return passwd;
         }
         
-        public int getUser_CardNumb()
+        public String getUser_CardNumb()
         {
             return card;
         }
@@ -60,13 +63,17 @@ public class Customer {
         {
             return accountBalance;
         }
+        public int getUser_PortId()
+        {
+            return portIdent;
+        }
         
         public void setUser_balance(double change)
         {
             accountBalance =  accountBalance + change;
         }
         
-        public static void setCardNumber(Customer c ,int number)
+        public static void setCardNumber(Customer c ,String number)
         {
             c.card = number;
         }
@@ -235,11 +242,11 @@ public class Customer {
                 {
                     InvalidCheck = true; //User Sucessful login
                     
-                    Customer CurrentCustomer = new Customer(username, password, 9999, 0);
-                    tempCard = getCardNumberI(CurrentCustomer);
-                    CurrentCustomer.card = tempCard;
+                    //Customer CurrentCustomer = new Customer(username, password, 9999, 0);
+                    //tempCard = getCardNumberI(CurrentCustomer);
+                    //CurrentCustomer.card = tempCard;
                     
-                    UserInterface.UserInput(CurrentCustomer);
+                    //UserInterface.UserInput(CurrentCustomer);
                     
                 }
             }
@@ -262,6 +269,19 @@ public class Customer {
                 if (user.equals( passString[0]) &&  pass.equals(passString[1]))
                 {
                     System.out.println("Login Success!" + "\n");
+
+                    String cardNo = passString[2];
+                    int portId = Integer.parseInt(passString[3]);
+                    double accBal = Double.parseDouble(passString[4]);
+                    
+                    Customer CurrentCustomer = new Customer(passString[0],passString[1], cardNo, portId, accBal );
+                    System.out.println("User: " + CurrentCustomer.getUser_Name());
+                    System.out.println("Pass: " + CurrentCustomer.getUser_Pass());
+                    System.out.println("Card: " + CurrentCustomer.getUser_CardNumb());
+                    System.out.println("Porti: " + CurrentCustomer.getUser_PortId());
+                    System.out.println("Balance: " + CurrentCustomer.getUser_balance());
+                    UserInterface.UserInput(CurrentCustomer);
+                    
                     return true;
                 }
                 else if (user.equals(passString[0]) && !pass.equals(passString[1]))
