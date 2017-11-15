@@ -36,48 +36,60 @@ public class CreditCardValidation
 	
 	public static String initializeCard()
 	{
-	  Scanner input = new Scanner(System.in);
-	  Scanner Number = new Scanner(System.in);
+		try {
+			 Scanner input = new Scanner(System.in);
+			  Scanner Number = new Scanner(System.in);
 
-	  System.out.println("Enter First Name");
-	  String Fname = input.next();
-	
-	  System.out.println("Enter Last Name");
-	  String Lname = input.next();
+			  System.out.println("Enter First Name");
+			  String Fname = input.next();
+			
+			  System.out.println("Enter Last Name");
+			  String Lname = input.next();
 
-	  System.out.println("Enter your credit card number");
+			  System.out.println("Enter your credit card number");
 
-	  Long number = Number.nextLong();
-	  if(isValid(number))
-	  {
-		  System.out.println("Credit Card Number is Valid");
-	  }
-	  else
-	  {
-		  System.out.println("Credit Card Number is Invalid");
-		  initializeCard();
-	  }
-	  String cardNo = Long.toString(number);
-	  //Number.close();
-	  
-	  return cardNo;
+			  Long number = Number.nextLong();
+			  if(isValid(number))
+			  {
+				  System.out.println("Credit Card Number is Valid");
+			  }
+			  else
+			  {
+				  System.out.println("Credit Card Number is Invalid");
+				  initializeCard();
+			  }
+			  String cardNo = Long.toString(number);
+			  //Number.close();
+			  
+			  return cardNo;
+		}catch(Exception e) {
+			System.out.println("Credit Card Number is Invalid");
+			  initializeCard();
+		}
+		return null;
+	 
 	}
 
   public static boolean isValid(long Number)
   {
-    int sumEvenPlaces = 0;
-    int sumOddPlaces = 0;
-    boolean result = false;
+	try {
+		 int sumEvenPlaces = 0;
+		    int sumOddPlaces = 0;
+		    boolean result = false;
 
-    if(getSize(Number) >= 13 && getSize(Number) <= 16)
-      if (prefixMatched(Number, 4) || prefixMatched(Number, 5) || prefixMatched(Number, 6) || prefixMatched(Number, 37))
-      {
-        sumEvenPlaces = sumOfDoubleEvenPlace(Number);
-        sumOddPlaces = sumOfOddPlace(Number);
-        result = ((sumEvenPlaces + sumOddPlaces) % 10 == 0);
-      }
+		    if(getSize(Number) >= 13 && getSize(Number) <= 16)
+		      if (prefixMatched(Number, 4) || prefixMatched(Number, 5) || prefixMatched(Number, 6) || prefixMatched(Number, 37))
+		      {
+		        sumEvenPlaces = sumOfDoubleEvenPlace(Number);
+		        sumOddPlaces = sumOfOddPlace(Number);
+		        result = ((sumEvenPlaces + sumOddPlaces) % 10 == 0);
+		      }
 
-    return result;
+		    return result;
+		
+	}catch(Exception e) {
+		return false;
+	}
   }
 
   public static int sumOfOddPlace(long number)
