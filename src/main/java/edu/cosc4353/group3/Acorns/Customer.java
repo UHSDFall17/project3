@@ -304,23 +304,4 @@ public class Customer {
 }
 
 
-//package edu.cosc4353.group3.Acorns;
-
-//import java.util.Scanner;
-
-//public class Customer {
-	//private String user;
-	//private String passwd;
-	//private int card;
-	//private char[] ports;
-
-	//public Customer(String username, String password, int cardNumber) {
-		//user = username;
-		//passwd = password;
-		//card = cardNumber;
-		//ports = new char[4];
-	//}
-	
-	//public Customer() {
-		//passwd = "";
 
