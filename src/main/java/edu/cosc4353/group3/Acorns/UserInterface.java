@@ -135,11 +135,30 @@ public class UserInterface {   //MENU 1
             case 3: 
             {
             	
-                System.out.println( c.getUser_Name() + " Account Summary"     );
+                System.out.println( "Hello " + c.getUser_Name()+"! Here is your Account Summary:");
                 System.out.println("");
                 System.out.println("-------------------------");
                 System.out.println("Account Balance: " + c.getUser_balance());
-                System.out.println("Account Portfolio: ");
+                switch(c.getUser_PortId()) {
+                case 1:
+                    System.out.println("Account Portfolio: Conservative");
+                    break;
+                case 2:
+                    System.out.println("Account Portfolio: Moderately Conservative");
+                    break;
+                case 3:
+                    System.out.println("Account Portfolio: Moderate");
+                    break;
+                case 4:
+                    System.out.println("Account Portfolio: Moderately Aggressive");
+                    break;
+                default:        
+                    System.out.println("Account Portfolio: Aggressive");
+                    break;
+   	
+                	}
+                System.out.println("Credit Card Information: " + c.getUser_CardNumb());
+            	UserInput(c);
                 
             }
             case 4:
