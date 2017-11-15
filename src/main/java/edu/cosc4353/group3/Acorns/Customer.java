@@ -323,29 +323,4 @@ public class Customer {
 	
 	//public Customer() {
 		//passwd = "";
-	//	card = 0;
-	//	ports = new char[4];
-	//}
 
-	//public String returnUsername() {
-	//	return user;
-	//}
-	//public int returnCardNumber() {
-	//	return card;
-	//}
-	
-	//public static int hashUsername(String username) {
-	//	int total = 0;
-		
-	//	for(int i = 0; i < username.length(); i++) {
-	//		total += (int)username.charAt(i);
-	//	}
-	//	return((total)%5);
-	//}
-	// Username hash to store and identify object
-	//public void storeUser() {
-		
-	//}
-	// TODO Pull user object if pass match
-	
-//}
