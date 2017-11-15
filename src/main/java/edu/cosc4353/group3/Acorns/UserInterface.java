@@ -34,9 +34,9 @@ public class UserInterface {   //MENU 1
         System.out.println("    2: Account Settings    "); //Dosent really matter
         System.out.println("    3: Account Summary    ");     //Dosent really matter
         System.out.println("    4: Make A Purchase       ");
-        System.out.println("    4: Make A Deposit       ");
+        System.out.println("    5: Make A Deposit       ");
 
-        System.out.println("    5: Logout       ");
+        System.out.println("    6: Logout       ");
         System.out.println("===================");
         
         
@@ -160,7 +160,7 @@ public class UserInterface {   //MENU 1
             
             case 6:
             {
-                TheExit();
+            	StartMenu.DisplayMenu();
             	
             }
             

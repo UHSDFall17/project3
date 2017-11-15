@@ -100,6 +100,7 @@ public class Customer {
 	public void storeUser() {
 		
 	}
+	
 	// TODO Pull user object if pass match
 	//public static Customer createUser() {
 		//Scanner input = new Scanner(System.in);
@@ -177,7 +178,7 @@ public class Customer {
         //Store Accepted User Login Data in .txt
         public static void StoreUserData(String user, String pass, String cardNumb)
         {
-            String Storage = user + " " + pass + " " + cardNumb + " " + "x" + " "+ "0" + " " + "unlocked"; //user0 pass1 cardNo2 portfolio3 accountStatus4
+            String Storage = user + " " + pass + " " + cardNumb + " " + "-1" + " "+ "0" + " " + "unlocked"; //user0 pass1 cardNo2 portfolio3 accountStatus4
             System.out.println(Storage);
             
             try
