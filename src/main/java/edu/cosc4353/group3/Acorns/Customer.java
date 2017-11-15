@@ -276,8 +276,8 @@ public class Customer {
                     double accBal = Double.parseDouble(passString[4]);
                     
                     Customer CurrentCustomer = new Customer(passString[0],passString[1], cardNo, portId, accBal );
-                    System.out.println("User: " + CurrentCustomer.getUser_Name());
-                    System.out.println("Pass: " + CurrentCustomer.getUser_Pass());
+                   // System.out.println("User: " + CurrentCustomer.getUser_Name());
+                   // System.out.println("Pass: " + CurrentCustomer.getUser_Pass());
                     System.out.println("Card: " + CurrentCustomer.getUser_CardNumb());
                     System.out.println("Porti: " + CurrentCustomer.getUser_PortId());
                     System.out.println("Balance: " + CurrentCustomer.getUser_balance());
