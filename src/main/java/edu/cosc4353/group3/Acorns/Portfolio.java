@@ -97,6 +97,7 @@ public class Portfolio {
 	}
 	
 	public static int selectPortfolioType(){
+
 		 System.out.println("Select an Investment Porfolio Type");
 		 System.out.println("1. Conservative");
 		 System.out.println("2.Moderately Conservative");
@@ -133,6 +134,7 @@ public class Portfolio {
 		 default:
 	     System.out.println("Your Selection was not valid");
 	     //inputOptionPortfolio.close();	 
+
 	     return -1;
 		 }
 	}
