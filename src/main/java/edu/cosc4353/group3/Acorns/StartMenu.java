@@ -3,6 +3,7 @@ package edu.cosc4353.group3.Acorns;
 import java.util.Scanner;
 
 public class StartMenu {
+    private static int Select = 0;
     
     public static void DisplayMenu()
     {
@@ -15,67 +16,75 @@ public class StartMenu {
         System.out.println("    3: Exit ");
         System.out.println("===================");
         
+        UserInput();
+
     }
     public static void UserInput()
     {
-        int temp = 0;
-		while(temp !=3)
-        {
-			DisplayMenu();
-			System.out.println("exited at display menu");
-            Scanner userScan = new Scanner(System.in);
-            System.out.println("exited at scanner error");
-            temp = 0;
-            System.out.println("system accept 0");
-            temp = userScan.nextInt();
-            System.out.println("exited at scanner input error");
-            
-            if(temp == 1) {
-            	DisplayLogin();
-            	System.out.println("display login exited");
-            	}
-            else if(temp == 2) {
-            	createUser();
-            }
-            else if(temp == 3) {
-        		break;
-        	}
-            else {
-            	System.out.println("Input not valid!");
-            }
+        //FUNCTION TO GET USER INPUT
+        int Temp = 	9999;
+        Scanner UserScan =  new Scanner(System.in);
 
-            userScan.close();
+        Temp = UserScan.nextInt();
+
+       // UserScan.close();
+        setSelect(Temp);
+        
+    
+    {
+        //FUNTION TO ACCESS USER SELECTED OPTION
+        switch(getSelect())
+        {
+            
+            case 1: 
+            {
+                Customer.Login();
+                break;
+            }
+            case 2: 
+            {     
+                boolean accountCheck = false;   
+                accountCheck = Customer.CreateAccount();
+                System.out.println("\n" + "Account Created! Please Login.");
+                //UserScan.nextLine();
+                DisplayMenu();
+                break;
+            }
+            case 3: 
+            {
+                TheExit();
+            }
         }
-    	System.out.println("Exit success");
-        System.exit(0);
     }
     
-    public static void DisplayLogin(){
-		String usernameInput;
-		String passwordInput;
-		Scanner input = new Scanner(System.in);
-		
-		System.out.println("Enter Usermame: " );
-		usernameInput = input.nextLine();
-	    System.out.println("Enter Password: " );
-	    passwordInput = input.nextLine();
-	    input.close();
-    	System.out.println(usernameInput + " " + passwordInput);
-	}
-    public static Customer createUser() {
-		Scanner input = new Scanner(System.in);
-		
-		System.out.println("Enter User: ");
-		String username = input.nextLine();
-		
-		System.out.println("Enter Password: ");
-		String password = input.nextLine();
-		
-		System.out.println("Enter Credit Card Number");
-		int cardNumber = input.nextInt();
-		
-		Customer customer = new Customer(username, password, cardNumber);
-		input.close();
-		return customer;
-	}
+    //UserScan.close();
+    
+    }
+    
+    public static int getSelect()
+    {
+        return Select;
+    }
+    
+    public static void setSelect(int newNumb)
+    {
+        Select = newNumb;
+    }
+    
+    public static void ResetSelect()
+    {
+        setSelect(0);
+    }
+    
+    public static void main(String[] args) {
+        
+        DisplayMenu();
+    }
+    
+    public static void TheExit()
+    {
+        System.exit(0);
+    }
+    //lol
+    //lol
 }
