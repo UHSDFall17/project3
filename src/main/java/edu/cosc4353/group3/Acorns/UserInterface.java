@@ -134,11 +134,11 @@ public class UserInterface {   //MENU 1
             }
             case 3: 
             {
-            	
                 System.out.println( "Hello " + c.getUser_Name()+"! Here is your Account Summary:");
                 System.out.println("");
                 System.out.println("-------------------------");
                 System.out.println("Account Balance: " + c.getUser_balance());
+                System.out.println("Account Type: "+c.getUser_AccountType() );
                 switch(c.getUser_PortId()) {
                 case 1:
                     System.out.println("Account Portfolio: Conservative");
@@ -158,7 +158,7 @@ public class UserInterface {   //MENU 1
    	
                 	}
                 System.out.println("Credit Card Information: " + c.getUser_CardNumb());
-            	UserInput(c);
+                UserInput(c);
                 
             }
             case 4:
