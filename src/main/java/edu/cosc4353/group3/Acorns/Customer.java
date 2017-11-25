@@ -119,12 +119,10 @@ public class Customer {
 	//	return customer;
 //	}
         
-        
-        //Create New User Account
-        public static boolean CreateAccount()
-        {
-            System.out.println("User Creation! ");
-            Scanner input = new Scanner(System.in);
+        public static boolean CreateAccountPersonal (String accountChoice) {
+        	
+        	Scanner input = new Scanner(System.in);
+        	System.out.println("User Creation! ");
             String username = "";
             String password = "";
             String cardId = "";
@@ -169,16 +167,69 @@ public class Customer {
             
             //Enter Card Info Here
             	System.out.println("Card id: " + cardId); 
-                StoreUserData(username, password, cardId); //Add card Argument
+                StoreUserData(username, password, cardId, accountChoice); //Add card Argument
+                System.out.println("------------------");
+
+            return true;
+        }
+ public static boolean CreateAccountCorporate (String accountChoice) {
+ 			Scanner input = new Scanner(System.in);
+        	System.out.println("User Creation! ");
+            String username = "";
+            String password = "";
+            String cardId = "";
+            
+            boolean CreateError = true;
+            while (CreateError)
+            {
+            System.out.println("Enter A Username: ");
+             username = input.next();
+            
+            if (isNotUnique(username)){   System.out.println("Username Taken, Try Again...." + "\n"); }
+            else { CreateError = false; System.out.println("Username Accepted!" + "\n"); }
+            }
+            
+            CreateError = true;
+            while (CreateError)
+            {
+                System.out.println("Enter A " + PASS_LENGTH + " Character password: ");
+                password = input.next();
+                
+                if (password.length() != PASS_LENGTH){ CreateError = true; System.out.println("Password Length Error, Try Again...." + "\n");}
+                else {  CreateError = false; System.out.println("Password Accepted, Account Created!" + "\n");}
+                    
+                
+            }
+            
+            System.out.println("Card Registration");
+            System.out.println("------------------");
+
+            cardId = CreditCardValidation.initializeCard();
+            System.out.println("------------------");
+
+           // CreateError = true; //Smeets Code Here
+           // while(CreateError)
+           // {
+            //    System.out.println("Enter a 16 digit Debit Card number: ");
+            //    cardId = input.next();
+                
+             //   if (cardId.length() < 16) { CreateError = true; System.out.println("Card Number Error.....");   }
+             //   else {  CreateError = false;    }
+            //}
+            
+            //Enter Card Info Here
+            	System.out.println("Card id: " + cardId); 
+                StoreUserData(username, password, cardId, accountChoice); //Add card Argument
                 System.out.println("------------------");
 
             return true;
         }
         
+        
         //Store Accepted User Login Data in .txt
-        public static void StoreUserData(String user, String pass, String cardNumb)
+        public static void StoreUserData(String user, String pass, String cardNumb, String accountChoice)
         {
-            String Storage = user + " " + pass + " " + cardNumb + " " + "-1" + " "+ "0" + " " + "unlocked"; //user0 pass1 cardNo2 portfolio3 accountStatus4
+            String Storage = user + " " + pass + " " + cardNumb +" " + "-1" + " "+ "0" + " " + accountChoice; //user0 pass1 cardNo2 portfolio3 accountStatus4
             System.out.println(Storage);
             
             try
