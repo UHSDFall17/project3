@@ -14,19 +14,21 @@ public class Customer {
     private String user;
 	private String passwd;
 	private String card;
+	private String AccountTypeCOrP;
 	private double accountBalance;
 	private int portIdent;
 	private char[] ports;
-        
+    private String accountChoice;
         File file = new File("");
         public static final int PASS_LENGTH = 6;
 
-	public Customer(String username, String password, String cardNumber,int portIndent, double balance) {
+	public Customer(String username, String password, String cardNumber,int portIndent, double balance, String AccountType) {
 		user = username;
 		passwd = password;
 		card = cardNumber;
 		accountBalance = balance;
 		portIdent = portIndent;
+		AccountTypeCOrP = AccountType;
 		ports = new char[4];
 	}
 	
@@ -35,6 +37,7 @@ public class Customer {
 		passwd = "";
 		card = "";
 		ports = new char[4];
+		AccountTypeCOrP= "";
 	}
        
 
@@ -53,6 +56,10 @@ public class Customer {
         public String getUser_Pass()
         {
             return passwd;
+        }
+        public String getUser_AccountType()
+        {
+            return AccountTypeCOrP;
         }
         
         public String getUser_CardNumb()
@@ -172,8 +179,8 @@ public class Customer {
 
             return true;
         }
- public static boolean CreateAccountCorporate (String accountChoice) {
- 			Scanner input = new Scanner(System.in);
+ public static boolean CreateAccountCorporate ( String accountChoice) {
+	 		Scanner input = new Scanner(System.in);
         	System.out.println("User Creation! ");
             String username = "";
             String password = "";
@@ -325,8 +332,9 @@ public class Customer {
                     String cardNo = passString[2];
                     int portId = Integer.parseInt(passString[3]);
                     double accBal = Double.parseDouble(passString[4]);
-                    
-                    Customer CurrentCustomer = new Customer(passString[0],passString[1], cardNo, portId, accBal );
+                    String accountType = passString[5];
+
+                    Customer CurrentCustomer = new Customer(passString[0],passString[1], cardNo, portId, accBal,accountType );
                    // System.out.println("User: " + CurrentCustomer.getUser_Name());
                    // System.out.println("Pass: " + CurrentCustomer.getUser_Pass());
                   //  System.out.println("Card: " + CurrentCustomer.getUser_CardNumb());
