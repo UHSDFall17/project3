@@ -30,13 +30,14 @@ public class UserInterface {   //MENU 1
         System.out.println("");
         System.out.println("===================");
         System.out.println("    1: Porfolios          ");
-        
-        System.out.println("    2: Account Settings    "); //Dosent really matter
-        System.out.println("    3: Account Summary    ");     //Dosent really matter
-        System.out.println("    4: Make A Purchase       ");
-        System.out.println("    5: Make A Deposit       ");
+        System.out.println("    2: Invest    "); //Dosent really matter
 
-        System.out.println("    6: Logout       ");
+        System.out.println("    3: Account Settings    "); //Dosent really matter
+        System.out.println("    4: Account Summary    ");     //Dosent really matter
+        System.out.println("    5: Make A Purchase       ");
+        System.out.println("    6: Make A Deposit       ");
+
+        System.out.println("    7: Logout       ");
         System.out.println("===================");
         
         
@@ -123,45 +124,61 @@ public class UserInterface {   //MENU 1
             	int PortiId = Portfolio.UserInput(c); //Links to Portfolio Function
             	System.out.println(PortiId);
             	UpdateData( c,  PortiId, "", 1);
+            	c.setPortfolio(c, PortiId);
             	System.out.println("Portfolio Updated!");
             	UserInput(c);
                 break;
             }
             case 2: 
             {     
-            	AcctSetMenu(c);
-                break;
-            }
-            case 3: 
-            {
+            	boolean portCheck = InvestmentHandler.PortfolioSetup_Check(c);
+            	boolean balanceCheck = InvestmentHandler.AccountBalance_Check(c);
             	
-                System.out.println( "Hello " + c.getUser_Name()+"! Here is your Account Summary:");
-                System.out.println("");
-                System.out.println("-------------------------");
-                System.out.println("Account Balance: " + c.getUser_balance());
-                switch(c.getUser_PortId()) {
-                case 1:
-                    System.out.println("Account Portfolio: Conservative");
-                    break;
-                case 2:
-                    System.out.println("Account Portfolio: Moderately Conservative");
-                    break;
-                case 3:
-                    System.out.println("Account Portfolio: Moderate");
-                    break;
-                case 4:
-                    System.out.println("Account Portfolio: Moderately Aggressive");
-                    break;
-                default:        
-                    System.out.println("Account Portfolio: Aggressive");
-                    break;
-   	
-                	}
-                System.out.println("Credit Card Information: " + c.getUser_CardNumb());
+            	if (portCheck == true && balanceCheck == true){
+            	InvestmentHandler.Sync_ETF();
+            	InvestmentHandler.InvestRequest(c);
+            	UpdateData( c,  -1, "", 3);
+            	}
+            	
             	UserInput(c);
                 
             }
-            case 4:
+            case 3: 
+            {     
+            	AcctSetMenu(c);
+                break;
+            }
+            case 4: 
+            {
+            	
+            	 System.out.println( "Hello " + c.getUser_Name()+"! Here is your Account Summary:");
+                 System.out.println("");
+                 System.out.println("-------------------------");
+                 System.out.println("Account Balance: " + c.getUser_balance());
+                 System.out.println("Account Type: "+c.getUser_AccountType() );
+                 switch(c.getUser_PortId()) {
+                 case 1:
+                     System.out.println("Account Portfolio: Conservative");
+                     break;
+                 case 2:
+                     System.out.println("Account Portfolio: Moderately Conservative");
+                     break;
+                 case 3:
+                     System.out.println("Account Portfolio: Moderate");
+                     break;
+                 case 4:
+                     System.out.println("Account Portfolio: Moderately Aggressive");
+                     break;
+                 default:        
+                     System.out.println("Account Portfolio: Aggressive");
+                     break;
+    	
+                 	}
+                 System.out.println("Credit Card Information: " + c.getUser_CardNumb());
+                 UserInput(c);
+                
+            }
+            case 5:
             { 
             	//Purchase and add change
             	FundsHandler.makePurchase(c);
@@ -169,15 +186,16 @@ public class UserInterface {   //MENU 1
             	UserInput(c);
 
             }
-            case 5:
+            case 6:
             {
             	FundsHandler.depositFunds(c);
             	UpdateData( c,  -1, "", 3);
+            	
             	UserInput(c);
 
             }
             
-            case 6:
+            case 7:
             {
             	StartMenu.DisplayMenu();
             	
@@ -214,19 +232,19 @@ public class UserInterface {   //MENU 1
             //Read File Line By Line
             while ((strLine = br.readLine()) != null) {
                 // Print the content on the console
-                System.out.println(strLine);
+                //System.out.println(strLine);
                 
                 String tokens[] = strLine.split(" ");
             	System.out.println(tokens[0]);
-            	System.out.println("Current balance -> " + c.getUser_balance());
+            	//System.out.println("Current balance -> " + c.getUser_balance());
 
                 if (tokens.length > 0) {
-                	System.out.println("check ");
+                	//System.out.println("check ");
 
                     // Here tokens[0] will have value of ID
                     if (tokens[0].equals(c.getUser_Name())) 
                     {
-                    	System.out.println("Found " + tokens[0]);
+                    	//System.out.println("Found " + tokens[0]);
                     	
                     	if (updateType == 1){  //PORTFOLIO UPDATE
                     	String Convert = Integer.toString(poriId);
@@ -257,7 +275,7 @@ public class UserInterface {   //MENU 1
                 }
             }
             
-            System.out.println(fileContent);
+           // System.out.println(fileContent);
             // Now fileContent will have updated content , which you can override into file
             FileWriter fstreamWrite = new FileWriter("LoginInfo.txt");
             BufferedWriter out = new BufferedWriter(fstreamWrite);

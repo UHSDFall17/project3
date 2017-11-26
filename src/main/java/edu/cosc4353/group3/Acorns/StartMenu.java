@@ -43,12 +43,33 @@ public class StartMenu {
             }
             case 2: 
             {     
-                boolean accountCheck = false;   
-                accountCheck = Customer.CreateAccount();
-                System.out.println("\n" + "Account Created! Please Login.");
-                //UserScan.nextLine();
-                DisplayMenu();
-                break;
+            	int choiceOfAccount;
+                Scanner input = new Scanner(System.in);
+            	System.out.println("Would you like to create a personal account or a corporate account? ");
+            	System.out.println("1. Personal ");
+            	System.out.println("2. Corporate ");
+                choiceOfAccount = input.nextInt();
+            	String accountChoice; 
+
+            	switch(choiceOfAccount) {
+            	case 2:
+            		 accountChoice= "corporate";
+            		 boolean accountCheckCorporate = false;   
+            		 accountCheckCorporate = Customer.CreateAccountPersonal(accountChoice);
+                     System.out.println("\n" + "Corporate Account Created! Please Login.");
+                     //UserScan.nextLine();
+                     DisplayMenu();
+                     break;
+            	default:
+           		     accountChoice= "personal";
+           		     boolean accountCheckPersonal = false;   
+            		 accountCheckPersonal = Customer.CreateAccountCorporate(accountChoice);
+                     System.out.println("\n" + "Personal Account Created! Please Login.");
+                     //UserScan.nextLine();
+                     DisplayMenu();
+                     break;          
+            	
+            	}
             }
             case 3: 
             {

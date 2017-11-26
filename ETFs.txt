@@ -1,0 +1,10 @@
+Stocks
+Vanguard S&P 500
+Vanguard Small-Cap
+Vanguard FTSE Emerging Markets
+Vanguard Mega Cap Growth
+Bonds
+Vanguard Short-Term
+iShares Core U.S. Aggregate
+SPDR Barclays High Yield
+PowerShares Senior Loan

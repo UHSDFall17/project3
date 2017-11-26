@@ -16,17 +16,22 @@ public class Customer {
 	private String card;
 	private double accountBalance;
 	private int portIdent;
+	private String AccountTypeCOrP;
+
 	private char[] ports;
-        
+    private String accountChoice;
+
         File file = new File("");
         public static final int PASS_LENGTH = 6;
 
-	public Customer(String username, String password, String cardNumber,int portIndent, double balance) {
+	public Customer(String username, String password, String cardNumber,int portIndent, double balance, String AccountType) {
 		user = username;
 		passwd = password;
 		card = cardNumber;
 		accountBalance = balance;
 		portIdent = portIndent;
+		AccountTypeCOrP = AccountType;
+
 		ports = new char[4];
 	}
 	
@@ -35,6 +40,7 @@ public class Customer {
 		passwd = "";
 		card = "";
 		ports = new char[4];
+		AccountTypeCOrP= "";
 	}
        
 
@@ -53,6 +59,10 @@ public class Customer {
         public String getUser_Pass()
         {
             return passwd;
+        }
+        public String getUser_AccountType()
+        {
+            return AccountTypeCOrP;
         }
         
         public String getUser_CardNumb()
@@ -73,9 +83,14 @@ public class Customer {
             accountBalance =  accountBalance + change;
         }
         
-        public static void setCardNumber(Customer c ,String number)
+        public void setCardNumber(Customer c ,String number)
         {
             c.card = number;
+        }
+        
+        public static void setPortfolio(Customer c, int id)
+        {
+        	c.portIdent = id;
         }
 	
 	public static int hashUsername(String username) {
@@ -121,10 +136,12 @@ public class Customer {
         
         
         //Create New User Account
-        public static boolean CreateAccount()
-        {
-            System.out.println("User Creation! ");
-            Scanner input = new Scanner(System.in);
+
+        
+        public static boolean CreateAccountPersonal (String accountChoice) {
+        	
+        	Scanner input = new Scanner(System.in);
+        	System.out.println("User Creation! ");
             String username = "";
             String password = "";
             String cardId = "";
@@ -169,16 +186,70 @@ public class Customer {
             
             //Enter Card Info Here
             	System.out.println("Card id: " + cardId); 
-                StoreUserData(username, password, cardId); //Add card Argument
+                StoreUserData(username, password, cardId, accountChoice); //Add card Argument
+                System.out.println("------------------");
+
+            return true;
+        }
+        
+        
+        public static boolean CreateAccountCorporate ( String accountChoice) {
+	 		Scanner input = new Scanner(System.in);
+        	System.out.println("User Creation! ");
+            String username = "";
+            String password = "";
+            String cardId = "";
+            
+            boolean CreateError = true;
+            while (CreateError)
+            {
+            System.out.println("Enter A Username: ");
+             username = input.next();
+            
+            if (isNotUnique(username)){   System.out.println("Username Taken, Try Again...." + "\n"); }
+            else { CreateError = false; System.out.println("Username Accepted!" + "\n"); }
+            }
+            
+            CreateError = true;
+            while (CreateError)
+            {
+                System.out.println("Enter A " + PASS_LENGTH + " Character password: ");
+                password = input.next();
+                
+                if (password.length() != PASS_LENGTH){ CreateError = true; System.out.println("Password Length Error, Try Again...." + "\n");}
+                else {  CreateError = false; System.out.println("Password Accepted, Account Created!" + "\n");}
+                    
+                
+            }
+            
+            System.out.println("Card Registration");
+            System.out.println("------------------");
+
+            cardId = CreditCardValidation.initializeCard();
+            System.out.println("------------------");
+
+           // CreateError = true; //Smeets Code Here
+           // while(CreateError)
+           // {
+            //    System.out.println("Enter a 16 digit Debit Card number: ");
+            //    cardId = input.next();
+                
+             //   if (cardId.length() < 16) { CreateError = true; System.out.println("Card Number Error.....");   }
+             //   else {  CreateError = false;    }
+            //}
+            
+            //Enter Card Info Here
+            	System.out.println("Card id: " + cardId); 
+                StoreUserData(username, password, cardId, accountChoice); //Add card Argument
                 System.out.println("------------------");
 
             return true;
         }
         
         //Store Accepted User Login Data in .txt
-        public static void StoreUserData(String user, String pass, String cardNumb)
+        public static void StoreUserData(String user, String pass, String cardNumb, String accountChoice)
         {
-            String Storage = user + " " + pass + " " + cardNumb + " " + "-1" + " "+ "0" + " " + "unlocked"; //user0 pass1 cardNo2 portfolio3 accountStatus4
+            String Storage = user + " " + pass + " " + cardNumb + " " + "-1" + " "+ "0" + " " + accountChoice; //user0 pass1 cardNo2 portfolio3 accountStatus4
             System.out.println(Storage);
             
             try
@@ -274,8 +345,9 @@ public class Customer {
                     String cardNo = passString[2];
                     int portId = Integer.parseInt(passString[3]);
                     double accBal = Double.parseDouble(passString[4]);
-                    
-                    Customer CurrentCustomer = new Customer(passString[0],passString[1], cardNo, portId, accBal );
+                    String accountType = passString[5];
+
+                    Customer CurrentCustomer = new Customer(passString[0],passString[1], cardNo, portId, accBal, accountType);
                    // System.out.println("User: " + CurrentCustomer.getUser_Name());
                    // System.out.println("Pass: " + CurrentCustomer.getUser_Pass());
                   //  System.out.println("Card: " + CurrentCustomer.getUser_CardNumb());
