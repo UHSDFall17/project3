@@ -56,7 +56,7 @@ public class StartMenu {
             	case 2:
             		 accountChoice= "corporate";
             		 boolean accountCheckCorporate = false;   
-            		 accountCheckCorporate = Customer.CreateAccountPersonal(accountChoice);
+            		 accountCheckCorporate = Customer.CreateAccountCorporate(accountChoice);
                      System.out.println("\n" + "Corporate Account Created! Please Login.");
                      //UserScan.nextLine();
                      DisplayMenu();
