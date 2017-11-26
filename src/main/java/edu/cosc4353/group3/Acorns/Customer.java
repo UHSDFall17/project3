@@ -14,12 +14,14 @@ public class Customer {
     private String user;
 	private String passwd;
 	private String card;
+	private String AccountTypeCOrP;
 	private double accountBalance;
 	private int portIdent;
 	private String AccountTypeCOrP;
 
 	private char[] ports;
     private String accountChoice;
+
 
         File file = new File("");
         public static final int PASS_LENGTH = 6;
@@ -31,6 +33,7 @@ public class Customer {
 		accountBalance = balance;
 		portIdent = portIndent;
 		AccountTypeCOrP = AccountType;
+
 
 		ports = new char[4];
 	}
@@ -134,10 +137,12 @@ public class Customer {
 	//	return customer;
 //	}
         
+
         
         //Create New User Account
 
         
+
         public static boolean CreateAccountPersonal (String accountChoice) {
         	
         	Scanner input = new Scanner(System.in);
@@ -191,9 +196,11 @@ public class Customer {
 
             return true;
         }
+
         
         
         public static boolean CreateAccountCorporate ( String accountChoice) {
+
 	 		Scanner input = new Scanner(System.in);
         	System.out.println("User Creation! ");
             String username = "";
@@ -246,10 +253,13 @@ public class Customer {
             return true;
         }
         
+        
         //Store Accepted User Login Data in .txt
         public static void StoreUserData(String user, String pass, String cardNumb, String accountChoice)
         {
+
             String Storage = user + " " + pass + " " + cardNumb + " " + "-1" + " "+ "0" + " " + accountChoice; //user0 pass1 cardNo2 portfolio3 accountStatus4
+
             System.out.println(Storage);
             
             try
@@ -348,6 +358,7 @@ public class Customer {
                     String accountType = passString[5];
 
                     Customer CurrentCustomer = new Customer(passString[0],passString[1], cardNo, portId, accBal, accountType);
+
                    // System.out.println("User: " + CurrentCustomer.getUser_Name());
                    // System.out.println("Pass: " + CurrentCustomer.getUser_Pass());
                   //  System.out.println("Card: " + CurrentCustomer.getUser_CardNumb());
