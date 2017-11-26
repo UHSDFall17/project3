@@ -1,7 +1,7 @@
 package edu.cosc4353.group3.Acorns;
 import java.util.Random;
 
-public class StockSimulate {
+public class NumberGenerator {
 	
 	Random rand = new Random();
 
