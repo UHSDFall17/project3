@@ -171,8 +171,12 @@ public class UserInterface {   //MENU 1
             }
             case 5:
             {
-            	switch(c.getUser_AccountType()) {
-            	case "corporate":
+                String lol = c.getUser_AccountType();
+                int check = -1;
+                if (lol == "corporate"){  check = 1;  }
+                else { check = -1; }
+            	switch(check) {
+            	case 1:
             		CorporateHandler.depositFunds(c);
             		UpdateData( c,  -1, "", 3);
                 	UserInput(c);	
