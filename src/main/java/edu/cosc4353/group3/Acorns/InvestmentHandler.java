@@ -173,6 +173,94 @@ public class InvestmentHandler
 			alpahArray[i] = new Double(roundOff).toString();
 		}
 	}
+	public static void dataSend(Customer c)
+	{
+		System.out.println("DATASENDDDDD");
+		
+		try {
+           	// Open the file that is the first
+           	// command line parameter
+			boolean userFound = false;
+        	
+           	FileInputStream fstream = new FileInputStream("InvestData.txt");
+           	BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+           	String strLine;
+           	StringBuilder fileContent = new StringBuilder();
+           	//Read File Line By Line
+           		while ((strLine = br.readLine()) != null) {
+                		// Print the content on the console
+                		System.out.println(strLine);
+                	
+                		String tokens[] = strLine.split(" ");
+            			System.out.println(tokens[0]);
+            			System.out.println("Current balance -> " + c.getUser_balance());
+
+                		if (tokens.length > 0){
+                			System.out.println("check ");
+
+                    			// Here tokens[0] will have value of ID
+                			System.out.println(tokens[0]);
+                    			if (tokens[0].equals(c.getUser_Name())){
+                    				System.out.println("Found " + tokens[0]);
+                    				userFound = true;
+	
+        		            		String inputData = tokens[0];
+                    		
+                    				for (int i =1; i < bond_Length+1; i++){
+                    					System.out.println("Before: " + tokens[i]);
+                    					double bondLocal = Double.parseDouble(bondIn[i-1]);
+                    					double tokenLocal = Double.parseDouble(tokens[i]);
+                    		
+                    				double tempI = tokenLocal + bondLocal;
+                    				String tempS = Double.toString(tempI);
+                    		
+                    				tokens[i] = tempS;
+                    				inputData += " " + tokens[i];
+                    				System.out.println("After: " + tokens[i]);
+
+                    				System.out.println("i: " + i);
+                    			}
+                    	
+                    			for (int i =5; i < bond_Length+5; i++){
+                    				System.out.println("Before: " + tokens[i]);
+                    				double bondLocal = Double.parseDouble(stockIn[i-5]);
+                    				double tokenLocal = Double.parseDouble(tokens[i]);
+                    		
+                    				double tempI = tokenLocal + bondLocal;
+                    				String tempS = Double.toString(tempI);
+                    		
+                    				tokens[i] = tempS;
+                    				inputData += " " + tokens[i];
+                    				System.out.println("After: " + tokens[i]);
+
+                    				System.out.println("i: " + i);
+                    			}	
+                    			fileContent.append(inputData + System.getProperty("line.separator"));
+                    		} 
+				else{
+                        		fileContent.append(strLine + System.getProperty("line.separator"));
+                    		}
+			}
+		} 
+		if (userFound == true){
+			System.out.println("found user");
+	
+			System.out.println(fileContent);
+			// Now fileContent will have updated content , which you can override into file
+			FileWriter fstreamWrite = new FileWriter("InvestData.txt");
+			BufferedWriter out = new BufferedWriter(fstreamWrite);
+			out.write(fileContent.toString());
+			out.close();
+		}
+		else{
+			System.out.println("no user");
+			newData(c, bondIn, stockIn, bond_Length, stock_Length);	
+		}
+		catch (Exception e) {//Catch exception if any
+			System.err.println("Error: " + e.getMessage());
+		}
+	}
+			
 }
 		
 		
