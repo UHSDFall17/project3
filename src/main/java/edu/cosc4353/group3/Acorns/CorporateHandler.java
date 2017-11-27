@@ -9,7 +9,7 @@ public class CorporateHandler {
 		System.out.println("Input Amount To Deposit:");
 	    Scanner UserScan =  new Scanner(System.in);
 	    double amount = UserScan.nextDouble();
-		double amountWithCorp = amount+(amount*.20);
+		double amountWithCorp = amount+(amount*.03);
 		c.setUser_balance(amountWithCorp);
 		
 		System.out.println("You deposited: " + amount);
