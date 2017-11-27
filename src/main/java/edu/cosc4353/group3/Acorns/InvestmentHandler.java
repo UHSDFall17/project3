@@ -45,4 +45,38 @@ public class InvestmentHandler
 			System.out.println("Portfolio is Active at: " + c.getUser_PortId());
 			return true; }
 	}
+public static boolean AccountBalance_Check(Customer c) //Check if Balance meets minimal req.
+	{
+		if (c.getUser_balance() >= 5)
+		{
+			return true;
+		}
+		else {System.out.println(c.getUser_Name() + " Please Deposit Additional Funds");
+				System.out.println("Account Balance Should Have a Minimum of 5$ to Invest");
+				return false;
+		}
+		
+	}
+//Aggressive Portfolio – 90% stocks / 10% bonds
+	//Moderately Aggressive Portfolio – 75 / 25
+	//Moderate Portfolio – 60 / 40
+	//Moderately Conservative – 50 /50
+	//Conservative 40 / 60
+	
+	public static void InvestRequest(Customer c)
+	{
+		double b1 = .6, b2 = .5, b3 = .4, b4 = .25, b5 = .1;
+		
+		switch (c.getUser_PortId())
+		{
+		case 1: {	AlocateFunds(c, b1);	break;}
+		case 2: {	AlocateFunds(c, b2);	break;}
+		case 3: {	AlocateFunds(c, b3);	break;}
+		case 4: {	AlocateFunds(c, b4);	break;}
+		case 5: {	AlocateFunds(c, b5);	break;}
+		}
+		
+		
+	}
 }
+
