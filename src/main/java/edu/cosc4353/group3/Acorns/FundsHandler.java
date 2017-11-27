@@ -17,7 +17,10 @@ public class FundsHandler {
 	
 	conv = (long) amount;
 	decimal = amount - conv;
+	if (decimal != 0){		
 	spareChange = 1 - decimal;
+	}
+	else { spareChange = 0; }
 	
 	System.out.println("Spare Change: " + spareChange);
 
