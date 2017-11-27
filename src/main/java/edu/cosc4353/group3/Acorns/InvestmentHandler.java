@@ -260,7 +260,32 @@ public class InvestmentHandler
 			System.err.println("Error: " + e.getMessage());
 		}
 	}
-			
+	public static void newData(Customer c, String[] a, String[] b, int aSize, int bSize )
+	{
+		System.out.println("NEWWWWW DATASENDDDDD");
+
+		String Storage = c.getUser_Name();
+		for (int i = 0; i < aSize; i++){
+			Storage += " " + a[i];
+		}
+		for (int i = 0; i < bSize; i++){
+			 Storage += " " + b[i];
+		}
+        	System.out.println(Storage);
+
+        	try{
+			String filename = "InvestData.txt";
+			BufferedWriter  outP;
+			outP = new BufferedWriter(new FileWriter(filename, true));
+            
+			outP.newLine(); 
+			outP.append(Storage);
+			outP.close();
+		}
+		catch(IOException ioe){
+        		System.err.println("IOException: " + ioe.getMessage());
+		}	
+	}
 }
 		
 		
