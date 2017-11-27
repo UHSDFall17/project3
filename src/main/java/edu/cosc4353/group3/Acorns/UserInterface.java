@@ -171,9 +171,9 @@ public class UserInterface {   //MENU 1
             }
             case 5:
             {
-                String lol = c.getUser_AccountType();
+                String accountTypeUser = c.getUser_AccountType();
                 int check = -1;
-                if (lol == "corporate"){  check = 1;  }
+                if (accountTypeUser == "corporate"){  check = 1;  }
                 else { check = -1; }
             	switch(check) {
             	case 1:
