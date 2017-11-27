@@ -147,14 +147,11 @@ public static boolean AccountBalance_Check(Customer c) //Check if Balance meets 
 			dataSend(c);	
 		}
 
-public static double randInt(double min, double max) {
-		
+	public static double randInt(double min, double max) {
 	    Random rand = new Random();
-	
 	    double randomNum = min + rand.nextDouble();
-
-	    return randomNum;
 		
+	    return randomNum;
 	}
 
 	public static void testFast(double[] arrayIn, int size)
