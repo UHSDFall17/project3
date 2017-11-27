@@ -30,7 +30,7 @@ public class InvestmentHandler
 	
 	//stocks - Vanguard S&P 500 Stock ETF, Vanguard Small-Cap Stock ETF,  Vanguard FTSE Emerging Markets Stock ETF, Vanguard Mega Cap Growth Stock ETF
 	//bonds - Vanguard Short-Term Bond TFF, iShares Core U.S. Aggregate Bond, SPDR Barclays High Yield Bond ETF, PowerShares Senior Loan ETF 
-	}
+	
 	public static boolean PortfolioSetup_Check(Customer c) //Check if Portfolio is Setup
 	{
 		if (c.getUser_PortId() == -1 )
@@ -40,12 +40,12 @@ public class InvestmentHandler
 			
 			return false;
 		}
-		
 		else { 
 			System.out.println("Portfolio is Active at: " + c.getUser_PortId());
 			return true; }
 	}
-public static boolean AccountBalance_Check(Customer c) //Check if Balance meets minimal req.
+	
+	public static boolean AccountBalance_Check(Customer c) //Check if Balance meets minimal req.
 	{
 		if (c.getUser_balance() >= 5)
 		{
@@ -57,7 +57,7 @@ public static boolean AccountBalance_Check(Customer c) //Check if Balance meets 
 		}
 		
 	}
-//Aggressive Portfolio – 90% stocks / 10% bonds
+	//Aggressive Portfolio – 90% stocks / 10% bonds
 	//Moderately Aggressive Portfolio – 75 / 25
 	//Moderate Portfolio – 60 / 40
 	//Moderately Conservative – 50 /50
@@ -79,7 +79,7 @@ public static boolean AccountBalance_Check(Customer c) //Check if Balance meets 
 		
 	}
 
-//Aggressive Portfolio – 90% stocks / 10% bonds
+	//Aggressive Portfolio – 90% stocks / 10% bonds
 	//Moderately Aggressive Portfolio – 75 / 25
 	//Moderate Portfolio – 60 / 40
 	//Moderately Conservative – 50 /50
@@ -95,57 +95,58 @@ public static boolean AccountBalance_Check(Customer c) //Check if Balance meets 
 
         
         
-     System.out.println("Current port: " + c.getUser_PortId());
+     		System.out.println("Current port: " + c.getUser_PortId());
 
 		
 			//Conservative 40 / 60      stock / bond
 	
-			System.out.println("Conservative Class");
-
-			System.out.println("PROCESS BONDS....");
-			double allocateAmount =0;
-			double BondAmount = c.getUser_balance() * bond;
-			c.setUser_balance(-(BondAmount));
-			double carryOver = 0;
-			double miniAllocate = BondAmount/(bond_Length-1); 
-			while (inDep < bond_Length - 1){   
+		System.out.println("Conservative Class");
+		System.out.println("PROCESS BONDS....");
+		double allocateAmount =0;
+		double BondAmount = c.getUser_balance() * bond;
+		c.setUser_balance(-(BondAmount));
+		double carryOver = 0;
+		double miniAllocate = BondAmount/(bond_Length-1); 
+		
+		while (inDep < bond_Length - 1){   
 			double randNumb = randInt(0, 1);
 			allocateAmount = randNumb * miniAllocate;
 			double tempCarry = miniAllocate - allocateAmount;
 			carryOver = carryOver + tempCarry;
 			BondDeposits[inDep] = allocateAmount;
 			inDep++;
-			}
+		}
 			
 			
-			BondDeposits[inDep] = carryOver;
-			miniAllocate =0;
-			inDep = 0;
-			System.out.println("PROCESS STOCKS....");
-			allocateAmount =0;
-			double StockAmount = c.getUser_balance();
-			c.setUser_balance(-(StockAmount));
-			carryOver = 0;
-			miniAllocate = StockAmount/(stock_Length-1); 
-			while (inDep < stock_Length - 1){   
-			double randNumb = randInt(0, 1);
+		BondDeposits[inDep] = carryOver;
+		miniAllocate =0;
+		inDep = 0;
+		System.out.println("PROCESS STOCKS....");
+		allocateAmount =0;
+		double StockAmount = c.getUser_balance();
+		c.setUser_balance(-(StockAmount));
+		carryOver = 0;
+		miniAllocate = StockAmount/(stock_Length-1); 
+		
+		while (inDep < stock_Length - 1){   
+			double randNumb = randInt(0, 1);	
 			allocateAmount = randNumb * miniAllocate;
 			double tempCarry = miniAllocate - allocateAmount;
 			carryOver = carryOver + tempCarry;
 			StockDeposits[inDep] = allocateAmount;
 			inDep++;
-			}
-			StockDeposits[inDep] = carryOver;
-			inDep = 0;;
-			
-			
-			decimalConvert(BondDeposits, bondIn, bond_Length);
-			decimalConvert(StockDeposits, stockIn, stock_Length);
-
-			testFast(BondDeposits, bond_Length);
-			testFast(StockDeposits, stock_Length);
-			dataSend(c);	
 		}
+		StockDeposits[inDep] = carryOver;
+		inDep = 0;;
+			
+			
+		decimalConvert(BondDeposits, bondIn, bond_Length);
+		decimalConvert(StockDeposits, stockIn, stock_Length);
+		
+		testFast(BondDeposits, bond_Length);
+		testFast(StockDeposits, stock_Length);
+		dataSend(c);	
+	}
 
 	public static double randInt(double min, double max) {
 	    Random rand = new Random();
