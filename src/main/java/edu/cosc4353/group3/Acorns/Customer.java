@@ -17,7 +17,6 @@ public class Customer {
 	private String AccountTypeCOrP;
 	private double accountBalance;
 	private int portIdent;
-	private String AccountTypeCOrP;
 
 	private char[] ports;
     private String accountChoice;
