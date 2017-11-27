@@ -150,15 +150,13 @@ public static boolean AccountBalance_Check(Customer c) //Check if Balance meets 
 public static double randInt(double min, double max) {
 		
 	    Random rand = new Random();
-
-
+	
 	    double randomNum = min + rand.nextDouble();
 
 	    return randomNum;
 		
 	}
-	
-	
+
 	public static void testFast(double[] arrayIn, int size)
 	{
 		for (int i = 0; i < size; i++ )
@@ -176,8 +174,6 @@ public static double randInt(double min, double max) {
 			stkAr[i] = roundOff;
 			alpahArray[i] = new Double(roundOff).toString();
 		}
-		
-		
 	}
 }
 		
