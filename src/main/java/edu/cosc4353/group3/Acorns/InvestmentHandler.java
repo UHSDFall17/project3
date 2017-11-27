@@ -166,6 +166,19 @@ public static double randInt(double min, double max) {
 			System.out.println(arrayIn[i]);
 		}
 	}
+	
+	public static void decimalConvert(double[] stkAr, String[] alpahArray, int stkSize)
+	{
+		for (int i = 0; i < stkSize; i++)
+		{
+			double roundOff = Math.round(stkAr[i] * 100.0) / 100.0;
+			
+			stkAr[i] = roundOff;
+			alpahArray[i] = new Double(roundOff).toString();
+		}
+		
+		
+	}
 }
 		
 		
