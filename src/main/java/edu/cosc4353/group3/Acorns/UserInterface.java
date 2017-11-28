@@ -218,7 +218,11 @@ public class UserInterface {   //MENU 1
             }
             
             case 8:
-            {
+            {  	
+                if(Simulate.ping(c) == true){
+            	Simulate.Start(c);
+            	}
+                
             	Simulate.Start(c);
             }
             
