@@ -269,80 +269,7 @@ public class InvestmentHandler {
         
     }
 
-		
-		public static void Sync_ETF()
-	{
-        File file = new File("ETFs.txt");
-        
-        boolean isStock = false;
-        boolean noData = false;
-        
-        int stockCount = 0, bondCount  = 0;
-        
-        try 
-    {    
-        	
-        Scanner sc = new Scanner(file);      
-        while (sc.hasNextLine()) 
-        {
-        	
-            String TempScan = sc.nextLine();
-           // System.out.println("Test: " + TempScan);
-            
-            if (TempScan.equals("Stocks")){
-            	isStock = true;
-            	noData = true;
-            	//System.out.println(TempScan + "START STOCK....");
 
-            }
-            
-            else if (TempScan.equals("Bonds")){
-               isStock = false;
-               noData = true;
-           	   //System.out.println(TempScan + "START BOND....");
-
-            }
-            //System.out.println(noData);
-
-            if (!TempScan.equals("Bonds") && !TempScan.equals("Stocks")){	noData = false;	}
-            
-           // System.out.println(noData);
-            if (isStock == true && noData == false)
-            {
-            	stocks[stockCount] = TempScan;
-            	//System.out.println(stocks[stockCount] + "in stock");
-            	stockCount++;
-            }
-            
-            else if (isStock == false && noData == false)
-            {
-            	bonds[bondCount] = TempScan;
-            	//System.out.println(bonds[bondCount] + "in bond");
-            	bondCount++;
-            	
-            }
-            
-        }
-        
-        stock_Length = stockCount;
-        bond_Length = bondCount;
-        
-        
-    } 
-    catch (IOException e) { e.printStackTrace();    }
-        
-       // System.out.println("End.....");
-        
-      //  for (int i =0; i < stock_Length; i++)
-       // {
-      //  	System.out.println(stocks[i]);
-       // }
-       // for (int i =0; i < bond_Length; i++)
-       // {
-       // 	System.out.println(bonds[i]);
-      //  }
-        
-    }	
 		
 		
 		
@@ -654,6 +581,128 @@ public class InvestmentHandler {
 		testFast(CurrentInvArr_Stock, ArrLength);
 
 
+	}
+	
+	public static void SyncExternal(Customer c)
+	{
+		System.out.println(":: Simulate :: Data Storage ::");
+
+		double[] CurrentInvArr_Bond = c.getInvestData(0);
+		double[] CurrentInvArr_Stock = c.getInvestData(1);
+		
+		String[] bondTemp = new String[10];
+		String[] stockTemp = new String[10];
+		
+
+		int LengthInv = c.getInvestArray_Length();
+		
+		for (int i =0; i < LengthInv; i++)
+		{
+			bondTemp[i] = new Double(CurrentInvArr_Bond[i]).toString();
+			stockTemp[i] = new Double(CurrentInvArr_Stock[i]).toString();
+
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		try {
+            // Open the file that is the first
+            // command line parameter
+			boolean userFound = false;
+        	
+            FileInputStream fstream = new FileInputStream("InvestData.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+            String strLine;
+            StringBuilder fileContent = new StringBuilder();
+            
+            //Read File Line By Line
+            while ((strLine = br.readLine()) != null) {
+                // Print the content on the console
+                System.out.println(strLine);
+                
+                String tokens[] = strLine.split(" ");
+
+                if (tokens.length > 0) {
+                	System.out.println("check ");
+
+                    if (tokens[0].equals(c.getUser_Name())) 
+                    {
+                    	System.out.println("Found " + tokens[0]); //FOUND USER-----------
+                    	userFound = true;
+                    	
+                    	String inputData = c.getUser_Name();
+                    	
+                    	
+                    	//bondTemp[i] = new Double(CurrentInvArr_Bond[i]).toString();
+            			//stockTemp[i] = new Double(CurrentInvArr_Stock[i]).toString();
+                    	
+                    	
+                    	for (int i =1; i <  (c.getInvestArray_Length() +1); i++)
+                    	{
+
+                    		
+                    		
+                    		String tempS = bondTemp[i-1];
+                    		
+                    		inputData += " " + tempS;
+                    		System.out.println("After: " + inputData);
+
+                    		System.out.println("i: " + i);
+
+                    	}
+                    	
+                    	for (int i =5; i < (c.getInvestArray_Length() +5); i++)
+                    	{
+        
+                    		String tempS = stockTemp[i-5];
+                    		
+                    		inputData += " " + tempS;
+                    		System.out.println("After: " + inputData);
+
+                    		System.out.println("i: " + i);
+
+                    	}
+   
+
+                        	
+
+                        
+                        fileContent.append(inputData + System.getProperty("line.separator"));
+                    } 
+                    
+                    else 
+                    {
+                    	
+                        fileContent.append(strLine + System.getProperty("line.separator"));
+ 
+                    }
+                }
+            }
+            
+            if (userFound == true){
+        		System.out.println("found user");
+
+            System.out.println(fileContent);
+            // Now fileContent will have updated content , which you can override into file
+            FileWriter fstreamWrite = new FileWriter("InvestData.txt");
+            BufferedWriter out = new BufferedWriter(fstreamWrite);
+            out.write(fileContent.toString());
+            out.close();
+            }
+            
+            else{ 		System.out.println("no user");
+            newData(c, bondIn, stockIn, bond_Length, stock_Length);	}
+
+        } catch (Exception e) {//Catch exception if any
+            System.err.println("Error: " + e.getMessage());
+        }
+		
+		
 	}
 	
 	
