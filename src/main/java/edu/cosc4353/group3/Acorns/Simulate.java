@@ -90,7 +90,8 @@ public class Simulate {
 		c.setInvestData(temp_Bond, 0);
 		c.setInvestData(temp_Stock, 1);
 
-		
+		InvestmentHandler.SyncExternal(c);
+
 	}
 	
 
