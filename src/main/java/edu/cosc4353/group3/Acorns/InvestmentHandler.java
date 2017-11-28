@@ -270,7 +270,79 @@ public class InvestmentHandler {
     }
 
 		
-		
+		public static void Sync_ETF()
+	{
+        File file = new File("ETFs.txt");
+        
+        boolean isStock = false;
+        boolean noData = false;
+        
+        int stockCount = 0, bondCount  = 0;
+        
+        try 
+    {    
+        	
+        Scanner sc = new Scanner(file);      
+        while (sc.hasNextLine()) 
+        {
+        	
+            String TempScan = sc.nextLine();
+           // System.out.println("Test: " + TempScan);
+            
+            if (TempScan.equals("Stocks")){
+            	isStock = true;
+            	noData = true;
+            	//System.out.println(TempScan + "START STOCK....");
+
+            }
+            
+            else if (TempScan.equals("Bonds")){
+               isStock = false;
+               noData = true;
+           	   //System.out.println(TempScan + "START BOND....");
+
+            }
+            //System.out.println(noData);
+
+            if (!TempScan.equals("Bonds") && !TempScan.equals("Stocks")){	noData = false;	}
+            
+           // System.out.println(noData);
+            if (isStock == true && noData == false)
+            {
+            	stocks[stockCount] = TempScan;
+            	//System.out.println(stocks[stockCount] + "in stock");
+            	stockCount++;
+            }
+            
+            else if (isStock == false && noData == false)
+            {
+            	bonds[bondCount] = TempScan;
+            	//System.out.println(bonds[bondCount] + "in bond");
+            	bondCount++;
+            	
+            }
+            
+        }
+        
+        stock_Length = stockCount;
+        bond_Length = bondCount;
+        
+        
+    } 
+    catch (IOException e) { e.printStackTrace();    }
+        
+       // System.out.println("End.....");
+        
+      //  for (int i =0; i < stock_Length; i++)
+       // {
+      //  	System.out.println(stocks[i]);
+       // }
+       // for (int i =0; i < bond_Length; i++)
+       // {
+       // 	System.out.println(bonds[i]);
+      //  }
+        
+    }	
 		
 		
 		
