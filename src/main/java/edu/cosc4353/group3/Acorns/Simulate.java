@@ -4,6 +4,15 @@ import java.util.Random;
 
 public class Simulate {
 	
+	public static boolean ping(Customer c)
+	{
+		if (c.getStatus_Invest() == false)
+		{
+			System.out.println("Account has not yet Invested");
+			return false;
+		}
+		else{	return true;	}
+	}
 	
 	public static void Start(Customer c)
 	{
