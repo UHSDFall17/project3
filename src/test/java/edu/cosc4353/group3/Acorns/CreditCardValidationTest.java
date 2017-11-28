@@ -1,17 +1,17 @@
-/*package edu.cosc4353.group3.Acorns;
+package edu.cosc4353.group3.Acorns;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 /**
 *
 * @author Chitalia
 */
 
-/*public class CreditCardValidationTest 
+public class CreditCardValidationTest 
 {
 
 	@Test
@@ -26,4 +26,4 @@ import junit.framework.Assert;
 		Assert.assertEquals(card_name, test.returnCCValidatecard_name());
 	}
 
-}*/
+}
