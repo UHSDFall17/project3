@@ -139,6 +139,44 @@ public class InvestmentHandler {
 		
 		
 	}
+	
+	public static void DisplayETF(Customer c)
+	{
+		double[] CurrentInvArr_Bond = c.getInvestData(0);
+		double[] CurrentInvArr_Stock = c.getInvestData(1);
+		Sync_ETF();
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println("   I n v e s t m e n t s     ");
+		System.out.println(" ");
+
+		if(c.getStatus_Invest() == true){
+		System.out.println("     :: Bond Data ::     ");
+		for (int i = 0; i < stock_Length; i++)
+		{
+			System.out.println(bonds[i] + " -> " +  CurrentInvArr_Bond[i]);
+		}
+		System.out.println(" ");
+		System.out.println(" ");
+
+		System.out.println("     :: Stock Data ::     ");
+		for (int i = 0; i < stock_Length; i++)
+		{
+			System.out.println(stocks[i] + " -> " +  CurrentInvArr_Stock[i]);
+		}
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println(" ");
+		if (c.getUser_AccountType().equals("corporate")){
+		System.out.println("Corporate Acount Bonus: ");
+		}
+		System.out.println(" ");
+		}
+		
+		else {  System.out.println("     -No investments-    ");
+		System.out.println(" ");
+
+		}
+
+	}
 
 	
 	public static void InvestRequest(Customer c)
