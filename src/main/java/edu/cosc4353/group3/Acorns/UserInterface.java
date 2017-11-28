@@ -153,9 +153,11 @@ public class UserInterface {   //MENU 1
             case 4: 
             {
             	
-            	 System.out.println( "Hello " + c.getUser_Name()+"! Here is your Account Summary:");
+            	 System.out.println( "          Hello " + c.getUser_Name()+" !");
+            	 System.out.println( "! Here is your Account Summary:");
+
                  System.out.println("");
-                 System.out.println("-------------------------");
+                 System.out.println("======================================");
                  System.out.println("Account Balance: " + c.getUser_balance());
                  System.out.println("Account Type: "+c.getUser_AccountType() );
                  System.out.println("Invest Status: " + c.getStatus_Invest());
@@ -182,6 +184,10 @@ public class UserInterface {   //MENU 1
     	
                  	}
                  System.out.println("Credit Card Information: " + c.getUser_CardNumb());
+                 System.out.println("======================================");
+                 System.out.println(" ");
+                 
+                 InvestmentHandler.DisplayETF(c);
                  UserInput(c);
                 
             }
