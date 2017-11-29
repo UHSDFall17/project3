@@ -13,5 +13,3 @@ public class TestPortfolio {
 		Assert.assertEquals(sector, test.returnPortfolioSector());
 	}
 }
-
-

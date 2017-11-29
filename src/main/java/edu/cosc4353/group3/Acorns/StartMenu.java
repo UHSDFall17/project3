@@ -5,8 +5,7 @@ import java.util.Scanner;
 public class StartMenu {
     private static int Select = 0;
     
-    public static void DisplayMenu()
-    {
+    public static void DisplayMenu() {
         //STARTUP MENU OPTIONS
         System.out.println("     Welcome!      ");
         System.out.println("");
@@ -17,33 +16,22 @@ public class StartMenu {
         System.out.println("===================");
         
         UserInput();
-
     }
-    public static void UserInput()
-    {
+    
+    public static void UserInput() {
         //FUNCTION TO GET USER INPUT
         int Temp = 	9999;
         Scanner UserScan =  new Scanner(System.in);
-
         Temp = UserScan.nextInt();
 
-       // UserScan.close();
         setSelect(Temp);
         
-    
-    {
-        //FUNTION TO ACCESS USER SELECTED OPTION
-        switch(getSelect())
-        {
-            
-            case 1: 
-            {
+        switch(getSelect()) {
+            case 1: {
                 Customer.Login();
                 break;
             }
-            case 2: 
-            {     
-
+            case 2: {     
             	int choiceOfAccount;
                 Scanner input = new Scanner(System.in);
             	System.out.println("Would you like to create a personal account or a corporate account? ");
@@ -59,7 +47,6 @@ public class StartMenu {
 
             		 accountCheckCorporate = Customer.CreateAccountCorporate(accountChoice);
                      System.out.println("\n" + "Corporate Account Created! Please Login.");
-                     //UserScan.nextLine();
                      DisplayMenu();
                      break;
             	default:
@@ -68,48 +55,34 @@ public class StartMenu {
 
             		 accountCheckPersonal = Customer.CreateAccountPersonal(accountChoice);
                      System.out.println("\n" + "Personal Account Created! Please Login.");
-                     //UserScan.nextLine();
                      DisplayMenu();
-                     break;          
-            	
+                     break;
             	}
-
             }
-            case 3: 
-            {
+            case 3: {
                 TheExit();
             }
         }
+        UserScan.close();
     }
     
-    //UserScan.close();
-    
-    }
-    
-    public static int getSelect()
-    {
+    public static int getSelect() {
         return Select;
     }
     
-    public static void setSelect(int newNumb)
-    {
+    public static void setSelect(int newNumb) {
         Select = newNumb;
     }
     
-    public static void ResetSelect()
-    {
+    public static void ResetSelect() {
         setSelect(0);
     }
     
     public static void main(String[] args) {
-        
         DisplayMenu();
     }
     
-    public static void TheExit()
-    {
+    public static void TheExit() {
         System.exit(0);
     }
-    //lol
-    //lol
 }
