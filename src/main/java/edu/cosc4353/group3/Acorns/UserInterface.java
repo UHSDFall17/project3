@@ -190,39 +190,33 @@ public class UserInterface {   //MENU 1
                 	//System.out.println("check ");
 
                     // Here tokens[0] will have value of ID
-                    if (tokens[0].equals(c.getUser_Name())) 
-                    {
+                    if (tokens[0].equals(c.getUser_Name())) {
                     	//System.out.println("Found " + tokens[0]);
-                    	
                     	if (updateType == 1){  //PORTFOLIO UPDATE
-                    	String Convert = Integer.toString(poriId);
-                        tokens[3] = Convert;
+                    		String Convert = Integer.toString(poriId);
+                    		tokens[3] = Convert;
                     	}
                     	if (updateType == 2){ //CARD UPDATE
-                        tokens[2] = cardId;
+                    		tokens[2] = cardId;
                     	}
                     	if (updateType == 3){ //Balance UPDATE
                     		String Convert = Double.toString(c.getUser_balance());
                     		tokens[4] = Convert;
-                        	}
+                        }
                         
                         String newData = tokens[0] + " " + tokens[1] + " " + 
                         				 tokens[2] + " " + tokens[3] + " " +
                         				 tokens[4] + " " + tokens[5] + " ";
                         fileContent.append(newData + System.getProperty("line.separator"));
                     } 
-                    
-                    else 
-                    {
+                    else {
                         // update content as it is
-                    	
                         fileContent.append(strLine + System.getProperty("line.separator"));
                         //fileContent.Append(Environment.NewLine);
                         //fileContent.append("\n");
                     }
                 }
             }
-            
            // System.out.println(fileContent);
             // Now fileContent will have updated content , which you can override into file
             FileWriter fstreamWrite = new FileWriter("LoginInfo.txt");
@@ -234,24 +228,17 @@ public class UserInterface {   //MENU 1
         } catch (Exception e) {//Catch exception if any
             System.err.println("Error: " + e.getMessage());
         }
-    	
-    	
     }
     
-    
-    
-    public static void TheExit()
-    {
+    public static void TheExit() {
         System.exit(0);
     }
     
-    public static int getSelect()
-    {
+    public static int getSelect() {
         return Select;
     }
     
-    public static void setSelect(int newNumb)
-    {
+    public static void setSelect(int newNumb) {
         Select = newNumb;
     }
     
@@ -259,9 +246,4 @@ public class UserInterface {   //MENU 1
     {
         setSelect(0);
     }
-    
-
-    
-
-    
 }
