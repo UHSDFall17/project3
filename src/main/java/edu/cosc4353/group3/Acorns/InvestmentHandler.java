@@ -119,47 +119,33 @@ public class InvestmentHandler {
 		}
 	}
 	
-	public static void SyncData(Customer c)
-	{
+	public static void SyncData(Customer c) {
 		String[] StockIn = new String[10];
 		String[] BondIn = new String[10];
-		
-		
 	}
 
-	
-	public static void InvestRequest(Customer c)
-	{
+	public static void InvestRequest(Customer c) {
 		double b1 = .6, b2 = .5, b3 = .4, b4 = .25, b5 = .1;
 		
-		switch (c.getUser_PortId())
-		{
-		case 1: {	AlocateFunds(c, b1);	break;}
-		case 2: {	AlocateFunds(c, b2);	break;}
-		case 3: {	AlocateFunds(c, b3);	break;}
-		case 4: {	AlocateFunds(c, b4);	break;}
-		case 5: {	AlocateFunds(c, b5);	break;}
+		switch (c.getUser_PortId()) {
+			case 1: {	AlocateFunds(c, b1);	break;}
+			case 2: {	AlocateFunds(c, b2);	break;}
+			case 3: {	AlocateFunds(c, b3);	break;}
+			case 4: {	AlocateFunds(c, b4);	break;}
+			case 5: {	AlocateFunds(c, b5);	break;}
 		}
-		
-		
 	}
 	
-	public static void Sync_ETF()
-	{
+	public static void Sync_ETF() {
         File file = new File("ETFs.txt");
         
         boolean isStock = false;
         boolean noData = false;
+        int stockCount = 0, bondCount = 0;
         
-        int stockCount = 0, bondCount  = 0;
-        
-        try 
-    {    
-        	
+        try { 
         Scanner sc = new Scanner(file);      
-        while (sc.hasNextLine()) 
-        {
-        	
+        while (sc.hasNextLine()) {
             String TempScan = sc.nextLine();
             System.out.println("Test: " + TempScan);
             
@@ -167,41 +153,31 @@ public class InvestmentHandler {
             	isStock = true;
             	noData = true;
             	System.out.println(TempScan + "START STOCK....");
-
             }
-            
             else if (TempScan.equals("Bonds")){
                isStock = false;
                noData = true;
            	   System.out.println(TempScan + "START BOND....");
-
             }
             System.out.println(noData);
 
-            if (!TempScan.equals("Bonds") && !TempScan.equals("Stocks")){	noData = false;	}
-            
+            if (!TempScan.equals("Bonds") && !TempScan.equals("Stocks")){	
+            	noData = false;	
+            }
             System.out.println(noData);
-            if (isStock == true && noData == false)
-            {
+            if (isStock == true && noData == false) {
             	stocks[stockCount] = TempScan;
             	System.out.println(stocks[stockCount] + "in stock");
             	stockCount++;
             }
-            
-            else if (isStock == false && noData == false)
-            {
+            else if (isStock == false && noData == false) {
             	bonds[bondCount] = TempScan;
             	System.out.println(bonds[bondCount] + "in bond");
             	bondCount++;
-            	
             }
-            
         }
-        
         stock_Length = stockCount;
         bond_Length = bondCount;
-        
-        
     } 
     catch (IOException e) { e.printStackTrace();    }
         
@@ -217,136 +193,87 @@ public class InvestmentHandler {
         }
         
     }
-
-		
-		
-		
-		
-		
-	
-
 	//Aggressive Portfolio – 90% stocks / 10% bonds
 	//Moderately Aggressive Portfolio – 75 / 25
 	//Moderate Portfolio – 60 / 40
 	//Moderately Conservative – 50 /50
 	//Conservative 40 / 60
 	
-	
-	
-	
-	public static void AlocateFunds(Customer c, double bond)
-	{
-
+	public static void AlocateFunds(Customer c, double bond) {
 		double[] BondDeposits = new double[bond_Length];
 		double[] StockDeposits = new double[stock_Length];
 
 		int inDep = 0;
-
-        
-        
-     System.out.println("Current port: " + c.getUser_PortId());
-
-		
-			//Conservative 40 / 60      stock / bond
-	
-			System.out.println("Conservative Class");
-
-			System.out.println("PROCESS BONDS....");
-			double allocateAmount =0;
-			double BondAmount = c.getUser_balance() * bond;
-			c.setUser_balance(-(BondAmount));
-			double carryOver = 0;
-			double miniAllocate = BondAmount/(bond_Length-1); 
-			while (inDep < bond_Length - 1){   
+		System.out.println("Current port: " + c.getUser_PortId());
+		//Conservative 40 / 60      stock / bond
+		System.out.println("Conservative Class");
+		System.out.println("PROCESS BONDS....");
+		double allocateAmount =0;
+		double BondAmount = c.getUser_balance() * bond;
+		c.setUser_balance(-(BondAmount));
+		double carryOver = 0;
+		double miniAllocate = BondAmount/(bond_Length-1); 
+		while (inDep < bond_Length - 1){   
 			double randNumb = randInt(0, 1);
 			allocateAmount = randNumb * miniAllocate;
 			double tempCarry = miniAllocate - allocateAmount;
 			carryOver = carryOver + tempCarry;
 			BondDeposits[inDep] = allocateAmount;
 			inDep++;
-			}
-			
-			
-			BondDeposits[inDep] = carryOver;
-			miniAllocate =0;
-			inDep = 0;
-			System.out.println("PROCESS STOCKS....");
-			allocateAmount =0;
-			double StockAmount = c.getUser_balance();
-			c.setUser_balance(-(StockAmount));
-			carryOver = 0;
-			miniAllocate = StockAmount/(stock_Length-1); 
-			while (inDep < stock_Length - 1){   
+		}
+		BondDeposits[inDep] = carryOver;
+		miniAllocate =0;
+		inDep = 0;
+		System.out.println("PROCESS STOCKS....");
+		allocateAmount = 0;
+		double StockAmount = c.getUser_balance();
+		c.setUser_balance(-(StockAmount));
+		carryOver = 0;
+		miniAllocate = StockAmount/(stock_Length-1); 
+		while (inDep < stock_Length - 1){   
 			double randNumb = randInt(0, 1);
 			allocateAmount = randNumb * miniAllocate;
 			double tempCarry = miniAllocate - allocateAmount;
 			carryOver = carryOver + tempCarry;
 			StockDeposits[inDep] = allocateAmount;
 			inDep++;
-			}
-			StockDeposits[inDep] = carryOver;
-			inDep = 0;;
-			
-			Local_BondIn = BondDeposits;
-			Local_StockIn = StockDeposits;
-			
-			decimalConvert(BondDeposits, bondIn, bond_Length);
-			decimalConvert(StockDeposits, stockIn, stock_Length);
-
-			
-			
-			
-			testFast(BondDeposits, bond_Length);
-			testFast(StockDeposits, stock_Length);
-			dataSend(c);
-			
-		
-			
-		
-		
 		}
-		
-		
-		
-	
-	
-	
-	public static double randInt(double min, double max) {
-		
-	    Random rand = new Random();
-
-
-	    double randomNum = min + rand.nextDouble();
-
-	    return randomNum;
-		
+		StockDeposits[inDep] = carryOver;
+		inDep = 0;
+			
+		Local_BondIn = BondDeposits;
+		Local_StockIn = StockDeposits;
+			
+		decimalConvert(BondDeposits, bondIn, bond_Length);
+		decimalConvert(StockDeposits, stockIn, stock_Length);
+			
+		testFast(BondDeposits, bond_Length);
+		testFast(StockDeposits, stock_Length);
+		dataSend(c);
 	}
 	
+	public static double randInt(double min, double max) {
+		Random rand = new Random();
+	    double randomNum = min + rand.nextDouble();
+	    return randomNum;
+	}
 	
-	public static void testFast(double[] arrayIn, int size)
-	{
-		for (int i = 0; i < size; i++ )
-		{
+	public static void testFast(double[] arrayIn, int size) {
+		for (int i = 0; i < size; i++ ) {
 			System.out.println(arrayIn[i]);
 		}
 	}
 	
-	public static void decimalConvert(double[] stkAr, String[] alpahArray, int stkSize)
-	{
-		for (int i = 0; i < stkSize; i++)
-		{
+	public static void decimalConvert(double[] stkAr, String[] alpahArray, int stkSize) {
+		for (int i = 0; i < stkSize; i++) {
 			double roundOff = Math.round(stkAr[i] * 100.0) / 100.0;
 			
 			stkAr[i] = roundOff;
 			alpahArray[i] = new Double(roundOff).toString();
 		}
-		
-		
 	}
 	
-	
-	public static void dataSend(Customer c)
-	{
+	public static void dataSend(Customer c) {
 		System.out.println("DATASENDDDDD");
 		
 		try {
@@ -476,16 +403,14 @@ public class InvestmentHandler {
 		c.InvestArray_Length(aSize);
 		
 		String Storage = c.getUser_Name();
-		for (int i = 0; i < aSize; i++){
-		 Storage += " " + a[i];
+		for (int i = 0; i < aSize; i++) {
+			Storage += " " + a[i];
 		}
-		for (int i = 0; i < bSize; i++){
-			 Storage += " " + b[i];
-			}
+		for (int i = 0; i < bSize; i++) {
+			Storage += " " + b[i];
+		}
         System.out.println(Storage);
-
-        try
-        {
+        try {
             String filename = "InvestData.txt";
             BufferedWriter  outP;
             outP = new BufferedWriter(new FileWriter(filename, true));
@@ -494,34 +419,24 @@ public class InvestmentHandler {
             outP.append(Storage);
             outP.close();
         }
-        
-        catch(IOException ioe)
-        {
+        catch(IOException ioe) {
             System.err.println("IOException: " + ioe.getMessage());
         }
-		
 	}
 	
-	
-	public static void SyncLocal(Customer c, int ArrLength, int processType)
-	{
+	public static void SyncLocal(Customer c, int ArrLength, int processType) {
 		double[] bondTemp = new double[10];
 		double[] stockTemp = new double[10];
 		
 		double[] CurrentInvArr_Bond = c.getInvestData(0);
 		double[] CurrentInvArr_Stock = c.getInvestData(1);
 
-		for (int i =0; i < ArrLength; i++)
-		{
-			
-			
+		for (int i =0; i < ArrLength; i++) {
 			bondTemp[i] = Local_BondIn[i] + CurrentInvArr_Bond[i];
 			stockTemp[i] = Local_StockIn[i] + CurrentInvArr_Stock[i];
 			System.out.println("Bond: " + Local_BondIn[i] + " + " + CurrentInvArr_Bond[i] + " = " + bondTemp[i]);
 			System.out.println("Stock: " + Local_StockIn[i] + " + " + CurrentInvArr_Stock[i] + " = " + stockTemp[i]);
-
 		}
-		
 		c.setInvestData(bondTemp, 0);
 		c.setInvestData(stockTemp, 1);
 		
@@ -529,10 +444,5 @@ public class InvestmentHandler {
 		CurrentInvArr_Stock = c.getInvestData(1);
 		testFast(CurrentInvArr_Bond, ArrLength);
 		testFast(CurrentInvArr_Stock, ArrLength);
-
-
 	}
-	
-	
-
 }
