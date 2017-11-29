@@ -52,7 +52,7 @@ public class AppTest
 	}
 	
 // Tests for Customer class
-/*	@Test
+	@Test
 	public void testAddCustomer() {
 		String testUser = "asdf";
 		String testPass = "1234";
@@ -110,14 +110,6 @@ public class AppTest
 		Assert.assertEquals("12345", newUser.returnUsername());
 		Assert.assertEquals(12345, newUser.returnCardNumber());
 	}
-	*/
-	
-    public static void main(String[] args) {
-    	
-        // TODO code application logic here
-              StartMenu start = new StartMenu();
 
-              start.DisplayMenu();
-    }
 
 }
