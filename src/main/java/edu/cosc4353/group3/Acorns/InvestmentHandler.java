@@ -10,9 +10,7 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.util.Random;
 
-
 public class InvestmentHandler {
-	
 	private static String[] stocks = new String[10];
 	private static String[] bonds = new String[10];
 	
@@ -33,38 +31,33 @@ public class InvestmentHandler {
 	//stocks - Vanguard S&P 500 Stock ETF, Vanguard Small-Cap Stock ETF,  Vanguard FTSE Emerging Markets Stock ETF, Vanguard Mega Cap Growth Stock ETF
 	//bonds - Vanguard Short-Term Bond TFF, iShares Core U.S. Aggregate Bond, SPDR Barclays High Yield Bond ETF, PowerShares Senior Loan ETF 
 	
-	public static boolean PortfolioSetup_Check(Customer c) //Check if Portfolio is Setup
-	{
-		if (c.getUser_PortId() == -1 )
-		{
+	//Check if Portfolio is Setup
+	public static boolean PortfolioSetup_Check(Customer c) {
+		if (c.getUser_PortId() == -1 ) {
 			System.out.println("Hey " + c.getUser_Name() + " ,you have not setup an account Portfolio!");
 			System.out.println("Setup can be accessed through the user menu");
 			
 			return false;
 		}
-		
 		else { 
 			System.out.println("Portfolio is Active at: " + c.getUser_PortId());
-			return true; }
+			return true; 
+		}
 	}
 	
-	public static boolean AccountBalance_Check(Customer c) //Check if Balance meets minimal req.
-	{
-		if (c.getUser_balance() >= 5)
-		{
+	//Check if Balance meets minimal req.
+	public static boolean AccountBalance_Check(Customer c) {
+		if (c.getUser_balance() >= 5) {
 			return true;
 		}
-		else {System.out.println(c.getUser_Name() + " Please Deposit Additional Funds");
-				System.out.println("Account Balance Should Have a Minimum of 5$ to Invest");
-				return false;
+		else {
+			System.out.println(c.getUser_Name() + " Please Deposit Additional Funds");
+			System.out.println("Account Balance Should Have a Minimum of 5$ to Invest");
+			return false;
 		}
-		
 	}
 	
-	
-	
-	public static boolean CheckAccount(Customer c)
-	{
+	public static boolean CheckAccount(Customer c) {
 		boolean userFound = false;
 		double[] StockIn = new double[10];
 		double[] BondIn = new double[10];
@@ -89,47 +82,41 @@ public class InvestmentHandler {
                     	
                     	userFound = true;
                     	System.out.println("Token:::: " + tokens.length);
-                    	for (int i = 1; i < tokens.length; i++)
-                    	{
+                    	for (int i = 1; i < tokens.length; i++) {
                         	System.out.println(tokens[i]);
 
-                    		if (i <= ((tokens.length-1)/2))
-                    		{
+                    		if (i <= ((tokens.length-1)/2)) {
                             	System.out.println("1");
 
                     			double number = new Double(tokens[i]).doubleValue();
                     			BondIn[i-1] = number;
                     		}
-                    		else
-                    		{
+                    		else {
                             	System.out.println("2");
 
                     			double number = new Double(tokens[i]).doubleValue();
                     			StockIn[i-(((tokens.length-1)/2)+1)] = number;
                     		}
-                    		
                     	}
-                    	
                     } 
                 }
             }
         } catch (Exception e) {//Catch exception if any
             System.err.println("Error: " + e.getMessage());
         }
-		
 		testFast(BondIn, 4);
 		testFast(StockIn, 4);
 		
-
-
-		if (userFound == true){
+		if (userFound == true) {
 			c.InvestArray_Length(invLength);
 			c.setInvestData(BondIn, 0);
 			c.setInvestData(StockIn, 1);
 			c.setStatus_Invest(true);
 			return true;
-			}
-		else { c.setStatus_Invest(false); return false;}
+		}
+		else { 
+			c.setStatus_Invest(false); return false;
+		}
 	}
 	
 	public static void SyncData(Customer c)
@@ -549,4 +536,3 @@ public class InvestmentHandler {
 	
 
 }
-
