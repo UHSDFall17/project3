@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.cosc4353.group3.Acorns;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,46 +8,31 @@ import java.util.Scanner;
 
 import org.omg.CORBA.Environment;
 
-
-/**
- *
- * @author Detrich
- */
 public class UserInterface {   //MENU 1
     
     //Displayed After User Completes Login
     private static int Select = 0;
 
-    public static void DisplayMenu(String loginUser)
-    {
-        
+    public static void DisplayMenu(String loginUser) {  
         System.out.println("     Hello " + loginUser + " !"     );
         System.out.println("");
         System.out.println("===================");
         System.out.println("    1: Porfolios          ");
         System.out.println("    2: Invest    "); //Dosent really matter
-
         System.out.println("    3: Account Settings    "); //Dosent really matter
         System.out.println("    4: Account Summary    ");     //Dosent really matter
         System.out.println("    5: Make A Purchase       ");
         System.out.println("    6: Make A Deposit       ");
-
         System.out.println("    7: Logout       ");
         System.out.println("    8: Simulate Test       ");
-
         System.out.println("===================");
-        
-        
-
     }
-    public static void AcctSetMenu(Customer c)  //MENU 2
-    {
-        
+    
+    public static void AcctSetMenu(Customer c) {
         System.out.println("     Account Settings"     );
         System.out.println("");
         System.out.println("-------------------------");
         System.out.println("    1: Update Credit/Debit Card          ");
-        
         System.out.println("    2:      "); //Dosent really matter
         System.out.println("    3:      ");     //Dosent really matter
         System.out.println("    4: Back to Main Menu       ");
@@ -62,16 +42,10 @@ public class UserInterface {   //MENU 1
         Temp = UserScan.nextInt();
         setSelect(Temp);
         
-    
-    
         //ACCESS USER SELECTED OPTION
         Customer custom = new Customer();
-
-        switch(getSelect())
-        {
-            
-            case 1: 
-            {
+        switch(getSelect()) {
+            case 1: {
             	String cardNo = CreditCardValidation.CardWizard(c);
             	System.out.println("Updating Card No. To: " + cardNo);
             	
@@ -81,30 +55,16 @@ public class UserInterface {   //MENU 1
             	UserInput(c);
                 break;
             }
-            case 2: 
-            {     
-
+            case 2: {
                 break;
             }
-            case 3: 
-            {
-            
+            case 3: {
             	UserInput(c);
             }
         }
-        
-
     }
-        
-        
-        
-    public static void UserInput(Customer c) //need to get user account MENU 1
-    {
-             //System.out.println("In User Interface....");
-             //System.out.println("Customer: " + c.getUser_Name());
-             //System.out.println("Customer: " + c.getUser_Pass());
-             //System.out.println("Customer: " + c.getUser_CardNumb());
-             
+          
+    public static void UserInput(Customer c) {      
         DisplayMenu(c.getUser_Name());
 
         //FUNCTION TO GET USER INPUT
@@ -113,16 +73,11 @@ public class UserInterface {   //MENU 1
         Temp = UserScan.nextInt();
         setSelect(Temp);
         
-    
-    
         //ACCESS USER SELECTED OPTION
         Customer custom = new Customer();
 
-        switch(getSelect())
-        {
-            
-            case 1: 
-            {
+        switch(getSelect()) {
+        	case 1: {
             	int PortiId = Portfolio.UserInput(c); //Links to Portfolio Function
             	System.out.println(PortiId);
             	UpdateData( c,  PortiId, "", 1);
@@ -131,22 +86,18 @@ public class UserInterface {   //MENU 1
             	UserInput(c);
                 break;
             }
-            case 2: 
-            {     
+            case 2: {     
             	boolean portCheck = InvestmentHandler.PortfolioSetup_Check(c);
             	boolean balanceCheck = InvestmentHandler.AccountBalance_Check(c);
             	
-            	if (portCheck == true && balanceCheck == true){
-            	InvestmentHandler.Sync_ETF();
-            	InvestmentHandler.InvestRequest(c);
-            	UpdateData( c,  -1, "", 3);
+            	if (portCheck == true && balanceCheck == true) {
+            		InvestmentHandler.Sync_ETF();
+            		InvestmentHandler.InvestRequest(c);
+            		UpdateData( c,  -1, "", 3);
             	}
-            	
-            	UserInput(c);
-                
+            	UserInput(c);    
             }
-            case 3: 
-            {     
+            case 3:{     
             	AcctSetMenu(c);
                 break;
             }
@@ -155,7 +106,6 @@ public class UserInterface {   //MENU 1
             	
             	 System.out.println( "          Hello " + c.getUser_Name()+" !");
             	 System.out.println( "! Here is your Account Summary:");
-
                  System.out.println("");
                  System.out.println("======================================");
                  System.out.println("Account Balance: " + c.getUser_balance());
@@ -181,7 +131,6 @@ public class UserInterface {   //MENU 1
                  default:        
                      System.out.println("Portfolio: Not Setup");
                      break;
-    	
                  	}
                  System.out.println("Credit Card Information: " + c.getUser_CardNumb());
                  System.out.println("======================================");
@@ -189,40 +138,33 @@ public class UserInterface {   //MENU 1
                  
                  InvestmentHandler.DisplayETF(c);
                  UserInput(c);
-                
             }
-            case 5:
-            {
+            case 5: {
                 String accountTypeUser = c.getUser_AccountType();
                 int check = -1;
                 if (accountTypeUser.equals("corporate")){  check = 1;  }
                 else { check = -1; }
             	switch(check) {
-            	case 1:
-            		CorporateHandler.depositFunds(c);
-            		UpdateData( c,  -1, "", 3);
-                	UserInput(c);	
-            	default:
-            		FundsHandler.depositFunds(c);
-                	UpdateData( c,  -1, "", 3);
-                	UserInput(c);
+            		case 1:{
+            			CorporateHandler.depositFunds(c);
+            			UpdateData( c,  -1, "", 3);
+            			UserInput(c);	
+            		}
+            		default:{
+            			FundsHandler.depositFunds(c);
+            			UpdateData( c,  -1, "", 3);
+            			UserInput(c);
+            		}
             	}
             }
-            case 6:
-            {
+            case 6: {
             	FundsHandler.depositFunds(c);
             	UpdateData( c,  -1, "", 3);
-            	
             	UserInput(c);
-
             }
-            
-            case 7:
-            {
+            case 7: {
             	StartMenu.DisplayMenu();
-            	
             }
-            
             case 8:
             {  	
                 if(Simulate.ping(c) == true){
@@ -231,27 +173,14 @@ public class UserInterface {   //MENU 1
                 
             	Simulate.Start(c);
             }
-            
-            
         }
-        
-        //UserScan.close();
-    
-    
     }
     
-    public static void portfoliFind(Customer c)
-    {
-    	//switch ()
-    	
-    	
-    	
-    	
-    	
+    public static void portfoliFind(Customer c) {
     	
     }
-    public static void UpdateData(Customer c, int poriId, String cardId, int UpdateType)
-    {
+    
+    public static void UpdateData(Customer c, int poriId, String cardId, int UpdateType) {
         try {
             // Open the file that is the first
             // command line parameter
@@ -273,39 +202,33 @@ public class UserInterface {   //MENU 1
                 	//System.out.println("check ");
 
                     // Here tokens[0] will have value of ID
-                    if (tokens[0].equals(c.getUser_Name())) 
-                    {
+                    if (tokens[0].equals(c.getUser_Name())) {
                     	//System.out.println("Found " + tokens[0]);
-                    	
                     	if (updateType == 1){  //PORTFOLIO UPDATE
-                    	String Convert = Integer.toString(poriId);
-                        tokens[3] = Convert;
+                    		String Convert = Integer.toString(poriId);
+                    		tokens[3] = Convert;
                     	}
                     	if (updateType == 2){ //CARD UPDATE
-                        tokens[2] = cardId;
+                    		tokens[2] = cardId;
                     	}
                     	if (updateType == 3){ //Balance UPDATE
                     		String Convert = Double.toString(c.getUser_balance());
                     		tokens[4] = Convert;
-                        	}
+                        }
                         
                         String newData = tokens[0] + " " + tokens[1] + " " + 
                         				 tokens[2] + " " + tokens[3] + " " +
                         				 tokens[4] + " " + tokens[5] + " ";
                         fileContent.append(newData + System.getProperty("line.separator"));
                     } 
-                    
-                    else 
-                    {
+                    else {
                         // update content as it is
-                    	
                         fileContent.append(strLine + System.getProperty("line.separator"));
                         //fileContent.Append(Environment.NewLine);
                         //fileContent.append("\n");
                     }
                 }
             }
-            
            // System.out.println(fileContent);
             // Now fileContent will have updated content , which you can override into file
             FileWriter fstreamWrite = new FileWriter("LoginInfo.txt");
@@ -317,24 +240,17 @@ public class UserInterface {   //MENU 1
         } catch (Exception e) {//Catch exception if any
             System.err.println("Error: " + e.getMessage());
         }
-    	
-    	
     }
     
-    
-    
-    public static void TheExit()
-    {
+    public static void TheExit() {
         System.exit(0);
     }
     
-    public static int getSelect()
-    {
+    public static int getSelect() {
         return Select;
     }
     
-    public static void setSelect(int newNumb)
-    {
+    public static void setSelect(int newNumb) {
         Select = newNumb;
     }
     
@@ -342,10 +258,4 @@ public class UserInterface {   //MENU 1
     {
         setSelect(0);
     }
-    
-
-    
-
-    
 }
-
