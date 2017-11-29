@@ -101,10 +101,13 @@ public class UserInterface {   //MENU 1
             	AcctSetMenu(c);
                 break;
             }
-            case 4: {
-            	 System.out.println( "Hello " + c.getUser_Name()+"! Here is your Account Summary:");
+            case 4: 
+            {
+            	
+            	 System.out.println( "          Hello " + c.getUser_Name()+" !");
+            	 System.out.println( "! Here is your Account Summary:");
                  System.out.println("");
-                 System.out.println("-------------------------");
+                 System.out.println("======================================");
                  System.out.println("Account Balance: " + c.getUser_balance());
                  System.out.println("Account Type: "+c.getUser_AccountType() );
                  System.out.println("Invest Status: " + c.getStatus_Invest());
@@ -130,6 +133,10 @@ public class UserInterface {   //MENU 1
                      break;
                  	}
                  System.out.println("Credit Card Information: " + c.getUser_CardNumb());
+                 System.out.println("======================================");
+                 System.out.println(" ");
+                 
+                 InvestmentHandler.DisplayETF(c);
                  UserInput(c);
             }
             case 5: {
@@ -158,7 +165,12 @@ public class UserInterface {   //MENU 1
             case 7: {
             	StartMenu.DisplayMenu();
             }
-            case 8: {
+            case 8:
+            {  	
+                if(Simulate.ping(c) == true){
+            	Simulate.Start(c);
+            	}
+                
             	Simulate.Start(c);
             }
         }

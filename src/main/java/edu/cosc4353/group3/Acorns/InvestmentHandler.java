@@ -123,6 +123,44 @@ public class InvestmentHandler {
 		String[] StockIn = new String[10];
 		String[] BondIn = new String[10];
 	}
+	
+	public static void DisplayETF(Customer c)
+	{
+		double[] CurrentInvArr_Bond = c.getInvestData(0);
+		double[] CurrentInvArr_Stock = c.getInvestData(1);
+		Sync_ETF();
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println("   I n v e s t m e n t s     ");
+		System.out.println(" ");
+
+		if(c.getStatus_Invest() == true){
+		System.out.println("     :: Bond Data ::     ");
+		for (int i = 0; i < stock_Length; i++)
+		{
+			System.out.println(bonds[i] + " -> " +  CurrentInvArr_Bond[i]);
+		}
+		System.out.println(" ");
+		System.out.println(" ");
+
+		System.out.println("     :: Stock Data ::     ");
+		for (int i = 0; i < stock_Length; i++)
+		{
+			System.out.println(stocks[i] + " -> " +  CurrentInvArr_Stock[i]);
+		}
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println(" ");
+		if (c.getUser_AccountType().equals("corporate")){
+		System.out.println("Corporate Acount Bonus: ");
+		}
+		System.out.println(" ");
+		}
+		
+		else {  System.out.println("     -No investments-    ");
+		System.out.println(" ");
+
+		}
+
+	}
 
 	public static void InvestRequest(Customer c) {
 		double b1 = .6, b2 = .5, b3 = .4, b4 = .25, b5 = .1;
@@ -193,6 +231,7 @@ public class InvestmentHandler {
         }
         
     }
+
 	//Aggressive Portfolio – 90% stocks / 10% bonds
 	//Moderately Aggressive Portfolio – 75 / 25
 	//Moderate Portfolio – 60 / 40
@@ -444,5 +483,126 @@ public class InvestmentHandler {
 		CurrentInvArr_Stock = c.getInvestData(1);
 		testFast(CurrentInvArr_Bond, ArrLength);
 		testFast(CurrentInvArr_Stock, ArrLength);
+	}
+}
+	
+	public static void SyncExternal(Customer c)
+	{
+		System.out.println(":: Simulate :: Data Storage ::");
+
+		double[] CurrentInvArr_Bond = c.getInvestData(0);
+		double[] CurrentInvArr_Stock = c.getInvestData(1);
+		
+		String[] bondTemp = new String[10];
+		String[] stockTemp = new String[10];
+		
+
+		int LengthInv = c.getInvestArray_Length();
+		
+		for (int i =0; i < LengthInv; i++)
+		{
+			bondTemp[i] = new Double(CurrentInvArr_Bond[i]).toString();
+			stockTemp[i] = new Double(CurrentInvArr_Stock[i]).toString();
+
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		try {
+            // Open the file that is the first
+            // command line parameter
+			boolean userFound = false;
+        	
+            FileInputStream fstream = new FileInputStream("InvestData.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+            String strLine;
+            StringBuilder fileContent = new StringBuilder();
+            
+            //Read File Line By Line
+            while ((strLine = br.readLine()) != null) {
+                // Print the content on the console
+                System.out.println(strLine);
+                
+                String tokens[] = strLine.split(" ");
+
+                if (tokens.length > 0) {
+                	System.out.println("check ");
+
+                    if (tokens[0].equals(c.getUser_Name())) 
+                    {
+                    	System.out.println("Found " + tokens[0]); //FOUND USER-----------
+                    	userFound = true;
+                    	
+                    	String inputData = c.getUser_Name();
+                    	
+                    	
+                    	//bondTemp[i] = new Double(CurrentInvArr_Bond[i]).toString();
+            			//stockTemp[i] = new Double(CurrentInvArr_Stock[i]).toString();
+                    	
+                    	
+                    	for (int i =1; i <  (c.getInvestArray_Length() +1); i++)
+                    	{
+
+                    		
+                    		
+                    		String tempS = bondTemp[i-1];
+                    		
+                    		inputData += " " + tempS;
+                    		System.out.println("After: " + inputData);
+
+                    		System.out.println("i: " + i);
+
+                    	}
+                    	
+                    	for (int i =5; i < (c.getInvestArray_Length() +5); i++)
+                    	{
+        
+                    		String tempS = stockTemp[i-5];
+                    		
+                    		inputData += " " + tempS;
+                    		System.out.println("After: " + inputData);
+
+                    		System.out.println("i: " + i);
+
+                    	}
+   
+
+                        	
+
+                        
+                        fileContent.append(inputData + System.getProperty("line.separator"));
+                    } 
+                    
+                    else 
+                    {
+                    	
+                        fileContent.append(strLine + System.getProperty("line.separator"));
+ 
+                    }
+                }
+            }
+            
+            if (userFound == true){
+        		System.out.println("found user");
+
+            System.out.println(fileContent);
+            // Now fileContent will have updated content , which you can override into file
+            FileWriter fstreamWrite = new FileWriter("InvestData.txt");
+            BufferedWriter out = new BufferedWriter(fstreamWrite);
+            out.write(fileContent.toString());
+            out.close();
+            }
+            
+            else{ 		System.out.println("no user");
+            newData(c, bondIn, stockIn, bond_Length, stock_Length);	}
+
+        } catch (Exception e) {//Catch exception if any
+            System.err.println("Error: " + e.getMessage());
+        }
 	}
 }
