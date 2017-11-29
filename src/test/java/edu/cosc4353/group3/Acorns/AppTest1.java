@@ -27,7 +27,7 @@ public class AppTest1
 	}
 	
 	@Test
-	public void testCardNumb()
+	public void testName()
 	{
 		
 		String user = "Smeet";
