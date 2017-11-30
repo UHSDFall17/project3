@@ -179,7 +179,8 @@ public class UserInterface {   //MENU 1
             	}
             	
             	UserInput(c);
-            }   
+            }        
+        }
     }
 
     public static void UpdateData(Customer c, int poriId, String cardId, int UpdateType) {
