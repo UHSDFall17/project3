@@ -37,7 +37,8 @@ public class UserInterface {   //MENU 1
         System.out.println("");
         System.out.println("-------------------------");
         System.out.println("    1: Update Credit/Debit Card          ");
-        System.out.println("    2: Back to Main Menu       ");
+        System.out.println("    2: Change Password         ");
+        System.out.println("    3: Back to Main Menu       ");
         System.out.println("-------------------------");
         int Temp = 9999;
         Scanner UserScan =  new Scanner(System.in);
@@ -57,7 +58,18 @@ public class UserInterface {   //MENU 1
             	UserInput(c);
                 break;
             }
-            case 2:{
+           case 2:{
+            	boolean passwordChange=UserSettings.changePassword(c);
+            	if(passwordChange==true) {
+                	System.out.println("Password Changed!");
+            		DisplayMenu(login);
+            	}else {
+                	System.out.println("Password not Changed!");
+            		DisplayMenu(login);
+
+            	}
+            }
+            case 3:{
             	DisplayMenu(login);
             }
         }
@@ -179,11 +191,18 @@ public class UserInterface {   //MENU 1
             	}
             	
             	UserInput(c);
-            }        
-        }
+            }
+            
+            
     }
-
-    public static void UpdateData(Customer c, int poriId, String cardId, int UpdateType) {
+        }
+    
+    
+    public static void portfoliFind(Customer c) {
+    	
+    }
+    
+    public static void UpdateData(Customer c, int poriId, String stringInput,int UpdateType) {
         try {
             // Open the file that is the first
             // command line parameter
@@ -212,12 +231,15 @@ public class UserInterface {   //MENU 1
                     		tokens[3] = Convert;
                     	}
                     	if (updateType == 2){ //CARD UPDATE
-                    		tokens[2] = cardId;
+                    		tokens[2] = stringInput;
                     	}
                     	if (updateType == 3){ //Balance UPDATE
                     		String Convert = Double.toString(c.getUser_balance());
                     		tokens[4] = Convert;
                         }
+                    	if(updateType==4) {
+                    		tokens[1]= stringInput;
+                    	}
                         
                         String newData = tokens[0] + " " + tokens[1] + " " + 
                         				 tokens[2] + " " + tokens[3] + " " +
