@@ -143,4 +143,3 @@ public class CreditCardValidation
     return Long.toString(d).length();
   }
 }
-
