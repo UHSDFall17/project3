@@ -34,15 +34,4 @@ public class AppTest3
 		Assert.assertEquals(portIden, customer.getUser_PortId());
 						
 	}
-	
-
-    public static void main(String[] args)
-    {
-    	
-        // TODO code application logic here
-              StartMenu start = new StartMenu();
-
-              start.DisplayMenu();
-    }
-
 }
