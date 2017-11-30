@@ -2,11 +2,10 @@ package edu.cosc4353.group3.Acorns;
 
 import java.util.Scanner;
 
-public class StartMenu {
+public class StartMenu extends Menu{
     private static int Select = 0;
     
-    public void displayMenu() {
-    	StartMenu start = new StartMenu();
+    public static void displayMenu() {
         //STARTUP MENU OPTIONS
         System.out.println("");
         System.out.println("===================");
@@ -14,10 +13,10 @@ public class StartMenu {
         System.out.println("    2: Sign Up ");
         System.out.println("    3: Exit ");
         System.out.println("===================");
-        start.UserInput();
+        UserInput();
     }
     
-    public void UserInput() {
+    public static void UserInput() {
         //FUNCTION TO GET USER INPUT
         int Temp = 	9999;
         Scanner UserScan =  new Scanner(System.in);
@@ -27,7 +26,6 @@ public class StartMenu {
         
         switch(getSelect()) {
             case 1: {
-            	LoginMenu LoginMenu = new LoginMenu();
                 LoginMenu.displayMenu();
                 break;
             }
