@@ -38,6 +38,8 @@ public class UserInterface {   //MENU 1
         System.out.println("    6: Make A Deposit       ");
 
         System.out.println("    7: Logout       ");
+        System.out.println("    8: Simulate Test       ");
+
         System.out.println("===================");
         
         
@@ -150,41 +152,61 @@ public class UserInterface {   //MENU 1
             }
             case 4: 
             {
+            	
+            	 System.out.println( "          Hello " + c.getUser_Name()+" !");
+            	 System.out.println( "! Here is your Account Summary:");
 
-                System.out.println( "Hello " + c.getUser_Name()+"! Here is your Account Summary:");
-                System.out.println("");
-                System.out.println("-------------------------");
-                System.out.println("Account Balance: " + c.getUser_balance());
-                System.out.println("Account Type: "+c.getUser_AccountType() );
-                switch(c.getUser_PortId()) {
-                case 1:
-                    System.out.println("Account Portfolio: Conservative");
-                    break;
-                case 2:
-                    System.out.println("Account Portfolio: Moderately Conservative");
-                    break;
-                case 3:
-                    System.out.println("Account Portfolio: Moderate");
-                    break;
-                case 4:
-                    System.out.println("Account Portfolio: Moderately Aggressive");
-                    break;
-                default:        
-                    System.out.println("Account Portfolio: Aggressive");
-                    break;
-   	
-                	}
-                System.out.println("Credit Card Information: " + c.getUser_CardNumb());
-                UserInput(c);
+                 System.out.println("");
+                 System.out.println("======================================");
+                 System.out.println("Account Balance: " + c.getUser_balance());
+                 System.out.println("Account Type: "+c.getUser_AccountType() );
+                 System.out.println("Invest Status: " + c.getStatus_Invest());
+
+                 switch(c.getUser_PortId()) {
+                 case 1:
+                     System.out.println("Account Portfolio: Conservative");
+                     break;
+                 case 2:
+                     System.out.println("Account Portfolio: Moderately Conservative");
+                     break;
+                 case 3:
+                     System.out.println("Account Portfolio: Moderate");
+                     break;
+                 case 4:
+                     System.out.println("Account Portfolio: Moderately Aggressive");
+                     break;
+                 case 5:
+                	 System.out.println("Account Portfolio: Aggressive");
+                     break;
+                 default:        
+                     System.out.println("Portfolio: Not Setup");
+                     break;
+    	
+                 	}
+                 System.out.println("Credit Card Information: " + c.getUser_CardNumb());
+                 System.out.println("======================================");
+                 System.out.println(" ");
+                 
+                 InvestmentHandler.DisplayETF(c);
+                 UserInput(c);
                 
             }
             case 5:
-            { 
-            	//Purchase and add change
-            	FundsHandler.makePurchase(c);
-            	UpdateData( c,  -1, "", 3);
-            	UserInput(c);
-
+            {
+                String accountTypeUser = c.getUser_AccountType();
+                int check = -1;
+                if (accountTypeUser.equals("corporate")){  check = 1;  }
+                else { check = -1; }
+            	switch(check) {
+            	case 1:
+            		CorporateHandler.depositFunds(c);
+            		UpdateData( c,  -1, "", 3);
+                	UserInput(c);	
+            	default:
+            		FundsHandler.depositFunds(c);
+                	UpdateData( c,  -1, "", 3);
+                	UserInput(c);
+            	}
             }
             case 6:
             {
@@ -199,6 +221,15 @@ public class UserInterface {   //MENU 1
             {
             	StartMenu.DisplayMenu();
             	
+            }
+            
+            case 8:
+            {
+            	if(Simulate.ping(c) == true){
+            	Simulate.Start(c);
+            	}
+            	
+            	UserInput(c);
             }
             
             
