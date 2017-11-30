@@ -24,4 +24,24 @@ public class TestUserInter {
 		UserInterface.setSelect(sel);
 		Assert.assertEquals(sel, UserInterface.getSelect());
 	}
+	@Test
+	public void testResetSelects() {
+		int sel = 0;
+		sel = 1;
+		UserInterface.setSelect(sel);
+		UserInterface.ResetSelect();
+		Assert.assertEquals(0, UserInterface.getSelect());
+		sel = 9;
+		UserInterface.setSelect(sel);
+		UserInterface.ResetSelect();
+		Assert.assertEquals(0, UserInterface.getSelect());
+		sel = 99999;
+		UserInterface.setSelect(sel);
+		UserInterface.ResetSelect();
+		Assert.assertEquals(0, UserInterface.getSelect());
+		sel = -99999;
+		UserInterface.setSelect(sel);
+		UserInterface.ResetSelect();
+		Assert.assertEquals(0, UserInterface.getSelect());
+	}
 }
