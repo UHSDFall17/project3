@@ -86,19 +86,7 @@ public class Customer {
 		accountBalance =  accountBalance + change;
 	}
         
-	public void setInvestData(double[] data, int dataType) { // 0 FOR BOND    1 FOR STOCK
-        	if (dataType == 0){	
-        		bondData = data;	
-        	}
-        	else {	
-        		stockData = data;	
-        	}
-        }
 
-	public double[] getInvestData(int dataType)  {// 0 FOR BOND    1 FOR STOCK
-		if (dataType == 0){	
-        	return bondData;	
-        }
        	else {	
        		return stockData;	
        	}
