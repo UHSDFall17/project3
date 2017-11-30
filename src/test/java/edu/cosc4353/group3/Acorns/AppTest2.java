@@ -49,14 +49,4 @@ public class AppTest2
 		Assert.assertEquals(password, customer.getUser_Pass());
 						
 	}
-	
-
-    public static void main(String[] args) {
-    	
-        // TODO code application logic here
-              StartMenu start = new StartMenu();
-
-              start.DisplayMenu();
-    }
-
 }
