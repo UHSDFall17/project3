@@ -82,6 +82,9 @@ public class Customer {
 		accountBalance =  accountBalance + change;
 	}
         
+		public void setPassword(String password) {
+			passwd=password;
+		}
       
              
         public void setInvestData(double[] data, int dataType)  // 0 FOR BOND    1 FOR STOCK
@@ -124,20 +127,24 @@ public class Customer {
 	public static void setPortfolio(Customer c, int id) {
 		c.portIdent = id;
 	}
-//	deprecated class
-//	public static int hashUsername(String username) {
-//		int nameLength = username.length();
-//		int user[] = new int[nameLength];
-//		int total = 0;
-//		
-//		for(int i = 0; i < nameLength; i++) {
-//			user[i] = username.charAt(i);
-//		}
-//		for(int i = 0; i < nameLength; i++) {
-//			total += user[i];
-//		}
-//		return((total)%5);
-//	}
+	
+	public static int hashUsername(String username) {
+		int nameLength = username.length();
+		int user[] = new int[nameLength];
+		int total = 0;
+		
+		for(int i = 0; i < nameLength; i++) {
+			user[i] = username.charAt(i);
+		}
+		for(int i = 0; i < nameLength; i++) {
+			total += user[i];
+		}
+		return((total)%5);
+	}
+	// Username hash to store and identify object
+	public void storeUser() {
+		
+	}
 
         //Create New User Account
 	public static boolean CreateAccountPersonal (String accountChoice) {
@@ -298,5 +305,8 @@ public class Customer {
         return false;
     }
         //Check User Existance in .txt
+	
+	
+	
 }
 
