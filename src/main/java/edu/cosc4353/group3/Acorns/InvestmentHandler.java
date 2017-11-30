@@ -339,7 +339,6 @@ public class InvestmentHandler {
 	}
 	
 	public static void newData(Customer c, String[] a, String[] b, int aSize, int bSize ) {
-		System.out.println("NEWWWWW DATASENDDDDD");
 		double[] tempBond = new double[10];
 		double[] tempStock = new double[10];
 
