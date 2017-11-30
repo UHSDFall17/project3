@@ -47,7 +47,7 @@ public class UserSettings {
 	        }
 			System.out.println("Password Length Error, Try Again!" + "\n");
 
-			return false;
+			return true;
 		
 		
 	
