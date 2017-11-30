@@ -305,9 +305,9 @@ public class InvestmentHandler {
 		
 			//Conservative 40 / 60      stock / bond
 	
-			System.out.println("Conservative Class");
+			//System.out.println("Conservative Class");
 
-			System.out.println("PROCESS BONDS....");
+			//System.out.println("PROCESS BONDS....");
 			double allocateAmount =0;
 			double BondAmount = c.getUser_balance() * bond;
 			c.setUser_balance(-(BondAmount));
@@ -326,7 +326,7 @@ public class InvestmentHandler {
 			BondDeposits[inDep] = carryOver;
 			miniAllocate =0;
 			inDep = 0;
-			System.out.println("PROCESS STOCKS....");
+			//System.out.println("PROCESS STOCKS....");
 			allocateAmount =0;
 			double StockAmount = c.getUser_balance();
 			c.setUser_balance(-(StockAmount));
@@ -383,7 +383,7 @@ public class InvestmentHandler {
 	{
 		for (int i = 0; i < size; i++ )
 		{
-			System.out.println(arrayIn[i]);
+			//System.out.println(arrayIn[i]);
 		}
 	}
 	
@@ -403,7 +403,7 @@ public class InvestmentHandler {
 	
 	public static void dataSend(Customer c)
 	{
-		System.out.println("DATASENDDDDD");
+		//System.out.println("DATASENDDDDD");
 		
 		try {
             // Open the file that is the first
@@ -417,20 +417,20 @@ public class InvestmentHandler {
             //Read File Line By Line
             while ((strLine = br.readLine()) != null) {
                 // Print the content on the console
-                System.out.println(strLine);
+               // System.out.println(strLine);
                 
                 String tokens[] = strLine.split(" ");
-            	System.out.println(tokens[0]);
-            	System.out.println("Current balance -> " + c.getUser_balance());
+            	//System.out.println(tokens[0]);
+            	//System.out.println("Current balance -> " + c.getUser_balance());
 
                 if (tokens.length > 0) {
-                	System.out.println("check ");
+                	//System.out.println("check ");
 
                     // Here tokens[0] will have value of ID
-                	System.out.println(tokens[0]);
+                	//System.out.println(tokens[0]);
                     if (tokens[0].equals(c.getUser_Name())) 
                     {
-                    	System.out.println("Found " + tokens[0]); //FOUND USER-----------
+                    	//System.out.println("Found " + tokens[0]); //FOUND USER-----------
                     	userFound = true;
                     	SyncLocal(c, stock_Length, 0);
                     	
@@ -438,7 +438,7 @@ public class InvestmentHandler {
                     	
                     	for (int i =1; i < bond_Length+1; i++)
                     	{
-                    		System.out.println("Before: " + tokens[i]);
+                    		//System.out.println("Before: " + tokens[i]);
                     		double bondLocal = Double.parseDouble(bondIn[i-1]);
                     		double tokenLocal = Double.parseDouble(tokens[i]);
                     		
@@ -448,15 +448,15 @@ public class InvestmentHandler {
                     		
                     		tokens[i] = tempS;
                     		inputData += " " + tokens[i];
-                    		System.out.println("After: " + tokens[i]);
+                    		//System.out.println("After: " + tokens[i]);
 
-                    		System.out.println("i: " + i);
+                    		//System.out.println("i: " + i);
 
                     	}
                     	
                     	for (int i =5; i < bond_Length+5; i++)
                     	{
-                    		System.out.println("Before: " + tokens[i]);
+                    		//System.out.println("Before: " + tokens[i]);
                     		double bondLocal = Double.parseDouble(stockIn[i-5]);
                     		double tokenLocal = Double.parseDouble(tokens[i]);
                     		
@@ -466,9 +466,9 @@ public class InvestmentHandler {
                     		
                     		tokens[i] = tempS;
                     		inputData += " " + tokens[i];
-                    		System.out.println("After: " + tokens[i]);
+                    		//System.out.println("After: " + tokens[i]);
 
-                    		System.out.println("i: " + i);
+                    		//System.out.println("i: " + i);
 
                     	}
    
@@ -489,9 +489,9 @@ public class InvestmentHandler {
             }
             
             if (userFound == true){
-        		System.out.println("found user");
+        		//System.out.println("found user");
 
-            System.out.println(fileContent);
+            //System.out.println(fileContent);
             // Now fileContent will have updated content , which you can override into file
             FileWriter fstreamWrite = new FileWriter("InvestData.txt");
             BufferedWriter out = new BufferedWriter(fstreamWrite);
@@ -499,7 +499,7 @@ public class InvestmentHandler {
             out.close();
             }
             
-            else{ 		System.out.println("no user");
+            else{ 		//System.out.println("no user");
             newData(c, bondIn, stockIn, bond_Length, stock_Length);	}
 
         } catch (Exception e) {//Catch exception if any
@@ -509,7 +509,7 @@ public class InvestmentHandler {
 	
 	public static void newData(Customer c, String[] a, String[] b, int aSize, int bSize )
 	{
-		System.out.println("NEWWWWW DATASENDDDDD");
+		//System.out.println("NEWWWWW DATASENDDDDD");
 		double[] tempBond = new double[10];
 		double[] tempStock = new double[10];
 
@@ -538,7 +538,7 @@ public class InvestmentHandler {
 		for (int i = 0; i < bSize; i++){
 			 Storage += " " + b[i];
 			}
-        System.out.println(Storage);
+        //System.out.println(Storage);
 
         try
         {
@@ -573,8 +573,8 @@ public class InvestmentHandler {
 			
 			bondTemp[i] = Local_BondIn[i] + CurrentInvArr_Bond[i];
 			stockTemp[i] = Local_StockIn[i] + CurrentInvArr_Stock[i];
-			System.out.println("Bond: " + Local_BondIn[i] + " + " + CurrentInvArr_Bond[i] + " = " + bondTemp[i]);
-			System.out.println("Stock: " + Local_StockIn[i] + " + " + CurrentInvArr_Stock[i] + " = " + stockTemp[i]);
+			//System.out.println("Bond: " + Local_BondIn[i] + " + " + CurrentInvArr_Bond[i] + " = " + bondTemp[i]);
+			//System.out.println("Stock: " + Local_StockIn[i] + " + " + CurrentInvArr_Stock[i] + " = " + stockTemp[i]);
 
 		}
 		
@@ -591,7 +591,7 @@ public class InvestmentHandler {
 	
 	public static void SyncExternal(Customer c)
 	{
-		System.out.println(":: Simulate :: Data Storage ::");
+		//System.out.println(":: Simulate :: Data Storage ::");
 
 		double[] CurrentInvArr_Bond = c.getInvestData(0);
 		double[] CurrentInvArr_Stock = c.getInvestData(1);
@@ -629,16 +629,16 @@ public class InvestmentHandler {
             //Read File Line By Line
             while ((strLine = br.readLine()) != null) {
                 // Print the content on the console
-                System.out.println(strLine);
+               // System.out.println(strLine);
                 
                 String tokens[] = strLine.split(" ");
 
                 if (tokens.length > 0) {
-                	System.out.println("check ");
+                	//System.out.println("check ");
 
                     if (tokens[0].equals(c.getUser_Name())) 
                     {
-                    	System.out.println("Found " + tokens[0]); //FOUND USER-----------
+                    	//System.out.println("Found " + tokens[0]); //FOUND USER-----------
                     	userFound = true;
                     	
                     	String inputData = c.getUser_Name();
@@ -656,9 +656,9 @@ public class InvestmentHandler {
                     		String tempS = bondTemp[i-1];
                     		
                     		inputData += " " + tempS;
-                    		System.out.println("After: " + inputData);
+                    		//System.out.println("After: " + inputData);
 
-                    		System.out.println("i: " + i);
+                    		//System.out.println("i: " + i);
 
                     	}
                     	
@@ -668,9 +668,9 @@ public class InvestmentHandler {
                     		String tempS = stockTemp[i-5];
                     		
                     		inputData += " " + tempS;
-                    		System.out.println("After: " + inputData);
+                    		//System.out.println("After: " + inputData);
 
-                    		System.out.println("i: " + i);
+                    		//System.out.println("i: " + i);
 
                     	}
    
@@ -691,9 +691,9 @@ public class InvestmentHandler {
             }
             
             if (userFound == true){
-        		System.out.println("found user");
+        		//System.out.println("found user");
 
-            System.out.println(fileContent);
+            //System.out.println(fileContent);
             // Now fileContent will have updated content , which you can override into file
             FileWriter fstreamWrite = new FileWriter("InvestData.txt");
             BufferedWriter out = new BufferedWriter(fstreamWrite);
@@ -701,7 +701,7 @@ public class InvestmentHandler {
             out.close();
             }
             
-            else{ 		System.out.println("no user");
+            else{ 		//System.out.println("no user");
             newData(c, bondIn, stockIn, bond_Length, stock_Length);	}
 
         } catch (Exception e) {//Catch exception if any
