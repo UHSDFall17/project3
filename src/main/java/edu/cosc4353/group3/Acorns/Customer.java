@@ -116,14 +116,6 @@ public class Customer {
         	InvArray_Length = length;
         }
 	
-        public int getInvestArray_Length()
-        {
-        	return InvArray_Length;
-        }
-        
-        
-       
-
         
 	public int getInvestArray_Length() {
 		return InvArray_Length;
