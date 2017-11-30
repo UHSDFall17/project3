@@ -14,6 +14,9 @@ public class Simulate {
 		else{	return true;	}
 	}
 	
+	
+	
+
 	public static void Start(Customer c)
 	{
 		int Counter =0;
@@ -91,8 +94,8 @@ public class Simulate {
 		c.setInvestData(temp_Stock, 1);
 
 		InvestmentHandler.SyncExternal(c);
-
 	}
 	
 
 }
+

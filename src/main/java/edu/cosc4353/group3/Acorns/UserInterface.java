@@ -25,6 +25,8 @@ public class UserInterface {   //MENU 1
         System.out.println("    6: Make A Deposit       ");
         System.out.println("    7: Logout       ");
         System.out.println("    8: Simulate Test       ");
+
+
         System.out.println("===================");
     }
     
@@ -106,11 +108,13 @@ public class UserInterface {   //MENU 1
             	
             	 System.out.println( "          Hello " + c.getUser_Name()+" !");
             	 System.out.println( "! Here is your Account Summary:");
+
                  System.out.println("");
                  System.out.println("======================================");
                  System.out.println("Account Balance: " + c.getUser_balance());
                  System.out.println("Account Type: "+c.getUser_AccountType() );
                  System.out.println("Invest Status: " + c.getStatus_Invest());
+
 
                  switch(c.getUser_PortId()) {
                  case 1:
@@ -131,6 +135,8 @@ public class UserInterface {   //MENU 1
                  default:        
                      System.out.println("Portfolio: Not Setup");
                      break;
+    	
+
                  	}
                  System.out.println("Credit Card Information: " + c.getUser_CardNumb());
                  System.out.println("======================================");
@@ -138,23 +144,25 @@ public class UserInterface {   //MENU 1
                  
                  InvestmentHandler.DisplayETF(c);
                  UserInput(c);
+                
             }
-            case 5: {
+            case 5:
+            {
+
                 String accountTypeUser = c.getUser_AccountType();
                 int check = -1;
                 if (accountTypeUser.equals("corporate")){  check = 1;  }
                 else { check = -1; }
             	switch(check) {
-            		case 1:{
-            			CorporateHandler.depositFunds(c);
-            			UpdateData( c,  -1, "", 3);
-            			UserInput(c);	
-            		}
-            		default:{
-            			FundsHandler.depositFunds(c);
-            			UpdateData( c,  -1, "", 3);
-            			UserInput(c);
-            		}
+            	case 1:
+            		CorporateHandler.depositFunds(c);
+            		UpdateData( c,  -1, "", 3);
+                	UserInput(c);	
+            	default:
+            		FundsHandler.depositFunds(c);
+                	UpdateData( c,  -1, "", 3);
+                	UserInput(c);
+
             	}
             }
             case 6: {
@@ -165,14 +173,18 @@ public class UserInterface {   //MENU 1
             case 7: {
             	StartMenu.DisplayMenu();
             }
+            
             case 8:
-            {  	
-                if(Simulate.ping(c) == true){
+            {
+            	if(Simulate.ping(c) == true){
             	Simulate.Start(c);
             	}
-                
-            	Simulate.Start(c);
+            	
+            	UserInput(c);
             }
+            
+            
+
         }
     }
     

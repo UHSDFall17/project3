@@ -31,7 +31,9 @@ public class StartMenu {
                 Customer.Login();
                 break;
             }
-            case 2: {     
+            case 2: 
+            {     
+
             	int choiceOfAccount;
                 Scanner input = new Scanner(System.in);
             	System.out.println("Would you like to create a personal account or a corporate account? ");
@@ -44,16 +46,14 @@ public class StartMenu {
             	case 2:
             		 accountChoice= "corporate";
             		 boolean accountCheckCorporate = false;   
-
-            		 accountCheckCorporate = Customer.CreateAccountCorporate(accountChoice);
+            		 accountCheckCorporate = Customer.CreateAccountPersonal(accountChoice);
                      System.out.println("\n" + "Corporate Account Created! Please Login.");
                      DisplayMenu();
                      break;
             	default:
            		     accountChoice= "personal";
            		     boolean accountCheckPersonal = false;   
-
-            		 accountCheckPersonal = Customer.CreateAccountPersonal(accountChoice);
+            		 accountCheckPersonal = Customer.CreateAccountCorporate(accountChoice);
                      System.out.println("\n" + "Personal Account Created! Please Login.");
                      DisplayMenu();
                      break;
