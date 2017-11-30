@@ -41,4 +41,35 @@ public class CreditValidTest {
 		int test = CreditCardValidation.sumOfDoubleEvenPlace(num);
 		Assert.assertEquals(9, test);
 	}
+	@Test 
+	public void testGetSize() {
+		long num = 123456;
+		int test = CreditCardValidation.getSize(num);
+		Assert.assertEquals(6, test);
+	}
+	@Test 
+	public void testGetSizeNull() {
+		long num = 0;
+		int test = CreditCardValidation.getSize(num);
+		Assert.assertEquals(1, test);
+	}
+	@Test 
+	public void testGetNumber0() {
+		int num = 0;
+		int test = CreditCardValidation.getDigit(num);
+		Assert.assertEquals(0, test);
+	}
+	@Test 
+	public void testGetNumberInt() {
+		int num = 6;
+		int test = CreditCardValidation.getDigit(num);
+		Assert.assertEquals(num, test);
+	}
+	@Test 
+	public void testGetNumberLarge() {
+		int num = 12;
+		int test = CreditCardValidation.getDigit(num);
+		Assert.assertEquals(3, test);
+	}
 }
+
