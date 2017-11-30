@@ -24,10 +24,10 @@ public class InvestmentHandler {
 
 	private static int stock_Length, bond_Length;
 	
-	//Aggressive Portfolio – 90% stocks / 10% bonds
-	//Moderately Aggressive Portfolio – 75 / 25
-	//Moderate Portfolio – 60 / 40
-	//Moderately Conservative – 50 /50
+	//Aggressive Portfolio â€“ 90% stocks / 10% bonds
+	//Moderately Aggressive Portfolio â€“ 75 / 25
+	//Moderate Portfolio â€“ 60 / 40
+	//Moderately Conservative â€“ 50 /50
 	//Conservative 40 / 60
 	
 	//stocks - Vanguard S&P 500 Stock ETF, Vanguard Small-Cap Stock ETF,  Vanguard FTSE Emerging Markets Stock ETF, Vanguard Mega Cap Growth Stock ETF
@@ -78,31 +78,31 @@ public class InvestmentHandler {
             //Read File Line By Line
             while ((strLine = br.readLine()) != null) {
                 // Print the content on the console
-                System.out.println(strLine);
+               // System.out.println(strLine);
                 
                 String tokens[] = strLine.split(" ");
                 if (tokens.length > 0) {
-                	System.out.println("check ");
+                	//System.out.println("check ");
                     if (tokens[0].equals(c.getUser_Name())) {
-                    	System.out.println("FOUND!!! " + tokens[0]);
+                    	//System.out.println("FOUND!!! " + tokens[0]);
                     	invLength = ((tokens.length-1)/2);
                     	
                     	userFound = true;
-                    	System.out.println("Token:::: " + tokens.length);
+                    	//System.out.println("Token:::: " + tokens.length);
                     	for (int i = 1; i < tokens.length; i++)
                     	{
-                        	System.out.println(tokens[i]);
+                        	//System.out.println(tokens[i]);
 
                     		if (i <= ((tokens.length-1)/2))
                     		{
-                            	System.out.println("1");
+                            //	System.out.println("1");
 
                     			double number = new Double(tokens[i]).doubleValue();
                     			BondIn[i-1] = number;
                     		}
                     		else
                     		{
-                            	System.out.println("2");
+                            //	System.out.println("2");
 
                     			double number = new Double(tokens[i]).doubleValue();
                     			StockIn[i-(((tokens.length-1)/2)+1)] = number;
@@ -281,10 +281,10 @@ public class InvestmentHandler {
 		
 	
 
-	//Aggressive Portfolio – 90% stocks / 10% bonds
-	//Moderately Aggressive Portfolio – 75 / 25
-	//Moderate Portfolio – 60 / 40
-	//Moderately Conservative – 50 /50
+	//Aggressive Portfolio â€“ 90% stocks / 10% bonds
+	//Moderately Aggressive Portfolio â€“ 75 / 25
+	//Moderate Portfolio â€“ 60 / 40
+	//Moderately Conservative â€“ 50 /50
 	//Conservative 40 / 60
 	
 	
