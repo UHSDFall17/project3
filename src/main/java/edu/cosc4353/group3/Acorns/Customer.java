@@ -297,6 +297,5 @@ public class Customer {
         }
         return false;
     }
-        
         //Check User Existance in .txt
 }
