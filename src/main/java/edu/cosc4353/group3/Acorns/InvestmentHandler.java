@@ -70,30 +70,17 @@ public class InvestmentHandler {
             StringBuilder fileContent = new StringBuilder();
             //Read File Line By Line
             while ((strLine = br.readLine()) != null) {
-                // Print the content on the console
-                System.out.println(strLine);
-                
                 String tokens[] = strLine.split(" ");
                 if (tokens.length > 0) {
-                	System.out.println("check ");
                     if (tokens[0].equals(c.getUser_Name())) {
-                    	System.out.println("FOUND!!! " + tokens[0]);
                     	invLength = ((tokens.length-1)/2);
-                    	
                     	userFound = true;
-                    	System.out.println("Token:::: " + tokens.length);
                     	for (int i = 1; i < tokens.length; i++) {
-                        	System.out.println(tokens[i]);
-
                     		if (i <= ((tokens.length-1)/2)) {
-                            	System.out.println("1");
-
                     			double number = new Double(tokens[i]).doubleValue();
                     			BondIn[i-1] = number;
                     		}
                     		else {
-                            	System.out.println("2");
-
                     			double number = new Double(tokens[i]).doubleValue();
                     			StockIn[i-(((tokens.length-1)/2)+1)] = number;
                     		}
@@ -104,8 +91,6 @@ public class InvestmentHandler {
         } catch (Exception e) {//Catch exception if any
             System.err.println("Error: " + e.getMessage());
         }
-		testFast(BondIn, 4);
-		testFast(StockIn, 4);
 		
 		if (userFound == true) {
 			c.InvestArray_Length(invLength);
@@ -247,8 +232,6 @@ public class InvestmentHandler {
 		decimalConvert(BondDeposits, bondIn, bond_Length);
 		decimalConvert(StockDeposits, stockIn, stock_Length);
 			
-		testFast(BondDeposits, bond_Length);
-		testFast(StockDeposits, stock_Length);
 		dataSend(c);
 	}
 	
@@ -256,12 +239,6 @@ public class InvestmentHandler {
 		Random rand = new Random();
 	    double randomNum = min + rand.nextDouble();
 	    return randomNum;
-	}
-	
-	public static void testFast(double[] arrayIn, int size) {
-		for (int i = 0; i < size; i++ ) {
-			System.out.println(arrayIn[i]);
-		}
 	}
 	
 	public static void decimalConvert(double[] stkAr, String[] alpahArray, int stkSize) {
@@ -295,20 +272,16 @@ public class InvestmentHandler {
             	System.out.println("Current balance -> " + c.getUser_balance());
 
                 if (tokens.length > 0) {
-                	System.out.println("check ");
-
                     // Here tokens[0] will have value of ID
                 	System.out.println(tokens[0]);
-                    if (tokens[0].equals(c.getUser_Name())) 
-                    {
+                    if (tokens[0].equals(c.getUser_Name())) {
                     	System.out.println("Found " + tokens[0]); //FOUND USER-----------
                     	userFound = true;
                     	SyncLocal(c, stock_Length, 0);
                     	
                     	String inputData = tokens[0];
                     	
-                    	for (int i =1; i < bond_Length+1; i++)
-                    	{
+                    	for (int i =1; i < bond_Length+1; i++) {
                     		System.out.println("Before: " + tokens[i]);
                     		double bondLocal = Double.parseDouble(bondIn[i-1]);
                     		double tokenLocal = Double.parseDouble(tokens[i]);
@@ -322,11 +295,8 @@ public class InvestmentHandler {
                     		System.out.println("After: " + tokens[i]);
 
                     		System.out.println("i: " + i);
-
                     	}
-                    	
-                    	for (int i =5; i < bond_Length+5; i++)
-                    	{
+                    	for (int i =5; i < bond_Length+5; i++) {
                     		System.out.println("Before: " + tokens[i]);
                     		double bondLocal = Double.parseDouble(stockIn[i-5]);
                     		double tokenLocal = Double.parseDouble(tokens[i]);
@@ -340,61 +310,47 @@ public class InvestmentHandler {
                     		System.out.println("After: " + tokens[i]);
 
                     		System.out.println("i: " + i);
-
                     	}
-   
-
-                        	
-
-                        
                         fileContent.append(inputData + System.getProperty("line.separator"));
-                    } 
-                    
-                    else 
-                    {
-                    	
+                    }
+                    else {
                         fileContent.append(strLine + System.getProperty("line.separator"));
- 
                     }
                 }
             }
-            
             if (userFound == true){
         		System.out.println("found user");
 
-            System.out.println(fileContent);
-            // Now fileContent will have updated content , which you can override into file
-            FileWriter fstreamWrite = new FileWriter("InvestData.txt");
-            BufferedWriter out = new BufferedWriter(fstreamWrite);
-            out.write(fileContent.toString());
-            out.close();
+        		System.out.println(fileContent);
+            	// Now fileContent will have updated content , which you can override into file
+            	FileWriter fstreamWrite = new FileWriter("InvestData.txt");
+            	BufferedWriter out = new BufferedWriter(fstreamWrite);
+            	out.write(fileContent.toString());
+            	out.close();
             }
             
-            else{ 		System.out.println("no user");
-            newData(c, bondIn, stockIn, bond_Length, stock_Length);	}
-
+            else{ 		
+            	System.out.println("no user");
+            	newData(c, bondIn, stockIn, bond_Length, stock_Length);	
+            }
         } catch (Exception e) {//Catch exception if any
             System.err.println("Error: " + e.getMessage());
         }
 	}
 	
-	public static void newData(Customer c, String[] a, String[] b, int aSize, int bSize )
-	{
+	public static void newData(Customer c, String[] a, String[] b, int aSize, int bSize ) {
 		System.out.println("NEWWWWW DATASENDDDDD");
 		double[] tempBond = new double[10];
 		double[] tempStock = new double[10];
 
-		for (int i = 0; i <aSize; i++)
-		{
+		for (int i = 0; i <aSize; i++) {
 			double number = new Double(a[i]).doubleValue();
 			tempBond[i] = number;
 
 		}
-		for (int i = 0; i <bSize; i++)
-		{
+		for (int i = 0; i <bSize; i++) {
 			double number = new Double(b[i]).doubleValue();
 			tempStock[i] = number;
-
 		}
 		
 		c.setInvestData(tempBond, 0);
@@ -442,7 +398,5 @@ public class InvestmentHandler {
 		
 		CurrentInvArr_Bond = c.getInvestData(0);
 		CurrentInvArr_Stock = c.getInvestData(1);
-		testFast(CurrentInvArr_Bond, ArrLength);
-		testFast(CurrentInvArr_Stock, ArrLength);
 	}
 }

@@ -3,27 +3,23 @@ package edu.cosc4353.group3.Acorns;
 import java.util.Scanner;
 
 public class Portfolio {
+	
 	private double growth = 0.0;
 	private String sect = "";
     private static int Select = 0;
 
-	 public static void PortFolioInterface(Customer account)
-	    {
+	 public static void PortFolioInterface(Customer account) {
 	        //STARTUP MENU OPTIONS
 	        System.out.println("     Portfolios' !"     );
 	        System.out.println("");
 	        System.out.println("===================");
 	        System.out.println("    1: Setup Portfolio          ");
-	        System.out.println("    2: Check available industries'    ");
+	        System.out.println("    2: Check available industries    ");
 	        System.out.println("    3: Back       ");
 	        System.out.println("===================");
-	        
-	        
-
 	    }
 	 
-	 public static int UserInput(Customer account)
-	    {
+	 public static int UserInput(Customer account) {
 	        //FUNCTION TO GET USER INPUT
 		 
 		 	PortFolioInterface(account);
@@ -31,59 +27,38 @@ public class Portfolio {
 	        Scanner UserScan =  new Scanner(System.in);
 	        Temp = UserScan.nextInt();
 	        setSelect(Temp);
-	        
-	    
-	    
 	        //FUNTION TO ACCESS USER SELECTED OPTION
-	        switch(getSelect())
-	        {
-	            
-	            case 1: 
-	            {
+	        switch(getSelect()) {
+	        	case 1: {
 	            	int userPortiId = selectPortfolioType();
 	            	System.out.println("Updating Profile....");
 	            	return userPortiId;
-	                
 	            }
-	            case 2: 
-	            {     
-
+	            case 2: { 
 	                return -1;
 	            }
-	            case 3: 
-	            {
+	            case 3: {
                     UserInterface.UserInput(account);
-                    
 	            }
-	            
-	            default:
-	            {
+	            default: {
 	            	UserInput(account);
 	            }
 	        }
-	    
 	        return -1;
-	    }
+	 }
 	 
-	 
-	    public static int getSelect()
-	    {
-	        return Select;
-	    }
+	 public static int getSelect() {
+		 return Select;
+	}
 	    
-	    public static void setSelect(int newNumb)
-	    {
-	        Select = newNumb;
-	    }
+	 public static void setSelect(int newNumb) {
+		 Select = newNumb;
+	 }
 	    
-	    public static void ResetSelect()
-	    {
-	        setSelect(0);
-	    }
-	    
+	public static void ResetSelect() {
+		setSelect(0);
+	}
 
-	    
-	
 	public Portfolio(double growthRate, String sector) {
 		growth = growthRate;
 		sect = sector;
@@ -95,8 +70,7 @@ public class Portfolio {
 		return growth;
 	}
 	
-	public static int selectPortfolioType(){
-
+	public static int selectPortfolioType() {
 		 System.out.println("Select an Investment Porfolio Type");
 		 System.out.println("1. Conservative");
 		 System.out.println("2.Moderately Conservative");
@@ -133,7 +107,6 @@ public class Portfolio {
 		 default:
 	     System.out.println("Your Selection was not valid");
 	     //inputOptionPortfolio.close();	 
-
 	     return -1;
 		 }
 	}
