@@ -22,7 +22,7 @@ public class FundsHandler {
 	}
 	else { spareChange = 0; }
 	
-	System.out.println("Spare Change: " + spareChange);
+	//System.out.println("Spare Change: " + spareChange);
 
 	c.setUser_balance(spareChange);
 	System.out.println("New Account Balance: " + c.getUser_balance());
