@@ -4,8 +4,23 @@ import java.util.Random;
 
 public class Simulate {
 	
-	public static void Start(Customer c) {
-		int Counter = 0;
+	public static boolean ping(Customer c)
+	{
+		if (c.getStatus_Invest() == false)
+		{
+			System.out.println("Account has not yet Invested");
+			return false;
+		}
+		else{	return true;	}
+	}
+	
+	
+	
+
+	public static void Start(Customer c)
+	{
+		int Counter =0;
+
 		double[] temp_Bond = c.getInvestData(0);
 		double[] temp_Stock = c.getInvestData(1);
 		
@@ -60,5 +75,7 @@ public class Simulate {
 		Counter = 0;
 		c.setInvestData(temp_Bond, 0);
 		c.setInvestData(temp_Stock, 1);
+		InvestmentHandler.SyncExternal(c);
 	}
 }
+
