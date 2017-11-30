@@ -4,14 +4,6 @@ import java.util.Scanner;
 
 public class FundsHandler {
 	
-	public static void makePurchase(Customer c){	
-		System.out.println("Input Purchase Amount....");
-		Scanner UserScan =  new Scanner(System.in);
-		double amount = UserScan.nextDouble();
-
-		double decimal = 0;
-		long  conv = 0;
-		double spareChange = 0;
 	
 	public static void makePurchase(Customer c){
 		
@@ -43,7 +35,6 @@ public class FundsHandler {
 	public static void depositFunds(Customer c)
 	{
 		
-
 		System.out.println("Input Amount To Deposit....");
 	    Scanner UserScan =  new Scanner(System.in);
 	    double amount = UserScan.nextDouble();
@@ -52,11 +43,13 @@ public class FundsHandler {
 		
 		System.out.println("Depsoited: " + amount);
 		System.out.println("New Balance: " + c.getUser_balance());
+
+
+		
 	}
 	
 
 	
 	
 }
-
 
