@@ -2,19 +2,17 @@ package edu.cosc4353.group3.Acorns;
 
 import java.util.Scanner;
 
-public class StartMenu {
+public class StartMenu extends Menu{
     private static int Select = 0;
     
-    public static void DisplayMenu() {
+    public static void displayMenu() {
         //STARTUP MENU OPTIONS
-        System.out.println("     Welcome!      ");
         System.out.println("");
         System.out.println("===================");
         System.out.println("    1: Login          ");
         System.out.println("    2: Sign Up ");
         System.out.println("    3: Exit ");
         System.out.println("===================");
-        
         UserInput();
     }
     
@@ -28,7 +26,7 @@ public class StartMenu {
         
         switch(getSelect()) {
             case 1: {
-                Customer.Login();
+                LoginMenu.displayMenu();
                 break;
             }
             case 2: 
@@ -48,14 +46,14 @@ public class StartMenu {
             		 boolean accountCheckCorporate = false;   
             		 accountCheckCorporate = Customer.CreateAccountPersonal(accountChoice);
                      System.out.println("\n" + "Corporate Account Created! Please Login.");
-                     DisplayMenu();
+                     displayMenu();
                      break;
             	default:
            		     accountChoice= "personal";
            		     boolean accountCheckPersonal = false;   
             		 accountCheckPersonal = Customer.CreateAccountCorporate(accountChoice);
                      System.out.println("\n" + "Personal Account Created! Please Login.");
-                     DisplayMenu();
+                     displayMenu();
                      break;
             	}
             }
@@ -76,10 +74,6 @@ public class StartMenu {
     
     public static void ResetSelect() {
         setSelect(0);
-    }
-    
-    public static void main(String[] args) {
-        DisplayMenu();
     }
     
     public static void TheExit() {
