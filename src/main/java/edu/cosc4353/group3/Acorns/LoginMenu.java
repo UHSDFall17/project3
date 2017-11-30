@@ -51,11 +51,11 @@ public class LoginMenu extends Menu{
                     return true;
                 }
                 else if (user.equals(passString[0]) && !pass.equals(passString[1])) {
-                    System.out.println("Password Error..." + "\n");
+                    System.out.println("Password Error!" + "\n");
                     return false;
                 }
             }
-            System.out.println("User Does Not Exist.....");
+            System.out.println("User Does Not Exist!");
             return false;
         } catch (IOException e) { 
         	e.printStackTrace();    

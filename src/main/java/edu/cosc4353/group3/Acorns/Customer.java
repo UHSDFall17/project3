@@ -82,35 +82,36 @@ public class Customer {
 		accountBalance =  accountBalance + change;
 	}
         
-	public void setInvestData(double[] data, int dataType) { // 0 FOR BOND    1 FOR STOCK
-        	if (dataType == 0){	
-        		bondData = data;	
-        	}
-        	else {	
-        		stockData = data;	
-        	}
+      
+             
+        public void setInvestData(double[] data, int dataType)  // 0 FOR BOND    1 FOR STOCK
+        {
+        	if (dataType == 0){	bondData = data;	}
+        	else {	stockData = data;	}
+        	
         }
-
-	public double[] getInvestData(int dataType)  {// 0 FOR BOND    1 FOR STOCK
-		if (dataType == 0){	
-        	return bondData;	
+        public double[] getInvestData(int dataType)  // 0 FOR BOND    1 FOR STOCK
+        {
+        	if (dataType == 0){	return bondData;	}
+        	else {	return stockData;	}
+        	
         }
-       	else {	
-       		return stockData;	
-       	}
-	}
         
-	public void setStatus_Invest(boolean status) {
-		isInvested = status;
-	}
+        public void setStatus_Invest(boolean status)
+        {
+        	isInvested = status;
+        }
+        public boolean getStatus_Invest()
+        {
+        	return isInvested;
+        }
         
-	public boolean getStatus_Invest() {
-        return isInvested;
-    }
-       
-	public void InvestArray_Length(int length) {
-		InvArray_Length = length;
-	}
+        
+        public void InvestArray_Length(int length)
+        {
+        	InvArray_Length = length;
+        }
+	
         
 	public int getInvestArray_Length() {
 		return InvArray_Length;
@@ -123,7 +124,6 @@ public class Customer {
 	public static void setPortfolio(Customer c, int id) {
 		c.portIdent = id;
 	}
-	
 //	deprecated class
 //	public static int hashUsername(String username) {
 //		int nameLength = username.length();
@@ -138,11 +138,11 @@ public class Customer {
 //		}
 //		return((total)%5);
 //	}
-  
+
         //Create New User Account
 	public static boolean CreateAccountPersonal (String accountChoice) {
 		Scanner input = new Scanner(System.in);
-        System.out.println("User Creation! ");
+        System.out.println("Create an Account! ");
         String username = "";
         String password = "";
         String cardId = "";
@@ -153,7 +153,7 @@ public class Customer {
              username = input.next();
             
             if (isNotUnique(username)){   
-            	System.out.println("Username Taken, Try Again...." + "\n");
+            	System.out.println("Username Taken, Try Again!" + "\n");
             }
             else { 
             	CreateError = false; 
@@ -167,7 +167,7 @@ public class Customer {
                 
         	if (password.length() != PASS_LENGTH){ 
         		CreateError = true; 
-        			System.out.println("Password Length Error, Try Again...." + "\n");
+        			System.out.println("Password Length Error, Try Again!" + "\n");
         	}
             else {  
             	CreateError = false; 
@@ -191,7 +191,8 @@ public class Customer {
             //}
             
             //Enter Card Info Here
-        System.out.println("Card id: " + cardId); 
+
+        //System.out.println("Card id: " + cardId); 
         StoreUserData(username, password, cardId, accountChoice); //Add card Argument
         System.out.println("------------------");
 
@@ -211,7 +212,7 @@ public class Customer {
             System.out.println("Enter A Username: ");
             username = input.next();
             if (isNotUnique(username)){
-            	System.out.println("Username Taken, Try Again...." + "\n");
+            	System.out.println("Username Taken, Try Again!" + "\n");
             }
             else { 
             	CreateError = false; 
@@ -225,7 +226,7 @@ public class Customer {
                 
         	if (password.length() != PASS_LENGTH){ 
         		CreateError = true; 
-        		System.out.println("Password Length Error, Try Again...." + "\n");
+        		System.out.println("Password Length Error, Try Again!" + "\n");
         	}
         	else {  
         		CreateError = false; 
@@ -249,22 +250,25 @@ public class Customer {
             //}
             
             //Enter Card Info Here
-        System.out.println("Card id: " + cardId); 
+        //System.out.println("Card id: " + cardId); 
         StoreUserData(username, password, cardId, accountChoice); //Add card Argument
         System.out.println("------------------");
 
-        return true;
-	}
+            return true;
+        }
         
         //Store Accepted User Login Data in .txt
-    public static void StoreUserData(String user, String pass, String cardNumb, String accountChoice) {
-    	String Storage = user + " " + pass + " " + cardNumb + " " + "-1" + " "+ "0" + " " + accountChoice; //user0 pass1 cardNo2 portfolio3 accountStatus4
-    	System.out.println(Storage);
+        public static void StoreUserData(String user, String pass, String cardNumb, String accountChoice)
+        {
+            String Storage = user + " " + pass + " " + cardNumb + " " + "-1" + " "+ "0" + " " + accountChoice; //user0 pass1 cardNo2 portfolio3 accountStatus4
+            //System.out.println(Storage);
+            
+            try
+            {
+                String filename = "LoginInfo.txt";
+                BufferedWriter  outP;
+                outP = new BufferedWriter(new FileWriter(filename, true));
 
-    	try {
-    		String filename = "LoginInfo.txt";
-    		BufferedWriter  outP;
-    		outP = new BufferedWriter(new FileWriter(filename, true));
                 
     		outP.newLine(); 
     		outP.append(Storage);
@@ -290,7 +294,9 @@ public class Customer {
         } catch (IOException e) { 
         	e.printStackTrace();    
         }
+		
         return false;
     }
         //Check User Existance in .txt
 }
+
