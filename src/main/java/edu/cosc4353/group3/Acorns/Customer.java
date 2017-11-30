@@ -124,24 +124,20 @@ public class Customer {
 	public static void setPortfolio(Customer c, int id) {
 		c.portIdent = id;
 	}
-	
-	public static int hashUsername(String username) {
-		int nameLength = username.length();
-		int user[] = new int[nameLength];
-		int total = 0;
-		
-		for(int i = 0; i < nameLength; i++) {
-			user[i] = username.charAt(i);
-		}
-		for(int i = 0; i < nameLength; i++) {
-			total += user[i];
-		}
-		return((total)%5);
-	}
-	// Username hash to store and identify object
-	public void storeUser() {
-		
-	}
+//	deprecated class
+//	public static int hashUsername(String username) {
+//		int nameLength = username.length();
+//		int user[] = new int[nameLength];
+//		int total = 0;
+//		
+//		for(int i = 0; i < nameLength; i++) {
+//			user[i] = username.charAt(i);
+//		}
+//		for(int i = 0; i < nameLength; i++) {
+//			total += user[i];
+//		}
+//		return((total)%5);
+//	}
 
         //Create New User Account
 	public static boolean CreateAccountPersonal (String accountChoice) {
@@ -302,8 +298,5 @@ public class Customer {
         return false;
     }
         //Check User Existance in .txt
-	
-	
-	
 }
 
