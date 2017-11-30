@@ -205,7 +205,7 @@ public class UserInterface {   //MENU 1
                 //System.out.println(strLine);
                 
                 String tokens[] = strLine.split(" ");
-            	System.out.println(tokens[0]);
+            	//System.out.println(tokens[0]);
             	//System.out.println("Current balance -> " + c.getUser_balance());
 
                 if (tokens.length > 0) {
