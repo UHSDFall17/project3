@@ -213,11 +213,13 @@ public class InvestmentHandler {
         	
             String TempScan = sc.nextLine();
            // System.out.println("Test: " + TempScan);
+
             
             if (TempScan.equals("Stocks")){
             	isStock = true;
             	noData = true;
             	//System.out.println(TempScan + "START STOCK....");
+
 
             }
             
@@ -236,6 +238,7 @@ public class InvestmentHandler {
             {
             	stocks[stockCount] = TempScan;
             	//System.out.println(stocks[stockCount] + "in stock");
+
             	stockCount++;
             }
             
@@ -243,6 +246,7 @@ public class InvestmentHandler {
             {
             	bonds[bondCount] = TempScan;
             	//System.out.println(bonds[bondCount] + "in bond");
+
             	bondCount++;
             	
             }
@@ -271,6 +275,7 @@ public class InvestmentHandler {
 
 		
 		
+
 		
 		
 		

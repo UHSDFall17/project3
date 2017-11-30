@@ -16,6 +16,7 @@ public class Simulate {
 	
 	
 	
+
 	public static void Start(Customer c)
 	{
 		int Counter =0;
@@ -97,3 +98,4 @@ public class Simulate {
 	
 
 }
+

@@ -1,4 +1,3 @@
-
 package edu.cosc4353.group3.Acorns;
 
 import java.util.Scanner;
@@ -139,5 +138,3 @@ public class Portfolio {
 		 }
 	}
 } 
-
-
