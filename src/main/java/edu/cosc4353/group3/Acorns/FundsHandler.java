@@ -7,7 +7,7 @@ public class FundsHandler {
 	
 	public static void makePurchase(Customer c){
 		
-	System.out.println("Input Purchase Amount....");
+	System.out.println("Input Purchase Amount:");
     Scanner UserScan =  new Scanner(System.in);
     double amount = UserScan.nextDouble();
 
@@ -35,7 +35,7 @@ public class FundsHandler {
 	public static void depositFunds(Customer c)
 	{
 		
-		System.out.println("Input Amount To Deposit....");
+		System.out.println("Input Amount To Deposit:");
 	    Scanner UserScan =  new Scanner(System.in);
 	    double amount = UserScan.nextDouble();
 		
