@@ -146,7 +146,7 @@ public class Customer {
         //Create New User Account
 	public static boolean CreateAccountPersonal (String accountChoice) {
 		Scanner input = new Scanner(System.in);
-        System.out.println("User Creation! ");
+        System.out.println("Create an Account! ");
         String username = "";
         String password = "";
         String cardId = "";
@@ -157,7 +157,7 @@ public class Customer {
              username = input.next();
             
             if (isNotUnique(username)){   
-            	System.out.println("Username Taken, Try Again...." + "\n");
+            	System.out.println("Username Taken, Try Again!" + "\n");
             }
             else { 
             	CreateError = false; 
@@ -171,7 +171,7 @@ public class Customer {
                 
         	if (password.length() != PASS_LENGTH){ 
         		CreateError = true; 
-        			System.out.println("Password Length Error, Try Again...." + "\n");
+        			System.out.println("Password Length Error, Try Again!" + "\n");
         	}
             else {  
             	CreateError = false; 
@@ -216,7 +216,7 @@ public class Customer {
             System.out.println("Enter A Username: ");
             username = input.next();
             if (isNotUnique(username)){
-            	System.out.println("Username Taken, Try Again...." + "\n");
+            	System.out.println("Username Taken, Try Again!" + "\n");
             }
             else { 
             	CreateError = false; 
@@ -230,7 +230,7 @@ public class Customer {
                 
         	if (password.length() != PASS_LENGTH){ 
         		CreateError = true; 
-        		System.out.println("Password Length Error, Try Again...." + "\n");
+        		System.out.println("Password Length Error, Try Again!" + "\n");
         	}
         	else {  
         		CreateError = false; 
@@ -298,8 +298,12 @@ public class Customer {
         } catch (IOException e) { 
         	e.printStackTrace();    
         }
+		
         return false;
     }
         //Check User Existance in .txt
+	
+	
+	
 }
 
