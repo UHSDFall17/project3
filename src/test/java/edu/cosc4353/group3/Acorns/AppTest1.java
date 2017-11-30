@@ -47,13 +47,4 @@ public class AppTest1
 	Assert.assertEquals(user, customer.getUser_Name());
 					
 	}
-	
-	public static void main(String[] args)
-	{
-    	
-        // TODO code application logic here
-              StartMenu start = new StartMenu();
-
-              start.DisplayMenu();
-    }
 }
