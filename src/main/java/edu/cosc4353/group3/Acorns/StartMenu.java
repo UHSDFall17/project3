@@ -5,20 +5,19 @@ import java.util.Scanner;
 public class StartMenu {
     private static int Select = 0;
     
-    public static void DisplayMenu() {
+    public void displayMenu() {
+    	StartMenu start = new StartMenu();
         //STARTUP MENU OPTIONS
-        System.out.println("     Welcome!      ");
         System.out.println("");
         System.out.println("===================");
         System.out.println("    1: Login          ");
         System.out.println("    2: Sign Up ");
         System.out.println("    3: Exit ");
         System.out.println("===================");
-        
-        UserInput();
+        start.UserInput();
     }
     
-    public static void UserInput() {
+    public void UserInput() {
         //FUNCTION TO GET USER INPUT
         int Temp = 	9999;
         Scanner UserScan =  new Scanner(System.in);
@@ -28,7 +27,8 @@ public class StartMenu {
         
         switch(getSelect()) {
             case 1: {
-                Customer.Login();
+            	LoginMenu LoginMenu = new LoginMenu();
+                LoginMenu.displayMenu();
                 break;
             }
             case 2: {     
@@ -47,7 +47,7 @@ public class StartMenu {
 
             		 accountCheckCorporate = Customer.CreateAccountCorporate(accountChoice);
                      System.out.println("\n" + "Corporate Account Created! Please Login.");
-                     DisplayMenu();
+                     displayMenu();
                      break;
             	default:
            		     accountChoice= "personal";
@@ -55,7 +55,7 @@ public class StartMenu {
 
             		 accountCheckPersonal = Customer.CreateAccountPersonal(accountChoice);
                      System.out.println("\n" + "Personal Account Created! Please Login.");
-                     DisplayMenu();
+                     displayMenu();
                      break;
             	}
             }
@@ -76,10 +76,6 @@ public class StartMenu {
     
     public static void ResetSelect() {
         setSelect(0);
-    }
-    
-    public static void main(String[] args) {
-        DisplayMenu();
     }
     
     public static void TheExit() {
