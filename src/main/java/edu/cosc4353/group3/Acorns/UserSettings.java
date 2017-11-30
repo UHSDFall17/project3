@@ -29,7 +29,22 @@ public class UserSettings {
 			}
 		}
 		
-			//
+			CreateError = true;
+	        while (CreateError) {
+	        	System.out.println("Enter A " + PASS_LENGTH + " Character password: ");
+	        	String newPassword = UserInput.next();
+	                
+	        	if (newPassword.length()!= PASS_LENGTH){ 
+	        		CreateError = true; 
+	        			System.out.println("Password Length Error, Try Again!" + "\n");
+	        			
+	        	}
+	            else {  
+	            	c.setPassword(newPassword);
+	    			UserInterface.UpdateData(c, 0, newPassword, 4);
+	    			return true;
+	            }
+	        }
 			System.out.println("Password Length Error, Try Again!" + "\n");
 
 			return false;
