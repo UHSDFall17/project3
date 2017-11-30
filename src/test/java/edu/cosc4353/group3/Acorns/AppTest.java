@@ -54,17 +54,4 @@ public class AppTest
 		Assert.assertEquals(amount, temp, 0);
 						
 	}
-	
-
-
-	
-    public static void main(String[] args) {
-    	
-        // TODO code application logic here
-              StartMenu start = new StartMenu();
-
-              start.DisplayMenu();
-    }
-
-
 }
