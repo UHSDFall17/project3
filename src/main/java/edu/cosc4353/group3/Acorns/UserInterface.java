@@ -179,17 +179,9 @@ public class UserInterface {   //MENU 1
             	}
             	
             	UserInput(c);
-            }
-            
-            
+            }   
     }
-        }
-    
-    
-    public static void portfoliFind(Customer c) {
-    	
-    }
-    
+
     public static void UpdateData(Customer c, int poriId, String cardId, int UpdateType) {
         try {
             // Open the file that is the first
