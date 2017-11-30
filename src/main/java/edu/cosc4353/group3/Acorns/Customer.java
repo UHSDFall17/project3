@@ -86,17 +86,8 @@ public class Customer {
 		accountBalance =  accountBalance + change;
 	}
         
-
-       	else {	
-       		return stockData;	
-       	}
-	}
-        
-	public void setStatus_Invest(boolean status) {
-		isInvested = status;
-	}
-        
-        
+      
+             
         public void setInvestData(double[] data, int dataType)  // 0 FOR BOND    1 FOR STOCK
         {
         	if (dataType == 0){	bondData = data;	}
@@ -124,17 +115,14 @@ public class Customer {
         {
         	InvArray_Length = length;
         }
+	
         public int getInvestArray_Length()
         {
         	return InvArray_Length;
         }
         
         
-        
-        public void setCardNumber(Customer c ,String number)
-        {
-            c.card = number;
-        }
+       
 
         
 	public int getInvestArray_Length() {
