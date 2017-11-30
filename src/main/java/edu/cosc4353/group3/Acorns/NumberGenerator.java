@@ -1,4 +1,5 @@
 package edu.cosc4353.group3.Acorns;
+
 import java.util.Random;
 
 public class NumberGenerator {
@@ -6,29 +7,25 @@ public class NumberGenerator {
 	Random rand = new Random();
 
 	public static int negativeHighInteger() {
-		Random rand = new Random();
-		int number = rand.nextInt(-50) -100;
-		
+		Random randomIntegerRange = new Random();
+		int number = randomIntegerRange.nextInt(-50 +1+ 100) -100;
 		return number;
 	}
 	public static int negativeLowInteger() {
-		Random rand = new Random();
-		int number = rand.nextInt(-1) -10;
-		
+		Random randomIntegerRange = new Random();
+		int number = randomIntegerRange.nextInt(-1+1 +10) -1;		
 		return number;
 	}
 	public static int positiveHighInteger() {
-		Random rand = new Random();
-		int number = rand.nextInt(10) +1;
+		Random randomIntegerRange = new Random();
+		int number = randomIntegerRange.nextInt(100 + 1 -50) + 50; 
 		
 		return number;
 	}
 	public static int positiveLowInteger() {
-		Random rand = new Random();
-		int number = rand.nextInt(100) +50;
+		Random randomIntegerRange = new Random();
+		int number = randomIntegerRange.nextInt(10 + 1 -1) + 1; 
 		
 		return number;
 	}
 }
-
-
