@@ -6,11 +6,7 @@ import org.junit.Assert;
 public class AppTest
 {
 	
-	
-// Tests for Customer class
-	//String username, String password, String cardNumber,int portIndent, double balance, String AccountType, boolean isInvest,
-	//double[] stock, double[] bond, int SD_Length)
-	
+
 	@Test
 	public void testCustomerCreation(){
 		String user = "Dee";

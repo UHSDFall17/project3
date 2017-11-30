@@ -35,7 +35,8 @@ public class Portfolio {
 	            	return userPortiId;
 	            }
 	            case 2: { 
-	                return -1;
+	            	
+	                UserInput(account);
 	            }
 	            case 3: {
                     UserInterface.UserInput(account);
