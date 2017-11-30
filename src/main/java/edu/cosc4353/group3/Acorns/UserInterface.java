@@ -12,8 +12,10 @@ public class UserInterface {   //MENU 1
     
     //Displayed After User Completes Login
     private static int Select = 0;
+    static String login = "";
 
     public static void DisplayMenu(String loginUser) {  
+    	login = loginUser;
         System.out.println("     Hello " + loginUser + " !"     );
         System.out.println("");
         System.out.println("===================");
@@ -60,6 +62,9 @@ public class UserInterface {   //MENU 1
             }
             case 3: {
             	UserInput(c);
+            }
+            case 4:{
+            	DisplayMenu(login);
             }
         }
     }
@@ -149,11 +154,13 @@ public class UserInterface {   //MENU 1
             			UserInput(c);
             		}
             	}
+            	DisplayMenu(login);
             }
             case 6: {
             	FundsHandler.depositFunds(c);
             	UpdateData( c,  -1, "", 3);
             	UserInput(c);
+            	DisplayMenu(login);
             }
             case 7: {
             	StartMenu.displayMenu();
