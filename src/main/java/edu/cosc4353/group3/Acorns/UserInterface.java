@@ -37,8 +37,8 @@ public class UserInterface {   //MENU 1
         System.out.println("");
         System.out.println("-------------------------");
         System.out.println("    1: Update Credit/Debit Card          ");
-        System.out.println("    2:      "); //Dosent really matter
-        System.out.println("    3:      ");     //Dosent really matter
+        System.out.println("    2: Change Username     "); //Dosent really matter
+        System.out.println("    3: Change Password    ");     //Dosent really matter
         System.out.println("    4: Back to Main Menu       ");
         System.out.println("-------------------------");
         int Temp = 9999;
@@ -60,11 +60,30 @@ public class UserInterface {   //MENU 1
                 break;
             }
             case 2: {
+            	boolean usernameVal= UserSettings.changeUsername();
+            	if(usernameVal==true) {
+            		System.out.println("Username Updated!");
+                	AcctSetMenu(c);
+            	}else {
+            		System.out.println("Incorrect Username or Password");
+                	AcctSetMenu(c);
+
+            		
+            	}
                 break;
             }
             case 3: {
-            	UserInput(c);
-            }
+            	boolean usernameVal= UserSettings.changePassword();
+            	if(usernameVal==true) {
+            		System.out.println("Username Updated!");
+                	AcctSetMenu(c);
+            	}else {
+            		System.out.println("Incorrect Username or Password");
+                	AcctSetMenu(c);
+
+            		
+            	}
+                break;            }
             case 4:{
             	DisplayMenu(login);
             }
@@ -153,30 +172,29 @@ public class UserInterface {   //MENU 1
             }
             case 5:
             {
+            	FundsHandler.makePurchase(custom);
+               	DisplayMenu(login);
 
-                String accountTypeUser = c.getUser_AccountType();
-                int check = -1;
-                if (accountTypeUser.equals("corporate")){  check = 1;  }
-                else { check = -1; }
-            	switch(check) {
-            	case 1:
-            		CorporateHandler.depositFunds(c);
-            		UpdateData( c,  -1, "", 3);
-                	UserInput(c);	
-            	default:
-            		FundsHandler.depositFunds(c);
-                	UpdateData( c,  -1, "", 3);
-                	UserInput(c);
-
-            	}
-            	DisplayMenu(login);
             }
             case 6: {
-            	FundsHandler.depositFunds(c);
-            	UpdateData( c,  -1, "", 3);
-            	UserInput(c);
-            	DisplayMenu(login);
-            }
+            	   String accountTypeUser = c.getUser_AccountType();
+                   int check = -1;
+                   if (accountTypeUser.equals("corporate")){  check = 1;  }
+                   else { check = -1; }
+               	switch(check) {
+               	case 1:
+               		CorporateHandler.depositFunds(c);
+               		UpdateData( c,  -1, "", 3);
+                   	UserInput(c);	
+               	default:
+               		FundsHandler.depositFunds(c);
+                   	UpdateData( c,  -1, "", 3);
+                   	UserInput(c);
+
+               	}
+               	DisplayMenu(login);
+               }
+            
             case 7: {
             	StartMenu.displayMenu();
             }
@@ -191,9 +209,9 @@ public class UserInterface {   //MENU 1
             }
             
             
-
-        }
     }
+        }
+    
     
     public static void portfoliFind(Customer c) {
     	
