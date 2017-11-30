@@ -37,9 +37,7 @@ public class UserInterface {   //MENU 1
         System.out.println("");
         System.out.println("-------------------------");
         System.out.println("    1: Update Credit/Debit Card          ");
-        System.out.println("    2: Change Username     "); //Dosent really matter
-        System.out.println("    3: Change Password    ");     //Dosent really matter
-        System.out.println("    4: Back to Main Menu       ");
+        System.out.println("    2: Back to Main Menu       ");
         System.out.println("-------------------------");
         int Temp = 9999;
         Scanner UserScan =  new Scanner(System.in);
@@ -59,32 +57,7 @@ public class UserInterface {   //MENU 1
             	UserInput(c);
                 break;
             }
-            case 2: {
-            	boolean usernameVal= UserSettings.changeUsername();
-            	if(usernameVal==true) {
-            		System.out.println("Username Updated!");
-                	AcctSetMenu(c);
-            	}else {
-            		System.out.println("Incorrect Username or Password");
-                	AcctSetMenu(c);
-
-            		
-            	}
-                break;
-            }
-            case 3: {
-            	boolean usernameVal= UserSettings.changePassword();
-            	if(usernameVal==true) {
-            		System.out.println("Username Updated!");
-                	AcctSetMenu(c);
-            	}else {
-            		System.out.println("Incorrect Username or Password");
-                	AcctSetMenu(c);
-
-            		
-            	}
-                break;            }
-            case 4:{
+            case 2:{
             	DisplayMenu(login);
             }
         }
