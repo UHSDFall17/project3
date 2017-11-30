@@ -196,7 +196,7 @@ public class Customer {
             
             //Enter Card Info Here
 
-        System.out.println("Card id: " + cardId); 
+        //System.out.println("Card id: " + cardId); 
         StoreUserData(username, password, cardId, accountChoice); //Add card Argument
         System.out.println("------------------");
 
@@ -254,7 +254,7 @@ public class Customer {
             //}
             
             //Enter Card Info Here
-        System.out.println("Card id: " + cardId); 
+        //System.out.println("Card id: " + cardId); 
         StoreUserData(username, password, cardId, accountChoice); //Add card Argument
         System.out.println("------------------");
 
@@ -265,7 +265,7 @@ public class Customer {
         public static void StoreUserData(String user, String pass, String cardNumb, String accountChoice)
         {
             String Storage = user + " " + pass + " " + cardNumb + " " + "-1" + " "+ "0" + " " + accountChoice; //user0 pass1 cardNo2 portfolio3 accountStatus4
-            System.out.println(Storage);
+            //System.out.println(Storage);
             
             try
             {
