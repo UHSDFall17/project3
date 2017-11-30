@@ -1,4 +1,5 @@
 package edu.cosc4353.group3.Acorns;
+
 import java.util.Random;
 
 public class NumberGenerator {
@@ -18,12 +19,16 @@ public class NumberGenerator {
 	public static int positiveHighInteger() {
 		Random randomIntegerRange = new Random();
 		int number = randomIntegerRange.nextInt(100 + 1 -50) + 50; 
+		
+
 		return number;
 	}
 	
 	public static int positiveLowInteger() {
 		Random randomIntegerRange = new Random();
 		int number = randomIntegerRange.nextInt(10 + 1 -1) + 1; 
+		
 		return number;
 	}
 }
+

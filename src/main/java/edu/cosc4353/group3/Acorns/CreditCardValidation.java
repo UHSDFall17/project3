@@ -106,6 +106,7 @@ public class CreditCardValidation {
     		return((number % 10) + 1);
     }
 
+
     public static boolean prefixMatched(long number, int d) {
     	int length = new StringBuilder(Integer.toString(d)).length();
     	String numbertoString = Long.toString(number);
