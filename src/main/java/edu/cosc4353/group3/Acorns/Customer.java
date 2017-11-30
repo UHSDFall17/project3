@@ -288,9 +288,7 @@ public class Customer {
             Scanner sc = new Scanner(file);
             while (sc.hasNextLine()) {
                 String TempScan = sc.next();
-                //System.out.println(TempScan);
                 if (UserInput.equals(TempScan)) {// write first word from line
-                    //System.out.println("MAATCH...");
                     return true;
                 }
                 else{   
@@ -302,7 +300,6 @@ public class Customer {
         }
         return false;
     }
-        
         //Check User Existance in .txt
 }
 

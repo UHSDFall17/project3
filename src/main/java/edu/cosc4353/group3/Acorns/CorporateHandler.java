@@ -7,8 +7,8 @@ public class CorporateHandler {
 	public static void depositFunds(Customer c)
 	{
 		System.out.println("Input Amount To Deposit:");
+	  Scanner UserScan =  new Scanner(System.in);
 
-		Scanner UserScan =  new Scanner(System.in);
 		double amount = UserScan.nextDouble();
 
     double amountWithCorp = amount+(amount*.03);

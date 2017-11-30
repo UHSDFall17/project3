@@ -171,7 +171,7 @@ public class UserInterface {   //MENU 1
             	UserInput(c);
             }
             case 7: {
-            	StartMenu.DisplayMenu();
+            	StartMenu.displayMenu();
             }
             
             case 8:
@@ -241,7 +241,6 @@ public class UserInterface {   //MENU 1
                     }
                 }
             }
-           // System.out.println(fileContent);
             // Now fileContent will have updated content , which you can override into file
             FileWriter fstreamWrite = new FileWriter("LoginInfo.txt");
             BufferedWriter out = new BufferedWriter(fstreamWrite);
