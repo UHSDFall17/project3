@@ -62,16 +62,18 @@ public class UserInterface {   //MENU 1
             	boolean passwordChange=UserSettings.changePassword(c);
             	if(passwordChange==true) {
                 	System.out.println("Password Changed!");
-            		DisplayMenu(login);
+                	UserInput(c);
+            		break;
             	}else {
                 	System.out.println("Password not Changed!");
-            		DisplayMenu(login);
+                	UserInput(c);
 
             	}
+            	//break;
             }
             case 3:{
-            	DisplayMenu(login);
-            }
+            	UserInput(c);
+            	}
         }
     }
           
