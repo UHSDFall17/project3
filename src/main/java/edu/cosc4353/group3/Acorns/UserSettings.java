@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class UserSettings {
 
 	
-	private static final int PASS_LENGTH =6;
+	private static final int PASS_LENGTH = 6;
 
 	public static boolean changePassword(Customer c) {
         Scanner UserInput =  new Scanner(System.in);
@@ -19,9 +19,12 @@ public class UserSettings {
 		System.out.println("Enter your Current Password:");
 		String password = UserInput.nextLine();
 		boolean CreateError = true;
-		while(CreateError) {
+		
+		while(CreateError==true) {
 			if(username.equals(c.getUser_Name())&&password.equals(c.getUser_Pass())){
 				CreateError= false;
+				//System.out.println("!!!!!!!!!!!!!!!!!!!!");
+				break;
 				
 			}else {
 				System.out.println("Incorrect Username or Password");
@@ -30,9 +33,10 @@ public class UserSettings {
 		}
 		
 			CreateError = true;
-	        while (CreateError) {
-	        	System.out.println("Enter A " + PASS_LENGTH + " Character password: ");
+	        while (CreateError==true) {
+	        	System.out.println("Enter A New" + PASS_LENGTH + " Character password: ");
 	        	String newPassword = UserInput.next();
+	        	
 	                
 	        	if (newPassword.length()!= PASS_LENGTH){ 
 	        		CreateError = true; 
@@ -42,10 +46,12 @@ public class UserSettings {
 	            else {  
 	            	c.setPassword(newPassword);
 	    			UserInterface.UpdateData(c, 0, newPassword, 4);
-	    			return true;
+	    			//return true;
+	    			CreateError = false;
+ 
 	            }
 	        }
-			System.out.println("Password Length Error, Try Again!" + "\n");
+		  //CreateError = true;
 
 			return true;
 		
